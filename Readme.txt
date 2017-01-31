@@ -8,5 +8,5 @@ Para subir todos los cambios:
 
 dentro de la carpeta prueba >
 	git add pointownv1devdesign/*
-	git comió -m “mensaje”
+	git commit -m “mensaje”
 	git push
