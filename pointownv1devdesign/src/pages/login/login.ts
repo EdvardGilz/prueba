@@ -20,7 +20,7 @@ import { DashboardPage } from '../dashboard/dashboard';
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html'
-})
+}) 
 export class LoginPage {
   public user;
   public pass;
