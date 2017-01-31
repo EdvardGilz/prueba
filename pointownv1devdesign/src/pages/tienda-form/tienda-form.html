@@ -6,33 +6,30 @@
 -->
 <ion-content>
 
-  <ion-fab right top *ngIf="nuevo == 1 || nuevo == 2">
-        <button ion-fab mini color="dark" (click)="cancelar()">
-          <ion-icon name="close"></ion-icon>
-        </button>
-  </ion-fab>
-
-
-  <!--ion-buttons end *ngIf="nuevo == 1 || nuevo == 2">
-    <button ion-button clear icon-right (click)="cancelar()">
-      Cancelar
-      <ion-icon name="close-circle"></ion-icon>
-    </button>
-  </ion-buttons-->
 
   <ion-list>
-    <ion-list-header>
-      <h2 padding-top padding-bottom color="primary">Registro</h2>
+
+    <ion-list-header no-margin>
+
+      <h2 padding-top padding-bottom color="primary">Datos de mi negocio</h2>
+
+      <ion-fab right top *ngIf="nuevo == 1 || nuevo == 2">
+        <button ion-fab mini color="primary" (click)="cancelar()">
+          <ion-icon name="close"></ion-icon>
+        </button>
+      </ion-fab>
+
     </ion-list-header>
-  
-    <ion-item>
+
+    <ion-item padding-right margin-bottom>
       <ion-label floating>Nombre de la tienda</ion-label>
-      <!--ion-input [(ngModel)]="nombre" (input)="verificaLlenado()" type="text" placeholder="Nombre de la tienda"></ion-input-->
       <ion-input [(ngModel)]="nombre" (input)="verificaLlenado()" type="text"></ion-input>
     </ion-item>
-    <ion-list-header>
-      <h3 text-center color="primary">Horario</h3>
-    </ion-list-header>
+
+    <ion-item-divider>
+      Días laborales
+    </ion-item-divider>
+
     <ion-item class="inline-checkbox">
       <ion-label>L</ion-label>
       <ion-checkbox [(ngModel)]="lun" (ionChange)="verificaLlenado()"></ion-checkbox>
@@ -61,19 +58,35 @@
       <ion-label>D</ion-label>
       <ion-checkbox [(ngModel)]="dom" (ionChange)="verificaLlenado()"></ion-checkbox>
     </ion-item>
-    
-    <ion-item>
-      <ion-label>Abre (HH:MM)</ion-label>
-      <ion-datetime displayFormat="HH:mm" [(ngModel)]="hora_a" (ionChange)="verificaLlenado()"></ion-datetime>
-    </ion-item>
-    <ion-item>
-      <ion-label>Cierra (HH:MM)</ion-label>
-      <ion-datetime displayFormat="HH:mm" hourValues="{{misHoras}}" [(ngModel)]="hora_c" [disabled]="horasDisabled" (ionChange)="verificaLlenado()"></ion-datetime>
-    </ion-item>
+
+    <ion-item-divider>
+      Horario
+    </ion-item-divider>
+
+
+    <ion-grid no-padding padding-right>
+      <ion-row>
+        <ion-col width-50 no-padding>
+          <ion-item padding-right>
+            <ion-label floating>Abre (HH:MM)</ion-label>
+            <ion-datetime displayFormat="HH:mm" [(ngModel)]="hora_a" (ionChange)="verificaLlenado()"></ion-datetime>
+          </ion-item>
+        </ion-col>
+        <ion-col width-50 no-padding>          
+          <ion-item padding-right>
+            <ion-label floating>Cierra (HH:MM)</ion-label>
+            <ion-datetime displayFormat="HH:mm" hourValues="{{misHoras}}" [(ngModel)]="hora_c" [disabled]="horasDisabled" (ionChange)="verificaLlenado()"></ion-datetime>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
     
   </ion-list>
   
-  <div padding>
-    <button ion-button large block round (click)="siguiente()" [disabled]="buttonDisabled">Siguiente</button>
-  </div>
 </ion-content>
+
+<ion-footer>
+    <ion-toolbar padding>
+      <button ion-button large block (click)="siguiente()" [disabled]="buttonDisabled">Siguiente</button>
+    </ion-toolbar>
+</ion-footer>

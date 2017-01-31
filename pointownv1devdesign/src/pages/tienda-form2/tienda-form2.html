@@ -5,82 +5,94 @@
   Ionic pages and navigation.
 -->
 <ion-content>
-  <ion-row>
-
-  <ion-fab left top>
-    <button ion-fab mini color="primary" (click)="volver()">
-      <ion-icon name="arrow-back"></ion-icon>
-    </button>       
-  </ion-fab>
-
-    <!--ion-col>
-      <ion-buttons start>
-        <button ion-button clear icon-left (click)="volver()">
-          <ion-icon name="arrow-back"></ion-icon>
-          Volver
-        </button>
-      </ion-buttons>
-    </ion-col-->
-
-  <ion-fab right top *ngIf="nuevo == 1 || nuevo == 2">
-        <button ion-fab mini color="dark" (click)="cancelar()">
-          <ion-icon name="close"></ion-icon>
-        </button>
-  </ion-fab>
-
-
-    <!--ion-col>
-      <ion-buttons end *ngIf="nuevo == 1 || nuevo == 2">
-        <button ion-button clear icon-right (click)="cancelar()">
-          Cancelar
-          <ion-icon name="close-circle"></ion-icon>
-        </button>
-      </ion-buttons>
-    </ion-col-->
-
-  </ion-row>
     
   <ion-list>
+
     <ion-list-header text-center>
-      <h2 padding-top padding-bottom color="primary">¿Dónde está tu tienda?</h2>
+
+      <h2 padding-top padding-bottom color="primary">Ubiciación</h2>
+
+      <ion-fab left top>
+        <button ion-fab mini color="primary" (click)="volver()">
+          <ion-icon name="arrow-back"></ion-icon>
+        </button>       
+      </ion-fab>
+
+      <ion-fab right top *ngIf="nuevo == 1 || nuevo == 2">
+            <button ion-fab mini color="primary" (click)="cancelar()">
+              <ion-icon name="close"></ion-icon>
+            </button>
+      </ion-fab>
+
     </ion-list-header>
   
-    <ion-item>
-      <ion-input [(ngModel)]="calle" (input)="verificaLlenado()" type="text" placeholder="Calle"></ion-input>
+    <ion-item padding-right>
+      <ion-label floating>Calle</ion-label>
+      <ion-input [(ngModel)]="calle" (input)="verificaLlenado()" type="text"></ion-input>
     </ion-item>
-    <ion-item>
-      <ion-input [(ngModel)]="num_e" (input)="verificaLlenado()" type="text" placeholder="No. Ext."></ion-input>
+
+    <ion-grid no-padding padding-right>
+      <ion-row>
+        <ion-col width-33 no-padding>
+          <ion-item>
+            <ion-label floating>No. Ext.</ion-label>
+            <ion-input [(ngModel)]="num_e" (input)="verificaLlenado()" type="text"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col width-33 no-padding>
+          <ion-item>
+            <ion-label floating>No. Int.</ion-label>
+            <ion-input [(ngModel)]="num_i" (input)="verificaLlenado()" type="text"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col width-33 no-padding>
+          <ion-item no-padding>
+            <ion-label floating>C.P.</ion-label>
+            <ion-input [(ngModel)]="cp" (input)="verificaLlenado()" type="number"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-item padding-right>
+      <ion-label floating>Colonia</ion-label>
+      <ion-input [(ngModel)]="colonia" (input)="verificaLlenado()" type="text"></ion-input>
     </ion-item>
-    <ion-item>
-      <ion-input [(ngModel)]="num_i" (input)="verificaLlenado()" type="text" placeholder="No. Int."></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-input [(ngModel)]="cp" (input)="verificaLlenado()" type="number" placeholder="C.P."></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-input [(ngModel)]="colonia" (input)="verificaLlenado()" type="text" placeholder="Colonia"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-input [(ngModel)]="municipio" (input)="verificaLlenado()" type="text" placeholder="Municipio"></ion-input>
+    <ion-item padding-right>
+      <ion-label floating>Municipio</ion-label>
+      <ion-input [(ngModel)]="municipio" (input)="verificaLlenado()" type="text"></ion-input>
     </ion-item>
     
-    <ion-item>
-      <ion-label>Pais</ion-label>
-      <ion-select [(ngModel)]="pais" (ionChange)="verificaLlenado()">
-        <ion-option value="mexico" selectedText="México">México</ion-option>
-      </ion-select>
-    </ion-item>
-    <ion-item>
-      <ion-label>Estado</ion-label>
-      <ion-select [(ngModel)]="estado" (ionChange)="verificaLlenado()">
-        <ion-option value="cdmx" selectedText="CDMX">CDMX</ion-option>
-        <ion-option value="edo" selectedText="Estado de México">Estado de México</ion-option>
-      </ion-select>
-    </ion-item>
+    <ion-grid no-padding padding-right>
+      <ion-row>
+        <ion-col width-50 no-padding>
+          <ion-item>
+            <ion-label floating>Pais</ion-label>
+            <ion-select [(ngModel)]="pais" (ionChange)="verificaLlenado()">
+              <ion-option value="mexico" selectedText="México">México</ion-option>
+            </ion-select>
+          </ion-item>          
+        </ion-col>
+        <ion-col width-50 no-padding>
+          <ion-item>
+            <ion-label floating>Estado</ion-label>
+            <ion-select [(ngModel)]="estado" (ionChange)="verificaLlenado()">
+              <ion-option value="cdmx" selectedText="CDMX">CDMX</ion-option>
+              <ion-option value="edo" selectedText="Estado de México">Estado de México</ion-option>
+            </ion-select>
+          </ion-item>          
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+
     
   </ion-list>
   
-  <div padding>
-    <button ion-button large block round (click)="siguiente()" [disabled]="buttonDisabled">{{txtBtn}}</button>
-  </div>
 </ion-content>
+
+<ion-footer>
+    <ion-toolbar padding>
+      <button ion-button large block (click)="siguiente()" [disabled]="buttonDisabled">{{txtBtn}}</button>
+    </ion-toolbar>
+</ion-footer>

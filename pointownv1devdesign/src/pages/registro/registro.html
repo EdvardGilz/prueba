@@ -6,48 +6,50 @@
 -->
 <ion-content>
 
-  <ion-fab right top>
-    <button ion-fab mini color="dark" (click)="login()">
-      <ion-icon name="close"></ion-icon>
-    </button>       
-  </ion-fab>
-
   <ion-list>
 
     <ion-list-header>
+
       <h2 padding-top padding-bottom color="primary">Nuevo usuario <ion-icon name="ion-ios-personadd"></ion-icon></h2>
+
+      <ion-fab right top>
+        <button ion-fab mini color="primary" (click)="login()">
+          <ion-icon name="close"></ion-icon>
+        </button>       
+      </ion-fab>
+
     </ion-list-header>
     
-    <ion-item>
+    <ion-item padding-right>
       <ion-label floating>Correo electronico</ion-label>
       <ion-input [(ngModel)]="mail" (input)="verificaLlenado()" type="email"></ion-input>
     </ion-item>
 
-    <ion-item>
+    <ion-item padding-right>
       <ion-label floating>Nombre de usuario</ion-label>
       <ion-input [(ngModel)]="user" (input)="verificaLlenado()" type="text"></ion-input>
     </ion-item>
 
-    <ion-item>
+    <ion-item padding-right>
       <ion-label floating>Contraseña</ion-label>
       <ion-input [(ngModel)]="pass" (input)="verificaLlenado()" type="password"></ion-input>
     </ion-item>
 
-    <ion-item>
+    <ion-item padding-right>
       <ion-label floating>Verificar Contraseña</ion-label>
       <ion-input [(ngModel)]="pass2" (input)="verificaLlenado()" type="password"></ion-input>
     </ion-item>
 
-    <ion-item text-center>
-
-      <ion-badge color="danger" *ngIf="differentPass == true">Contraseñas diferentes</ion-badge>      
-
-      <button ion-button large block round (click)="registro()" [disabled]="buttonDisabled">Registro</button>
-
+    <ion-item text-center padding>
+      <ion-badge color="danger" *ngIf="differentPass == true">La contraseñas deben ser iguales</ion-badge>      
     </ion-item>
-
-
 
   </ion-list>
   
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar padding>
+    <button ion-button large block (click)="registro()" [disabled]="buttonDisabled">Registro</button>
+  </ion-toolbar>
+</ion-footer>

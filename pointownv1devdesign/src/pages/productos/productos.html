@@ -6,55 +6,64 @@
 -->
 <ion-content>
 
-  <!--ion-buttons end>
-    <button ion-button clear icon-only (click)="regresar()">
-      <ion-icon name="home"></ion-icon>
-    </button>
-  </ion-buttons-->
+  <ion-list no-padding no-margin>
 
-  <ion-fab center top>
-    <button ion-fab mini color="primary" (click)="regresar()">
-      <ion-icon name="home"></ion-icon>
-    </button>       
-  </ion-fab>
+    <ion-list-header>
 
+      <h2>Mi Stock</h2>
+      <p>Administración</p>
+      
+      <ion-fab right middle>
+        <button ion-fab mini color="primary" (click)="regresar()">
+          <ion-icon name="home"></ion-icon>
+        </button>       
+      </ion-fab>
 
-  <!--ion-toolbar *** lo mandamos al footer *** >
-    <ion-row>
-      <ion-col width-80>
-        <ion-searchbar [(ngModel)]="txtSearchBar" (ionInput)="searchProduct($event, 0)"></ion-searchbar>
-      </ion-col>
-      <ion-col>
-        <button ion-button clear full icon-only (click)="scanner()">
-          <ion-icon name="barcode"></ion-icon>
-        </button>
-      </ion-col>
-    </ion-row>
-    
-  </ion-toolbar-->
+    </ion-list-header>    
 
-  <ion-list no-lines>
-    <ion-item *ngFor="let producto of productosAll" (click)="verificarStock(producto)">
-      <h4><strong>{{producto.nombre}}</strong> > {{producto.marca}}</h4>
-      <p color="danger">{{producto.codigo}} <ion-badge style="float:right" color="danger">{{producto.presentacion}}</ion-badge></p>
-      <hr>
+    <ion-item *ngFor="let producto of productosAll" (click)="verificarStock(producto)">        
+
+      <ion-row padding-bottom>
+        <ion-col no-padding width-80 text-wrap>
+          <h1 color="dark">{{producto.nombre}}</h1> 
+          <h2 color="black">{{producto.marca}} </h2>
+        </ion-col>
+        <ion-col text-right>
+          <!-- desplegar la cantidad de stock -->
+          <ion-badge color="danger">x 1000</ion-badge>
+        </ion-col>
+      </ion-row>
+      <ion-row no-padding>
+        <ion-col no-padding width-50 text-wrap>
+          <ion-icon name="eye" color="primary"></ion-icon> {{producto.presentacion}}
+        </ion-col>
+        <ion-col no-padding text-right>
+          {{producto.codigo}}
+        </ion-col>
+      </ion-row>
+
     </ion-item>
 
   </ion-list>
+
 </ion-content>
 
 <ion-footer>
-  <ion-toolbar>
-    <ion-row>
+  <ion-toolbar padding>
+
+    <ion-row no-padding>
+
       <ion-col width-80>
         <ion-searchbar [(ngModel)]="txtSearchBar" (ionInput)="searchProduct($event, 0)"></ion-searchbar>
       </ion-col>
-      <ion-col>
-        <button ion-button icon-only full color="dark" (click)="scanner()">
+
+      <ion-col no-padding>
+        <button ion-button large icon-only block color="danger" (click)="scanner()">
           <ion-icon name="barcode"></ion-icon>
         </button>
       </ion-col>
+      
     </ion-row>
-    
+
   </ion-toolbar>
 </ion-footer>

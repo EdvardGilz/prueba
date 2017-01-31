@@ -5,49 +5,45 @@
   Ionic pages and navigation.
 -->
 <ion-content>
-  <!--ion-buttons start>
-    <button ion-button clear icon-left (click)="volver()">
-      <ion-icon name="arrow-back"></ion-icon>
-      Volver
-    </button>
-  </ion-buttons-->
 
-  <ion-fab left top>
-    <button ion-fab mini color="dark" (click)="volver()">
-      <ion-icon name="arrow-back"></ion-icon>
-    </button>       
-  </ion-fab>
-
-  <!--h1 align="center">Registro</h1>
-  <p align="center">Hola <strong>{{username}}</strong> es importante que complementes tu información básica.</p-->
-  
   <ion-list>
 
     <ion-list-header text-center>
+
       <h2 padding-top padding-bottom color="primary">Hola <strong>{{username}}</strong>
-      <br/> <small color="primary"> Proporciona tus datos principales. </small></h2>
+      <br/> <small color="primary"> Completa tus datos. </small></h2>
+
+      <ion-fab left top>
+        <button ion-fab mini color="primary" (click)="volver()">
+          <ion-icon name="arrow-back"></ion-icon>
+        </button>       
+      </ion-fab>
+
     </ion-list-header>
   
-    <ion-item>
+    <ion-item padding-right>
       <ion-label floating>Nombre</ion-label>
       <ion-input [(ngModel)]="nombre" (input)="verificaLlenado()" type="text"></ion-input>
     </ion-item>
-    <ion-item>
+    <ion-item padding-right>
       <ion-label floating>Apellido Paterno</ion-label>
       <ion-input [(ngModel)]="app_p" (input)="verificaLlenado()" type="text"></ion-input>
     </ion-item>
-    <ion-item>
+    <ion-item padding-right>
       <ion-label floating>Apellido Materno</ion-label>
       <ion-input [(ngModel)]="app_m" (input)="verificaLlenado()" type="text"></ion-input>
     </ion-item>
-    <ion-item>
+    <ion-item padding-right>
       <ion-label floating>Telefono</ion-label>
       <ion-input [(ngModel)]="tel" (input)="verificaLlenado()" type="tel"></ion-input>
     </ion-item>
     
   </ion-list>
   
-  <div padding>
-    <button ion-button large block round (click)="guardar()" [disabled]="buttonDisabled">Finalizar</button>
-  </div>
 </ion-content>
+
+<ion-footer>
+    <ion-toolbar padding>
+      <button ion-button large block (click)="guardar()" [disabled]="buttonDisabled">Finalizar</button>
+    </ion-toolbar>
+</ion-footer>

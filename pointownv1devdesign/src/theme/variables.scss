@@ -4,7 +4,7 @@ $font-path: "../assets/fonts";
 
 @import "ionic.globals";
 
-// comentario
+
 // Shared Variables
 // --------------------------------------------------
 // To customize the look and feel of this app, you can override
@@ -27,20 +27,26 @@ $font-path: "../assets/fonts";
 // colors so you can add, rename and remove colors as needed.
 // The "primary" color is the only required color in the map.
 
-$colors: (
-  primary:    #00B0B8,
-  secondary:  #58DA87,
-  light:      #FBCD23,
-  danger:     #E66F66,
-  dark:       #10696E,
-  white:      #FFFFFF
-);
+$colors: ( 
+    primary:#00B0B8, 
+    secondary:#58DA87,
+    light:#FBCD23,
+    danger:#E66F66,
+    dark:#10696E,
+    white:#FFFFFF,
+    black:#000000,
+    // tonos medios
+    primarymedium: desaturate( lighten( #00B0B8, 50% ), 65% )
+     );
+
+
+.bg-white{background-color: color($colors, white);color: color($colors, primary);}
 
 /* Degradados 
 // posiblemente android de problemas, añadir esto: https://sujitaweb.wordpress.com/2016/05/27/gradient-background-in-ionic/
  .content-md, .content-ios, .content-wp { background-image: -webkit-gradient( linear, 50% 0%, 50% 100%, color-stop(0%, color($colors, light) ), color-stop(100%, color($colors, dark) )) !important; }
 */
-page-login, page-dashboard{ 
+page-login{ 
   .content-md, .content-ios, .content-wp{
     background: -webkit-linear-gradient(180deg, color($colors, primary), color($colors, dark));
     background: linear-gradient(180deg, color($colors, primary), color($colors, dark));
@@ -62,115 +68,97 @@ rgba( $base-color, .7 )
 tint( $base-color, 10% ) | shade( $base-color, 10% ) 
 
 /* Globales */
-// $background-color: lighten( color($colors, primary), 10% );
+$background-color: desaturate( lighten( color($colors, light), 42% ), 50% );
 $toolbar-background:  color($colors, dark);
-$list-background-color: lighten( color($colors, primary), 100% );
-$list-border-color: color($colors, dark);
-$text-color: color($colors, dark);
-
-ion-footer ion-toolbar .toolbar-background{background-color:lighten( color($colors, primary), 2% );}
+// $list-background-color: lighten( color($colors, primary), 100% );
+$text-color: lighten(desaturate(color($colors, dark), 100%),15%);
+$list-border-color: lighten( $text-color, 50%);
+$toolbar-background: color($colors, primarymedium);
 
 /* Sombra */
-.boxshadow{box-shadow: 0px 2px 4px darken(color($colors, dark), 10%);}
+.boxshadow{box-shadow: 0px 0px 16px rgba(color($colors, dark), .8);}
 
-/* eliminar border de las listas (principio y final)*/
+/*Inline checkbox*/
+.inline-checkbox{width: 14.285714285714285714285714285714% !important;*width: 14.285714285714285714285714285714% !important;float: left;padding: 0px !important;min-height: 8rem !important;text-align: center !important;}
+.inline-checkbox ion-checkbox{z-index: 100;margin: 0px auto 12px !important}
+.inline-checkbox .item-inner{position: absolute;right: 0;left: 0;bottom: -20px;margin: 0 auto;border: none !important;width: auto;padding: 0px 0px 0px 5px !important;}
+
+// para añadir animaciones:
+@keyframes blink { 0% { opacity:1; } 50% { opacity:.2; } 100% { opacity:1; } }
+	.blink { animation-name: blink; animation-duration: 2s; animation-iteration-count: infinite; animation-timing-function: alternate; }
+@keyframes pump { 0% { transform: scale(1); } 50% { transform: scale(.8); } 100% { transform: scale(1); } }
+	.pump { animation-name: pump;animation-duration: 2s;transform-origin:50% 50%;animation-iteration-count: infinite;animation-timing-function: alternate;}
+
+/*para cambiar el tamaño de texto en inputs*/
+.item-label-floating .text-input{ font-size: 1.4em; }
+
+/*clases que no estan sujetas a las variables sass*/
+.item-md.list-header-md {background-color:lighten( desaturate(color($colors, primary), 45% ), 55% );text-transform:uppercase;letter-spacing: .1rem;}
 .md ion-list > .item:last-child, .md ion-list > .item-wrapper:last-child .item,
 .wp ion-list > .item:last-child, .wp ion-list > .item-wrapper:last-child .item,
 .ios ion-list > .item:last-child, .ios ion-list > .item-wrapper:last-child .item {
     border-bottom: none;
 }
-
-/*Inline checkbox*/
-.inline-checkbox{
-	width: 14% !important;
-	float: left;
-	padding: 0px !important;
-	min-height: 8rem !important;
-	text-align: center !important;
+.footer-md::before{background-image:none !important;}
+input{box-shadow: none !important;}
+.item-divider {
+    text-transform: uppercase !important;
+    text-shadow: 0px 1px 0px #fff;
 }
-
-.inline-checkbox ion-checkbox{
-	z-index: 100;
-	margin: 0px auto 12px !important
-}
-.inline-checkbox .item-inner{
-	position: absolute;
-	right: 0;
-	left: 0;
-	bottom: -20px;
-	margin: 0 auto;
-	border: none !important;
-	width: auto;
-	padding: 0px 0px 0px 5px !important;
-}
-
-
-// para añadir animaciones:
-
-@keyframes blink {
-	0% { opacity:1; } 
-  50% { opacity:.2; }
-  100% { opacity:1; }
-}
-
-.blink {
-	animation-name: blink;
-	animation-duration: 2s;
-	animation-iteration-count: infinite;
-	animation-timing-function: alternate;
-}
-
-@keyframes pump {
-	0% { transform: scale(1); }
-	50% { transform: scale(.8); }
-	100% { transform: scale(1); }
-}
-
-.pump {
-	animation-name: pump;
-	animation-duration: 2s;
-	transform-origin:50% 50%;
-	animation-iteration-count: infinite;
-	animation-timing-function: alternate;
-}
-
 
 // App iOS Variables
 // --------------------------------------------------
 // iOS only Sass variables can go here
 
-// $card-ios-background-color: lighten( color($colors, dark), 50% );
-$item-ios-divider-background: darken( color($colors, dark), 15% );
-$item-ios-divider-color: lighten( color($colors, dark), 30% );
+$card-ios-background-color: color($colors, white);
+$item-ios-divider-background: desaturate( lighten( color($colors, light), 40% ), 100% );
+$item-ios-divider-color: desaturate( lighten( color($colors, primary), 30% ), 80% );
+
 $item-ios-body-text-font-size: 1.8rem;
 $item-ios-font-size: 1.8rem;
 $list-ios-border-color: $list-border-color;
-$list-ios-header-background-color: darken(color($colors, dark), 10% );
-$searchbar-ios-toolbar-input-background: #ffffff ;
+$list-ios-header-background-color: desaturate( lighten( color($colors, primary), 60% ), 70% );
+$searchbar-ios-toolbar-input-background: color($colors, white) ;
+$searchbar-ios-input-height: 5.4rem;
+
+// color en el label
+.input-has-focus .label-ios[floating], .input-has-value .label-ios[floating] { color: color($colors, primary);}
 
 // App Material Design Variables
 // --------------------------------------------------
 // Material Design only Sass variables can go here
 
-// $card-md-background-color: lighten( color($colors, dark), 50% );
-$item-md-divider-background: darken( color($colors, dark), 15% );
-$item-md-divider-color: lighten( color($colors, dark), 30% );
+$card-md-background-color: $card-ios-background-color;
+$item-md-divider-background: $item-ios-divider-background;
+$item-md-divider-color: $item-ios-divider-color;
+$item-md-divider-border-bottom: false;
+
+$text-input-md-highlight-color: color($colors, white);
 $item-md-body-text-font-size: 1.8rem;
 $item-md-font-size: 1.8rem;
 $list-md-border-color: $list-border-color;
 $list-md-header-background-color: color($colors, dark);
+$searchbar-md-toolbar-input-background: color($colors, white) ;
+$searchbar-md-input-height: $searchbar-ios-input-height;
+
+// color en el label
+$label-md-text-color-focused:color($colors, primary);
+// ocultar la alerta de borde en inputs
+$text-input-md-show-focus-highlight: false;
 
 // App Windows Variables
 // --------------------------------------------------
 // Windows only Sass variables can go here
 
-// $card-wp-background-color: lighten( color($colors, dark), 50% );
-$item-wp-divider-background: darken( color($colors, dark), 15% );
-$item-wp-divider-color: lighten( color($colors, dark), 30% );
+$card-wp-background-color: $card-ios-background-color;
+$item-wp-divider-background: $item-ios-divider-background;
+$item-wp-divider-color: $item-ios-divider-color;
 $item-wp-body-text-font-size: 1.8rem;
 $item-wp-font-size: 1.8rem;
 $list-wp-border-color: $list-border-color;
 $list-wp-header-background-color: color($colors, dark);
+$searchbar-wp-toolbar-input-background: color($colors, white) ;
+$searchbar-wp-input-height: $searchbar-ios-input-height;
 
 
 

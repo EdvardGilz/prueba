@@ -5,44 +5,54 @@
   Ionic pages and navigation.
 -->
 <ion-content>
-  <!--ion-buttons end>
-    <button ion-button clear icon-only (click)="regresar()">
-      <ion-icon name="close"></ion-icon>
-    </button>
-  </ion-buttons-->
-
-  <ion-fab right top>
-    <button ion-fab mini color="primary" (click)="regresar()">
-      <ion-icon name="close"></ion-icon>
-    </button>       
-  </ion-fab>
 
   <ion-list>
-    <ion-list-header text-center>
+
+    <ion-list-header>
+
       <h2 padding-top padding-bottom color="primary">Detalle</h2>
+
+      <ion-fab right top>
+        <button ion-fab mini color="primary" (click)="regresar()">
+          <ion-icon name="close"></ion-icon>
+        </button>       
+      </ion-fab>      
+
     </ion-list-header>
     
-    <ion-item>
-      <ion-label>Código</ion-label>
+    <ion-item padding-right color="black">
+      <ion-label floating>Código</ion-label>
       <ion-input type="text" [(ngModel)]="codigo" [disabled]="true"></ion-input>
     </ion-item>
-    <ion-item>
-      <ion-label>Nombre</ion-label>
+    <ion-item padding-right color="black">
+      <ion-label floating>Nombre</ion-label>
       <ion-input type="text" [(ngModel)]="nombre" [disabled]="true"></ion-input>
     </ion-item>
-    <ion-item>
-      <ion-label>{{txtPrecio}}</ion-label>
-      <ion-input type="text" [(ngModel)]="precio" (input)="verificaLlenado()"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label>{{txtStock}}</ion-label>
-      <ion-input type="text" [(ngModel)]="stock" (input)="verificaLlenado()"></ion-input>
-    </ion-item>
-    
-    <ion-item>
-      <button ion-button large block round (click)="guardar()" [disabled]="buttonDisabled">Guardar</button>
-    </ion-item>
-    
+        
+    <ion-grid no-padding padding-right>
+      <ion-row>
+        <ion-col width-50 no-padding>
+          <ion-item>
+            <ion-label floating>{{txtPrecio}}</ion-label>
+            <ion-input type="text" [(ngModel)]="precio" (input)="verificaLlenado()"></ion-input>
+          </ion-item>          
+        </ion-col>
+        <ion-col width-50 no-padding>
+          <ion-item>
+            <ion-label floating>{{txtStock}}</ion-label>
+            <ion-input type="text" [(ngModel)]="stock" (input)="verificaLlenado()"></ion-input>
+          </ion-item>          
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+
   </ion-list>
 
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar padding>
+    <button ion-button large block (click)="guardar()" [disabled]="buttonDisabled">Guardar</button>
+  </ion-toolbar>
+</ion-footer>
