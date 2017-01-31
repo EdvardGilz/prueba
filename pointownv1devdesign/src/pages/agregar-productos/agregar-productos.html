@@ -1,0 +1,47 @@
+<!--
+  Generated template for the AgregarProductos page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-content>
+  <ion-buttons end>
+    <button ion-button clear icon-only (click)="regresar()">
+      <ion-icon name="close"></ion-icon>
+    </button>
+  </ion-buttons>
+
+  <ion-list>
+  
+    <ion-item>
+      <ion-input [(ngModel)]="codigo_B" (input)="verificaLlenado()" type="number" placeholder="Codigo de Barras"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input [(ngModel)]="nombre" (input)="verificaLlenado()" type="text" placeholder="Nombre del producto"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input [(ngModel)]="marca" (input)="verificaLlenado()" type="text" placeholder="Marca"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input [(ngModel)]="presentacion" (input)="verificaLlenado()" type="text" placeholder="Presentación (600ml, 1kg, 52,3g)"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-toggle [(ngModel)]="tipo" (ionChange)="tipoToggle()" (ionChange)="verificaLlenado()"></ion-toggle>
+      <ion-label>
+        {{txtTipo}}
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Categoría</ion-label>
+      <ion-select [(ngModel)]="categoria" (ionChange)="verificaLlenado()">
+        <ion-option *ngFor="let categoriaD of categoriasData" value="{{categoriaD.id}}">{{categoriaD.descripcion}}</ion-option>
+      </ion-select>
+    </ion-item>
+    
+  </ion-list>
+  
+  <div padding>
+    <button ion-button outline block (click)="guardar()" [disabled]="buttonDisabled">Guardar</button>
+  </div>
+
+</ion-content>

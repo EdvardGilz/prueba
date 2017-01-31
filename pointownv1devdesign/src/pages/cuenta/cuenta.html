@@ -1,0 +1,94 @@
+<!--
+  Generated template for the Cuenta page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-content>
+  <ion-buttons end>
+    <button ion-button clear icon-only (click)="regresar()">
+      <ion-icon name="home"></ion-icon>
+    </button>
+  </ion-buttons>
+  
+  <ion-list text-align="center">
+    <ion-item-sliding *ngFor="let producto of productos; let i = index" (ionSwipe)="restar(i)">
+    
+      <ion-item>
+        <ion-row>
+          <ion-col>
+            {{producto.nombre}} | {{producto.marca}} | {{producto.presentacion}}
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            $ {{producto.precio}}
+          </ion-col>
+          <ion-col>
+            <span *ngIf="producto.tipo == 0">
+              <button ion-button icon-only clear small (click)="removeCantidad(i)">
+                <ion-icon name="remove"></ion-icon>
+              </button>
+              {{producto.cantidad}}
+              <button ion-button icon-only clear small (click)="addCantidad(i)">
+                <ion-icon name="add"></ion-icon>
+              </button>
+            </span>
+            
+            <span *ngIf="producto.tipo == 1">
+              <button ion-button outline small (click)="selectPeso(i, 1)">
+                {{producto.cantidad}} gr
+              </button>
+            </span>
+          </ion-col>
+          <ion-col>
+            $ {{producto.total}}
+          </ion-col>
+        </ion-row>
+      </ion-item>
+      
+      <ion-item-options side="right">
+        <button ion-button (click)="restar(i)">
+          <ion-icon name="trash"></ion-icon>
+          Eliminar
+        </button>
+      </ion-item-options>
+    
+    </ion-item-sliding>
+    
+    
+  </ion-list>
+  
+</ion-content>
+
+<ion-footer>
+  
+  <ion-toolbar>
+  
+    <ion-item>
+      Suma:
+      <ion-badge item-right>{{ sumatoria }}</ion-badge>
+    </ion-item>
+    
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <button ion-button icon-only full (click)="scanner(1)">
+            <ion-icon name="barcode"></ion-icon>
+          </button>
+        </ion-col>
+        <ion-col>
+          <button ion-button icon-only full (click)="scanner(2)">
+            <ion-icon name="search"></ion-icon>
+          </button>
+        </ion-col>
+        <ion-col>
+          <button ion-button icon-only full (click)="save()" [disabled]="buttonDisabled">
+            <ion-icon name="done-all"></ion-icon>
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    
+  </ion-toolbar>
+</ion-footer>

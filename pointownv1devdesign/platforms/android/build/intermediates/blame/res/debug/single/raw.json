@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/Users/eduardogiles/MEGA/apps/PointownV1Dev/platforms/android/build/intermediates/res/merged/debug/raw/beep.ogg",
+        "source": "/Users/eduardogiles/MEGA/apps/PointownV1Dev/platforms/android/build/intermediates/exploded-aar/barcodescanner/res/raw/beep.ogg"
+    },
+    {
+        "merged": "/Users/eduardogiles/MEGA/apps/PointownV1DevDesign/platforms/android/build/intermediates/res/merged/debug/raw/beep.ogg",
+        "source": "/Users/eduardogiles/MEGA/apps/PointownV1DevDesign/platforms/android/build/intermediates/exploded-aar/barcodescanner/res/raw/beep.ogg"
+    }
+]
