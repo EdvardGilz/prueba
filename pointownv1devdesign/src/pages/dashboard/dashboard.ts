@@ -14,6 +14,7 @@ import { EmpleadosPage } from '../empleados/empleados';
 import { PerfilPage } from '../perfil/perfil';
 import { ProductosPage } from '../productos/productos';
 import { CuentaPage } from '../cuenta/cuenta';
+import { EstadisticasPage } from '../estadisticas/estadisticas';
 
 /*
   Generated class for the Dashboard page.
@@ -30,6 +31,8 @@ export class DashboardPage {
   public tiendas: TiendaDataModel[] = [];
   public tienda: TiendaModel;
   public userTipo;
+  public username;
+  public userId;
 
   constructor(public navCtrl: NavController,
               public storage: Storage,
@@ -37,6 +40,8 @@ export class DashboardPage {
               public commonFunctions: CommonFunctions,
               public global: Global) {
     this.userTipo = this.global.getTipoUser();
+    this.username = this.global.getUsername();
+    this.userId = this.global.getUser();
   }
 
   ionViewWillEnter() {
@@ -107,6 +112,11 @@ export class DashboardPage {
     else {
       this.commonFunctions.despliegaAlerta("No hay stock", "Agrega stock para usar el contador");
     }
+  }
+
+  estadisticas(data) {
+    this.global.setTiendaId(data.id);
+    this.navCtrl.push(EstadisticasPage);
   }
 
 }

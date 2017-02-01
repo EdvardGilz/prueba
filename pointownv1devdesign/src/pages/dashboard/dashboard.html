@@ -15,8 +15,8 @@
         <img style="width: 40px; height: 40px;" src="assets/img/pt-user.svg"/>
       </ion-avatar>
 
-      <h2 (click)="perfil()">Username</h2>
-      <p (click)="perfil()">Socio: ID</p>
+      <h2 (click)="perfil()">{{username}}</h2>
+      <p (click)="perfil()">Socio: PT-{{userId}}</p>
       
       <ion-fab right middle>
         <button ion-fab mini color="primary" (click)="salir()">
@@ -63,7 +63,7 @@
         </button>
       </ion-col>
       <ion-col no-padding *ngIf="userTipo == false">
-        <button no-margin ion-button full icon-only color="dark" >
+        <button no-margin ion-button full icon-only color="dark" (click)="estadisticas(tienda)">
           <ion-icon color="secondary" name="stats"></ion-icon>
         </button>
       </ion-col>
