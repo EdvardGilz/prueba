@@ -173,11 +173,11 @@ export class Api {
     });
   }
 
-  guardarStock(precio, stock, codigo, id_pv, productoTipo) {
+  guardarStock(precio, stock, codigo, id_pv, productoTipo, cantidad, precioCompra) {
     var tiendaId = this.global.getTiendaId();
-
+    
     return new Promise<SuccessModel>(resolve => {
-      this.http.get(`http://bixnia.com/labs/api_v4/api.php/guardarStock/${tiendaId}/${precio}/${stock}/${codigo}/${id_pv}/${productoTipo}`)
+      this.http.get(`http://bixnia.com/labs/api_v4/api.php/guardarStock/${tiendaId}/${precio}/${stock}/${codigo}/${id_pv}/${productoTipo}/${cantidad}/${precioCompra}`)
         .map(res => <SuccessModel>(res.json()))
         .subscribe(data => {
           resolve(data);

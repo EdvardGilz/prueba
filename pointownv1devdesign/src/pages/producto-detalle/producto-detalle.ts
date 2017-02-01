@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavParams, ViewController, LoadingController } from 'ionic-angular';
+import { NavParams, ViewController, LoadingController, AlertController } from 'ionic-angular';
 
 import { Api } from '../../providers/api';
 import { CommonFunctions } from '../../providers/common-functions';
@@ -26,6 +26,9 @@ export class ProductoDetallePage {
   public txtStock;
   public productoTipo;
 
+  public cantidad = 0;
+  public precioCompra = 0;
+
   public buttonDisabled = true;
   public prodData;
 
@@ -33,7 +36,8 @@ export class ProductoDetallePage {
               public viewCtrl: ViewController,
               public api: Api,
               public commonFunctions: CommonFunctions,
-              public loadingCtrl: LoadingController) {
+              public loadingCtrl: LoadingController,
+              public alertCtrl: AlertController) {
     this.prodData = navParams.get('data');
     
     this.verificarStock();
@@ -49,11 +53,11 @@ export class ProductoDetallePage {
       this.productoTipo = this.prodData.tipo;
 
       if (this.productoTipo == 0) {
-        this.txtPrecio = "Precio por unidad";
+        this.txtPrecio = "Precio de venta por unidad";
         this.txtStock = "Unidades";
       }
       else if (this.productoTipo == 1) {
-        this.txtPrecio = "Precio por kilo";
+        this.txtPrecio = "Precio de venta por kilo";
         this.txtStock = "Peso en gramos";
       }
 
@@ -70,13 +74,16 @@ export class ProductoDetallePage {
           this.stock = data.data[0].stock;
         }
       }
+      else {
+        this.stock = 0;
+      }
 
       loading.dismiss();
     });
   }
 
   verificaLlenado() {
-    if (this.precio && this.stock && this.precio != "" && this.stock != "") {
+    if (this.precio && this.precio != "") {
       this.buttonDisabled = false;
     }
     else {
@@ -85,12 +92,15 @@ export class ProductoDetallePage {
   }
 
   guardar() {
+    if (this.precio == undefined) {
+      this.precio = 0;
+    }
     let loading = this.loadingCtrl.create({
       content: 'Actualizando stock...'
     });
     loading.present();
 
-    this.api.guardarStock(this.precio, this.stock, this.codigo, this.id_pv, this.productoTipo)
+    this.api.guardarStock(this.precio, this.stock, this.codigo, this.id_pv, this.productoTipo, this.cantidad, this.precioCompra)
     .then((data) => {
       if (data.success == 1) {
         this.commonFunctions.despliegaAlerta("Correcto!!", "Producto actualizado");
@@ -105,13 +115,57 @@ export class ProductoDetallePage {
           this.commonFunctions.despliegaAlerta("Error", "Ocurrió un error al actualizar el producto, vuelve a intentrlo");
           this.buttonDisabled = true;
         }
+        else {
+          this.commonFunctions.despliegaAlerta("Error", "Ocurrió un error al actualizar el producto, vuelve a intentrlo");
+          this.buttonDisabled = true;
+        }
       }
       loading.dismiss();
+      this.cantidad = 0;
+      this.precioCompra = 0;
+
+      this.verificarStock();
     });
   }
 
   regresar() {
     this.viewCtrl.dismiss();
+  }
+
+  agregarStock() {
+    let prompt = this.alertCtrl.create({
+      title: 'Abastecer Stock',
+      inputs: [
+        {
+          name: 'cantidad',
+          placeholder: this.txtStock,
+          type: 'number'
+        },
+        {
+          name: 'precio',
+          placeholder: 'Precio de compra',
+          type: 'number'
+        }
+      ],
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel'
+        },
+        {
+          text: 'Guardar',
+          handler: data => {
+            if (data.cantidad != "" && data.precio != "") {
+              this.cantidad = parseFloat(data.cantidad);
+              this.precioCompra = parseFloat(data.precio);
+
+              this.guardar();
+            }
+          }
+        }
+      ]
+    });
+    prompt.present();
   }
 
 }
