@@ -5,59 +5,70 @@
   Ionic pages and navigation.
 -->
 <ion-content>
-  <ion-buttons end>
-    <button ion-button clear icon-only (click)="regresar()">
-      <ion-icon name="home"></ion-icon>
-    </button>
-  </ion-buttons>
-
-  <h2 align="center">Datos generales</h2>
 
   <ion-list>
+
+    <ion-list-header>
+
+      <h2 padding-top padding-bottom color="primary">Mis datos</h2>
+
+      <ion-fab right top>
+        <button ion-fab mini color="primary" (click)="regresar()">
+          <ion-icon name="close"></ion-icon>
+        </button>       
+      </ion-fab>      
+
+    </ion-list-header>
+
     
-    <ion-item>
-      <ion-label>Nombre</ion-label>
+    <ion-item padding-right>
+      <ion-label floating>Nombre</ion-label>
       <ion-input [(ngModel)]="nombre" (input)="activarBtn()" type="text"></ion-input>
     </ion-item>
-    <ion-item>
-      <ion-label>Apellido Paterno</ion-label>
+    <ion-item padding-right>
+      <ion-label floating>Apellido Paterno</ion-label>
       <ion-input [(ngModel)]="ap_p" (input)="activarBtn()" type="text"></ion-input>
     </ion-item>
-    <ion-item>
-      <ion-label>Apellido Materno</ion-label>
+    <ion-item padding-right>
+      <ion-label floating>Apellido Materno</ion-label>
       <ion-input [(ngModel)]="ap_m" (input)="activarBtn()" type="text"></ion-input>
     </ion-item>
-    <ion-item>
-      <ion-label>Teléfono</ion-label>
+    <ion-item padding-right>
+      <ion-label floating>Teléfono</ion-label>
       <ion-input [(ngModel)]="tel" (input)="activarBtn()" type="tel"></ion-input>
     </ion-item>
     
-  </ion-list>
-
-  <h2 align="center">Datos de suscripcion</h2>
-
-  <ion-list>
+    <ion-item-divider>
+        Datos de suscripcion
+    </ion-item-divider>
     
-    <ion-item>
-      <ion-label>Correo electronico</ion-label>
+    <ion-item padding-right>
+      <ion-label floating>Correo electronico</ion-label>
       <ion-input [(ngModel)]="mail" (input)="activarBtn()" type="email"></ion-input>
     </ion-item>
-    <ion-item>
-      <ion-label>Nombre de usuario</ion-label>
+    <ion-item padding-right>
+      <ion-label floating>Nombre de usuario</ion-label>
       <ion-input [(ngModel)]="user" [disabled]="true" type="text"></ion-input>
     </ion-item>
-    <ion-item>
-      <ion-label>Cambiar Contraseña</ion-label>
+    <ion-item padding-right>
+      <ion-label floating>Cambiar Contraseña</ion-label>
       <ion-input [(ngModel)]="pass" (input)="activarBtn()" type="password"></ion-input>
     </ion-item>
-    <ion-item>
-      <ion-label>Confirmar Contraseña</ion-label>
+    <ion-item padding-right>
+      <ion-label floating>Confirmar Contraseña</ion-label>
       <ion-input [(ngModel)]="pass2" (input)="activarBtn()" type="password"></ion-input>
     </ion-item>
-    <span *ngIf="differentPass == true">Contraseñas diferentes</span>
-    
+    <ion-item text-center>
+      <ion-badge margin-top color="danger" *ngIf="differentPass == true">Contraseñas diferentes</ion-badge>
+    </ion-item>
+        
   </ion-list>
   
-  <button ion-button full (click)="guardar()" [disabled]="buttonDisabled">Guardar</button>
 
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar padding>
+    <button ion-button large block (click)="guardar()" [disabled]="buttonDisabled">Guardar</button>
+  </ion-toolbar>
+</ion-footer>
