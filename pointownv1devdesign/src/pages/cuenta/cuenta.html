@@ -4,89 +4,113 @@
   See http://ionicframework.com/docs/v2/components/#navigation for more info on
   Ionic pages and navigation.
 -->
+
+<ion-header>
+
+    <ion-item no-lines text-right padding-left color="black">
+
+      <button ion-fab mini item-left color="primary" (click)="regresar()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+      
+      <h1>
+        <span style="float:left;">Total:</span>
+        {{ sumatoria }}
+      </h1>
+
+    </ion-item>
+
+</ion-header>
+
 <ion-content>
-  <ion-buttons end>
-    <button ion-button clear icon-only (click)="regresar()">
-      <ion-icon name="home"></ion-icon>
-    </button>
-  </ion-buttons>
+
   
-  <ion-list text-align="center">
+  <ion-list>
+
     <ion-item-sliding *ngFor="let producto of productos; let i = index" (ionSwipe)="restar(i)">
     
-      <ion-item>
-        <ion-row>
-          <ion-col>
-            {{producto.nombre}} | {{producto.marca}} | {{producto.presentacion}}
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col>
-            $ {{producto.precio}}
-          </ion-col>
-          <ion-col>
-            <span *ngIf="producto.tipo == 0">
-              <button ion-button icon-only clear small (click)="removeCantidad(i)">
-                <ion-icon name="remove"></ion-icon>
-              </button>
-              {{producto.cantidad}}
-              <button ion-button icon-only clear small (click)="addCantidad(i)">
-                <ion-icon name="add"></ion-icon>
-              </button>
-            </span>
-            
-            <span *ngIf="producto.tipo == 1">
-              <button ion-button outline small (click)="selectPeso(i, 1)">
-                {{producto.cantidad}} gr
-              </button>
-            </span>
-          </ion-col>
-          <ion-col>
-            $ {{producto.total}}
-          </ion-col>
-        </ion-row>
-      </ion-item>
-      
-      <ion-item-options side="right">
-        <button ion-button (click)="restar(i)">
-          <ion-icon name="trash"></ion-icon>
-          Eliminar
-        </button>
-      </ion-item-options>
-    
-    </ion-item-sliding>
+    <ion-item color="white">
+      <ion-row no-padding>
+
+        <ion-col width-33>
+          <h1>{{producto.nombre}}</h1>
+          <h2>{{producto.marca}}</h2>
+          <h3 color="primary">{{producto.presentacion}} | ${{producto.precio}}</h3>
+        </ion-col>
+
+        <ion-col text-center>
+          
+          <span *ngIf="producto.tipo == 0">
+            <button ion-button icon-only (click)="removeCantidad(i)">
+              <ion-icon name="remove"></ion-icon>
+            </button>
+            {{producto.cantidad}} pz.
+            <button ion-button icon-only (click)="addCantidad(i)">
+              <ion-icon name="add"></ion-icon>
+            </button>
+          </span>
+          
+          <span *ngIf="producto.tipo == 1">
+            <button ion-button (click)="selectPeso(i, 1)">
+              {{producto.cantidad}} gr
+            </button>
+          </span>
+
+        </ion-col>
+
+        <ion-col width-20 text-right>
+          <h1 color="dark"><strong>${{producto.total}}</strong></h1>
+        </ion-col>
+
+      </ion-row>
+
+    </ion-item>    
+
+    <ion-item-options side="right">
+      <button color="danger" ion-button (click)="restar(i)">
+        <ion-icon name="trash"></ion-icon>
+        Eliminar
+      </button>
+    </ion-item-options>
+  
+  </ion-item-sliding>
     
     
   </ion-list>
   
 </ion-content>
 
-<ion-footer>
+<ion-footer no-padding>
   
-  <ion-toolbar>
-  
-    <ion-item>
-      Suma:
-      <ion-badge item-right>{{ sumatoria }}</ion-badge>
-    </ion-item>
-    
-    <ion-grid>
+  <ion-toolbar no-padding>
+      
+    <ion-grid no-padding>
       <ion-row>
+
         <ion-col>
-          <button ion-button icon-only full (click)="scanner(1)">
-            <ion-icon name="barcode"></ion-icon>
+          
+          <button no-margin ion-button icon-right block large (click)="scanner(2)">            
+            Buscar <ion-icon name="search"></ion-icon>
           </button>
+
+        </ion-col>
+        <ion-col width-10>
+
+          <ion-fab center middle>
+            <button ion-fab color="dark" (click)="scanner(1)">
+              <ion-icon name="barcode"></ion-icon>
+            </button>
+          </ion-fab>     
+
         </ion-col>
         <ion-col>
-          <button ion-button icon-only full (click)="scanner(2)">
-            <ion-icon name="search"></ion-icon>
+
+          <button no-margin ion-button icon-right block large color="danger" (click)="save()" [disabled]="buttonDisabled">            
+            Checkout <ion-icon name="done-all"></ion-icon>            
           </button>
+
         </ion-col>
-        <ion-col>
-          <button ion-button icon-only full (click)="save()" [disabled]="buttonDisabled">
-            <ion-icon name="done-all"></ion-icon>
-          </button>
-        </ion-col>
+
       </ion-row>
     </ion-grid>
     

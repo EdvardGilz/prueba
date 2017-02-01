@@ -6,7 +6,7 @@
 -->
 <ion-content>
 
-  <ion-list>
+  <ion-list no-lines>
 
     <ion-list-header>
 
@@ -32,17 +32,11 @@
       <ion-label floating>{{txtStock}}</ion-label>
       <ion-input type="text" [(ngModel)]="stock" [disabled]="true"></ion-input>
     </ion-item>
-        
-    <ion-grid no-padding padding-right>
-      <ion-row>
-        <ion-col width-50 no-padding>
-          <ion-item>
-            <ion-label floating>{{txtPrecio}}</ion-label>
-            <ion-input type="text" [(ngModel)]="precio" (input)="verificaLlenado()"></ion-input>
-          </ion-item>     
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+
+    <ion-item padding-right color="white">
+      <ion-label floating>{{txtPrecio}}</ion-label>
+      <ion-input type="text" [(ngModel)]="precio" (input)="verificaLlenado()"></ion-input>
+    </ion-item>     
 
 
   </ion-list>
@@ -51,7 +45,7 @@
 
 <ion-footer>
   <ion-toolbar padding>
-    <button ion-button large block (click)="agregarStock()">Abastecer stock</button>
-    <button ion-button large block (click)="guardar()" [disabled]="buttonDisabled">Guardar</button>
+    <button ion-button large block color="dark" (click)="agregarStock()">Abastecer stock</button>
+    <button ion-button large block (click)="guardar()" [disabled]="buttonDisabled">Guardar o actualizar</button>
   </ion-toolbar>
 </ion-footer>
