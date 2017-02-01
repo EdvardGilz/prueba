@@ -31,6 +31,7 @@ export class DashboardPage {
   public tienda: TiendaModel;
   public userTipo;
   public username;
+  public userId;
 
   constructor(public navCtrl: NavController,
               public storage: Storage,
@@ -39,6 +40,7 @@ export class DashboardPage {
               public global: Global) {
     this.userTipo = this.global.getTipoUser();
     this.username = this.global.getUsername();
+    this.userId = this.global.getUser();
   }
 
   ionViewWillEnter() {
