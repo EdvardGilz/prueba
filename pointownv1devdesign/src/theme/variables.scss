@@ -90,7 +90,7 @@ $toolbar-background: color($colors, primarymedium);
 	.pump { animation-name: pump;animation-duration: 2s;transform-origin:50% 50%;animation-iteration-count: infinite;animation-timing-function: alternate;}
 
 /*para cambiar el tamaño de texto en inputs*/
-.item-label-floating .text-input{ font-size: 1.4em; }
+.item-label-floating .text-input{ font-size: 1.2em; }
 
 /*clases que no estan sujetas a las variables sass*/
 .item-md.list-header-md {background-color:lighten( desaturate(color($colors, primary), 45% ), 55% );text-transform:uppercase;letter-spacing: .1rem;}

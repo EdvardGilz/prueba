@@ -5,34 +5,45 @@
   Ionic pages and navigation.
 -->
 <ion-content>
-  <ion-buttons end>
-    <button ion-button clear icon-only (click)="regresar()">
-      <ion-icon name="close"></ion-icon>
-    </button>
-  </ion-buttons>
 
   <ion-list>
+
+    <ion-list-header>
+
+      <h2 padding-top padding-bottom color="primary">Agregar Producto</h2>
+
+      <ion-fab right top>
+        <button ion-fab mini color="primary" (click)="regresar()">
+          <ion-icon name="close"></ion-icon>
+        </button>       
+      </ion-fab>      
+
+    </ion-list-header>    
   
-    <ion-item>
-      <ion-input [(ngModel)]="codigo_B" (input)="verificaLlenado()" type="number" placeholder="Codigo de Barras"></ion-input>
+    <ion-item padding-right>
+      <ion-label floating>Codigo de Barras</ion-label>
+      <ion-input [(ngModel)]="codigo_B" (input)="verificaLlenado()" type="number"></ion-input>
     </ion-item>
-    <ion-item>
-      <ion-input [(ngModel)]="nombre" (input)="verificaLlenado()" type="text" placeholder="Nombre del producto"></ion-input>
+    <ion-item padding-right>
+      <ion-label floating>Nombre del producto</ion-label>
+      <ion-input [(ngModel)]="nombre" (input)="verificaLlenado()" type="text"></ion-input>
     </ion-item>
-    <ion-item>
-      <ion-input [(ngModel)]="marca" (input)="verificaLlenado()" type="text" placeholder="Marca"></ion-input>
+    <ion-item padding-right>
+      <ion-label floating>Marca</ion-label>
+      <ion-input [(ngModel)]="marca" (input)="verificaLlenado()" type="text"></ion-input>
     </ion-item>
-    <ion-item>
-      <ion-input [(ngModel)]="presentacion" (input)="verificaLlenado()" type="text" placeholder="Presentación (600ml, 1kg, 52,3g)"></ion-input>
+    <ion-item padding-right>
+      <ion-label floating>Presentación (600ml, 1kg, 52,3g)</ion-label>
+      <ion-input [(ngModel)]="presentacion" (input)="verificaLlenado()" type="text"></ion-input>
     </ion-item>
-    <ion-item>
+    <ion-item padding-right>
       <ion-toggle [(ngModel)]="tipo" (ionChange)="tipoToggle()" (ionChange)="verificaLlenado()"></ion-toggle>
-      <ion-label>
+      <ion-label color="primary">
         {{txtTipo}}
       </ion-label>
     </ion-item>
-    <ion-item>
-      <ion-label>Categoría</ion-label>
+    <ion-item padding-right>
+      <ion-label floating color="primary">Categoría</ion-label>
       <ion-select [(ngModel)]="categoria" (ionChange)="verificaLlenado()">
         <ion-option *ngFor="let categoriaD of categoriasData" value="{{categoriaD.id}}">{{categoriaD.descripcion}}</ion-option>
       </ion-select>
@@ -40,8 +51,10 @@
     
   </ion-list>
   
-  <div padding>
-    <button ion-button outline block (click)="guardar()" [disabled]="buttonDisabled">Guardar</button>
-  </div>
-
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar padding>
+    <button ion-button block (click)="guardar()" [disabled]="buttonDisabled">Guardar</button>
+  </ion-toolbar>
+</ion-footer>

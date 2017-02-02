@@ -9,7 +9,7 @@
 
     <ion-item no-lines text-right padding-left color="black">
 
-      <button ion-fab mini item-left color="primary" (click)="regresar()">
+      <button ion-fab mini item-left color="dark" (click)="regresar()">
         <ion-icon name="arrow-back"></ion-icon>
       </button>
       
@@ -29,40 +29,45 @@
 
     <ion-item-sliding *ngFor="let producto of productos; let i = index" (ionSwipe)="restar(i)">
     
-    <ion-item color="white">
-      <ion-row no-padding>
+    <ion-item color="white" no-padding no-margin>
 
-        <ion-col width-33>
-          <h1>{{producto.nombre}}</h1>
-          <h2>{{producto.marca}}</h2>
-          <h3 color="primary">{{producto.presentacion}} | ${{producto.precio}}</h3>
-        </ion-col>
+      <ion-row>
 
-        <ion-col text-center>
-          
+        <ion-col width-20 text-center no-margin no-padding padding-left>
           <span *ngIf="producto.tipo == 0">
-            <button ion-button icon-only (click)="removeCantidad(i)">
-              <ion-icon name="remove"></ion-icon>
-            </button>
-            {{producto.cantidad}} pz.
-            <button ion-button icon-only (click)="addCantidad(i)">
-              <ion-icon name="add"></ion-icon>
-            </button>
+            <h2>{{producto.cantidad}}pz</h2>
+            <ion-row>
+              <ion-col width-50 no-padding no-margin>
+                <button item-left ion-button small icon-only full (click)="addCantidad(i)">
+                  <ion-icon name="md-add"></ion-icon>
+                </button>
+              </ion-col>
+              <ion-col width-50 no-padding no-margin>
+                <button item-left ion-button small icon-only full color="dark"(click)="removeCantidad(i)">
+                  <ion-icon name="md-remove"></ion-icon>
+                </button>
+              </ion-col>
+            </ion-row>
           </span>
           
           <span *ngIf="producto.tipo == 1">
-            <button ion-button (click)="selectPeso(i, 1)">
-              {{producto.cantidad}} gr
+            <button ion-button small full (click)="selectPeso(i, 1)">
+              {{producto.cantidad}}g
             </button>
-          </span>
+          </span>          
+        </ion-col>
+
+        <ion-col no-magin no-padding padding-left>
+
+            <h2 style="float:right;" color="danger"><strong>${{producto.total}}</strong></h2>
+            <h2>{{producto.nombre}}</h2>
+            <p><span color="primary">{{producto.marca}}</span><br/>
+              <small>${{producto.precio}} > {{producto.presentacion}}</small>
+            </p>
 
         </ion-col>
 
-        <ion-col width-20 text-right>
-          <h1 color="dark"><strong>${{producto.total}}</strong></h1>
-        </ion-col>
-
-      </ion-row>
+      </ion-row>  
 
     </ion-item>    
 
