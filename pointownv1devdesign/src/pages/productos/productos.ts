@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, ModalController, AlertController } from 'ionic-angular';
+import { NavController, ModalController, AlertController, LoadingController } from 'ionic-angular';
 import { BarcodeScanner } from 'ionic-native';
 
 import { Api } from '../../providers/api';
@@ -30,7 +30,8 @@ export class ProductosPage {
               public modalCtrl: ModalController,
               public api: Api,
               public commonFunctions: CommonFunctions,
-              public alertCtrl: AlertController) {
+              public alertCtrl: AlertController,
+              public loadingCtrl: LoadingController) {
     
   }
 
@@ -39,9 +40,15 @@ export class ProductosPage {
   }
 
   getAllProducts() {
+    let loading = this.loadingCtrl.create({
+      content: 'Cargando datos'
+    });
+    loading.present();
+
     this.api.productosTodos().then((data) => {
       this.productosAll = data.data;
       this.productosAllBK = data.data;
+      loading.dismiss();
     });
   }
 

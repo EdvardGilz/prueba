@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, AlertController } from 'ionic-angular';
+import { NavController, AlertController, LoadingController } from 'ionic-angular';
 
 import { Api } from '../../providers/api';
 import { CommonFunctions } from '../../providers/common-functions';
@@ -33,15 +33,22 @@ export class EmpleadosPage {
               public alertCtrl: AlertController,
               public api: Api,
               public commonFunctions: CommonFunctions,
-              public global: Global) {
+              public global: Global,
+              public loadingCtrl: LoadingController) {
     
     this.verificaEmpleados();
   }
 
   verificaEmpleados() {
+    let loading = this.loadingCtrl.create({
+      content: 'Cargando datos'
+    });
+    loading.present();
+
     this.api.verificaEmpleados().then((data) => {
       this.empleadosData = data.data;
       this.empleados = data.success;
+      loading.dismiss();
     });
   }
 

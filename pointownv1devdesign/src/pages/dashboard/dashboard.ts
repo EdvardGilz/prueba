@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, LoadingController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 
 import { Api } from '../../providers/api';
@@ -38,7 +38,8 @@ export class DashboardPage {
               public storage: Storage,
               public api: Api,
               public commonFunctions: CommonFunctions,
-              public global: Global) {
+              public global: Global,
+              public loadingCtrl: LoadingController) {
     this.userTipo = this.global.getTipoUser();
     this.username = this.global.getUsername();
     this.userId = this.global.getUser();
@@ -77,6 +78,11 @@ export class DashboardPage {
   }
 
   editar(data) {
+    let loading = this.loadingCtrl.create({
+      content: 'Accediendo'
+    });
+    loading.present();
+
     this.global.setNuevaTienda(2);
     this.global.setTiendaId(data.id);
 
@@ -87,6 +93,7 @@ export class DashboardPage {
     })
     .then(() => {
       this.navCtrl.push(TiendaFormPage);
+      loading.dismiss();
     });
   }
 
