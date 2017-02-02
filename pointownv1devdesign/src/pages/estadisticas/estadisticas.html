@@ -4,10 +4,72 @@
   See http://ionicframework.com/docs/v2/components/#navigation for more info on
   Ionic pages and navigation.
 -->
+<ion-header>
+
+  <ion-toolbar>
+
+    <ion-title>
+      Mi tienda
+    </ion-title>
+    
+      <ion-fab right middle>
+        <button ion-fab mini color="primary">
+          <ion-icon name="close"></ion-icon>
+        </button>       
+      </ion-fab>
+
+  </ion-toolbar>
+
+</ion-header>
+
 <ion-content>
 
+  <!-- El resumen del mes-->
+  <ion-card>
+    <ion-card-header color="dark">
+      Resúmen de Febrero
+    </ion-card-header>
+    <ion-card-content>
+      <h2>Total: $000.00 (de dinero vendido en el mes)</h2>
+      <p>Invertido: $000.00 (gastado en abastecer en el mes)</p>
+      <p>Transacciones: #### (numero ventas realizadas en el mes)</p>
+      <p color="secondary">Liquidez: #### (el margen de ganacia del producto que vendio)</p>
+      <h2>Almacén/Stock: (total de productos vendidos por transacción, restados al stock)</h2>
+      <p>Productos vendidos: (total de productos vendidos por transacción)</p>
+      <p>Producto más vendido:</p>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- La lista de dias-->
   <ion-list>
     
+    <ion-item padding-right>
+      <h2>05 de Febrero</h2>
+      <p>Total: $000.00</p>
+      <p>Transacciones: #### (ventas realizadas)</p>
+      <p color="danger">Quedan 2 aguas bonafont</p>
+      <button ion-button icon-left small color="primary"><ion-icon name="document"></ion-icon> ir a stock</button>
+    </ion-item>
+    <ion-item padding-right>
+      <h2>04 de Febrero</h2>
+      <p>Total: $000.00</p>
+      <p>Ingreso: $000.00 | Egreso: $000.00</p>
+      <p>Stock:</p>
+      <p color="secondary">Resurtido: galletas</p>
+      <button ion-button icon-left small color="primary"><ion-icon name="document"></ion-icon> ir a stock</button>
+    </ion-item>
+    <ion-item padding-right>
+      <h2>03 de Febrero</h2>
+      <p>Total: $000.00</p>
+      <p>Ingreso: $000.00 | Egreso: $000.00</p>
+      <p>Stock:</p>
+    </ion-item>
+    <ion-item padding-right>
+      <h2>02 de Febrero</h2>
+      <p>Total: $000.00</p>
+      <p>Ingreso: $000.00 | Egreso: $000.00</p>
+      <p>Stock:</p>
+    </ion-item>
     <ion-item padding-right>
       <h2>01 de Febrero</h2>
       <p>Total: $000.00</p>
@@ -20,18 +82,29 @@
 
 </ion-content>
 
-<ion-footer>
 
+<ion-footer>
   <ion-toolbar>
 
-    <ion-item padding-right>
-      <ion-label floating color="primary">Elegir tiempo</ion-label>
-      <ion-select>
-        <ion-option>Día ó Mes</ion-option>
-      </ion-select>
-    </ion-item>
+      <ion-row wrap>
+
+        <ion-col width-80>
+          <ion-item no-lines>
+            <ion-label>Mes</ion-label>
+            <ion-select>
+              <ion-option>Enero</ion-option>
+              <ion-option>Febrero *corriente</ion-option>
+              <ion-option>Marzo</ion-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+
+        <ion-col>
+          <button ion-button icon-left block color="primary"><ion-icon name="document"></ion-icon> Enviar</button>
+        </ion-col>
+
+      </ion-row>
 
 
   </ion-toolbar>
-
 </ion-footer>
