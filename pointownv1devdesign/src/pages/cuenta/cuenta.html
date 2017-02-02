@@ -15,7 +15,7 @@
       
       <h1>
         <span style="float:left;">Total:</span>
-        {{ sumatoria }}
+        {{ sumatoria | currency:'USD':true:'1.2-2' }}
       </h1>
 
     </ion-item>
@@ -52,17 +52,17 @@
           
           <span *ngIf="producto.tipo == 1">
             <button ion-button small full (click)="selectPeso(i, 1)">
-              {{producto.cantidad}}g
+              {{producto.cantidad | number: '1.2-2'}}g
             </button>
           </span>          
         </ion-col>
 
         <ion-col no-magin no-padding padding-left>
 
-            <h2 style="float:right;" color="danger"><strong>${{producto.total}}</strong></h2>
+            <h2 style="float:right;" color="danger"><strong>{{producto.total | currency:'USD':true:'1.2-2'}}</strong></h2>
             <h2>{{producto.nombre}}</h2>
             <p><span color="primary">{{producto.marca}}</span><br/>
-              <small>${{producto.precio}} > {{producto.presentacion}}</small>
+              <small>{{producto.precio | currency:'USD':true:'1.2-2'}} > {{producto.presentacion}}</small>
             </p>
 
         </ion-col>
