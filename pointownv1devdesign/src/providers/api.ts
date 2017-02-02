@@ -152,8 +152,10 @@ export class Api {
   }
 
   productosTodos() {
+    var tiendaId = this.global.getTiendaId();
+
     return new Promise<ProductosModel>(resolve => {
-      this.http.get(`http://bixnia.com/labs/api_v4/api.php/productosTodos/`)
+      this.http.get(`http://bixnia.com/labs/api_v4/api.php/productosTodos/${tiendaId}`)
         .map(res => <ProductosModel>(res.json()))
         .subscribe(data => {
           resolve(data);

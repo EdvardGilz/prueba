@@ -47,6 +47,7 @@ export class ProductosDataModel {
 	marca: string;
 	presentacion: string;
 	categoria: number;
+	color: string;
 }
 
 export class UserModel {

@@ -25,6 +25,7 @@ export class ProductosPage {
   public productosAll: ProductosDataModel[] = [];
   public productosAllBK: ProductosDataModel[] = [];
   public txtSearchBar;
+  public color;
 
   constructor(public navCtrl: NavController,
               public modalCtrl: ModalController,
@@ -46,6 +47,26 @@ export class ProductosPage {
     loading.present();
 
     this.api.productosTodos().then((data) => {
+      console.log(data.data);
+      for (var i in data.data) {
+        console.log(data.data[i]);
+        if (data.data[i].tipo == 0) {
+          if (data.data[i].stock < 5) {
+            data.data[i].color = "danger";
+          }
+          else {
+            data.data[i].color = "secondary";
+          }
+        }
+        else {
+          if (data.data[i].stock < 250) {
+            data.data[i].color = "danger";
+          }
+          else {
+            data.data[i].color = "secondary";
+          }
+        }
+      }
       this.productosAll = data.data;
       this.productosAllBK = data.data;
       loading.dismiss();
