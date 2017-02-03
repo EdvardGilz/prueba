@@ -9,15 +9,15 @@
 
   <ion-list>
 
-    <ion-list-header no-margin>
+    <ion-list-header color="primary">
 
-      <h2 padding-top padding-bottom color="primary">Datos de mi negocio</h2>
+      <h2>Añadir negocio</h2>
 
-      <ion-fab right top *ngIf="nuevo == 1 || nuevo == 2">
-        <button ion-fab mini color="primary" (click)="cancelar()">
+      <span item-right *ngIf="nuevo == 1 || nuevo == 2">
+        <button ion-button small  no-margin color="dark" (click)="cancelar()">
           <ion-icon name="close"></ion-icon>
-        </button>
-      </ion-fab>
+        </button>       
+      </span>
 
     </ion-list-header>
 
@@ -85,8 +85,10 @@
   
 </ion-content>
 
-<ion-footer>
-    <ion-toolbar padding>
-      <button ion-button large block (click)="siguiente()" [disabled]="buttonDisabled">Siguiente</button>
-    </ion-toolbar>
+<ion-footer text-right padding>
+
+    <button ion-button no-margin small icon-right (click)="siguiente()" [disabled]="buttonDisabled">
+      Siguiente<ion-icon name="arrow-forward"></ion-icon>
+    </button>
+
 </ion-footer>

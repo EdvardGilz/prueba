@@ -8,7 +8,7 @@
 
   <ion-list>
     
-    <ion-list-header text-wrap>
+    <ion-list-header color="primary" text-wrap>
 
       <ion-avatar item-left>
         <img style="width: 40px; height: 40px;" src="assets/img/pt-user.svg"/>
@@ -16,18 +16,15 @@
 
       <h2>Empleados y <br />colaboradores</h2>
       
-      <ion-fab right middle>
-        <button ion-fab mini color="primary" (click)="regresar()">
-          <ion-icon name="close"></ion-icon>
-        </button>       
-      </ion-fab>
+      <button item-right ion-button small no-margin color="dark" (click)="regresar()">
+        <ion-icon name="close"></ion-icon>
+      </button>       
 
     </ion-list-header>    
 
-    <ion-item text-wrap text-center padding-right>
-      <h2>Solo ingresa un nombre de usuario, un correo y una contraseña provisional. 
-        <br />Pointown® le notificará tu invitación.</h2>
-    </ion-item>
+    <ion-item-divider text-wrap padding-right no-lines text-center>
+      <p>Solo llena estos campos, Pointown® le notificará a tu colaborador.</p>
+    </ion-item-divider>
     
 
     <ion-item padding-right>
@@ -51,11 +48,11 @@
       <button ion-button large block icon-right color="secondary" (click)="guardar()" [disabled]="buttonDisabled">Guardar</button>
     </ion-item>
     
-    <ion-item-divider color="primary" *ngIf="empleados == 1">
+    <ion-item-divider *ngIf="empleados == 1">
         Tu lista de empleados
     </ion-item-divider>
 
-    <ion-item padding-right *ngFor="let empleado of empleadosData" (click)="eliminarEmpleado(empleado)">
+    <ion-item *ngFor="let empleado of empleadosData" (click)="eliminarEmpleado(empleado)">
       {{empleado.username}}
       <ion-icon color="danger" name="close-circle" item-right></ion-icon>
     </ion-item>

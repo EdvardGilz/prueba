@@ -8,17 +8,15 @@
 
   <ion-list>
 
-    <ion-list-header text-center>
+    <ion-list-header color="primary">
 
-      <h2 padding-top padding-bottom color="primary">Hola <strong>{{username}}</strong>
-      <br/> <small color="primary"> Completa tus datos. </small></h2>
+      <h2>Hola <strong>{{username}}</strong>
+      <br/> <small> Completa tus datos. </small></h2>
 
-      <ion-fab left top>
-        <button ion-fab mini color="primary" (click)="volver()">
-          <ion-icon name="arrow-back"></ion-icon>
-        </button>       
-      </ion-fab>
-
+      <button ion-button small item-left no-margin clear color="white" (click)="volver()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>       
+      
     </ion-list-header>
   
     <ion-item padding-right>
@@ -42,8 +40,8 @@
   
 </ion-content>
 
-<ion-footer>
-    <ion-toolbar padding>
-      <button ion-button large block (click)="guardar()" [disabled]="buttonDisabled">Finalizar</button>
-    </ion-toolbar>
+
+<ion-footer text-center padding>
+    <button ion-button no-margin icon-right (click)="guardar()" [disabled]="buttonDisabled">
+      Finalizar <ion-icon name="partly-sunny"></ion-icon></button>
 </ion-footer>

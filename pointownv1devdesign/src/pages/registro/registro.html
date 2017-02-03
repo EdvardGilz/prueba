@@ -8,15 +8,13 @@
 
   <ion-list>
 
-    <ion-list-header>
+    <ion-list-header color="primary">
 
-      <h2 padding-top padding-bottom color="primary">Nuevo usuario <ion-icon name="ion-ios-personadd"></ion-icon></h2>
+      <h2>Nuevo usuario <ion-icon name="ion-ios-personadd"></ion-icon></h2>
 
-      <ion-fab right top>
-        <button ion-fab mini color="primary" (click)="login()">
-          <ion-icon name="close"></ion-icon>
-        </button>       
-      </ion-fab>
+      <button ion-button small item-right no-margin color="dark" (click)="login()">
+        <ion-icon name="close"></ion-icon>
+      </button>       
 
     </ion-list-header>
     
@@ -48,8 +46,10 @@
   
 </ion-content>
 
-<ion-footer>
-  <ion-toolbar padding>
-    <button ion-button large block (click)="registro()" [disabled]="buttonDisabled">Registro</button>
-  </ion-toolbar>
+<ion-footer text-right padding>
+
+    <button ion-button no-margin small icon-right (click)="registro()" [disabled]="buttonDisabled">
+      Registrar<ion-icon name="arrow-forward"></ion-icon>
+    </button>
+
 </ion-footer>

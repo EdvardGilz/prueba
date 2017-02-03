@@ -6,41 +6,44 @@
 -->
 <ion-content padding>
   
-  <ion-col text-center>
+  <div text-center style="padding:30px 20px 0px;">
     <img style="width: auto; height: 80px;" src="assets/img/pt-logo.svg"/>
-    <h3 color="white">¡El pilón de tu negocio!</h3>
-  </ion-col>
+    <p no-margin color="white">¡El pilón de tu negocio!</p>
+  </div>
 
-  <ion-list no-margin class="boxshadow">
-    
-    <ion-list-header no-margin text-left>
-      <ion-toggle [(ngModel)]="tipoUser" (ionChange)="tipoUserToggle()" (ionChange)="verificaLlenado()"></ion-toggle>
-      <ion-label>
-        {{txtTipoUser}}
-      </ion-label>
-    </ion-list-header>
-    
-    <ion-item padding-right>
-      <ion-label floating>Username</ion-label>
-      <ion-input [(ngModel)]="user" (input)="verificaLlenado()" type="text"></ion-input>
-    </ion-item>
+  <div style="padding:30px 20px 0px;">
 
-    <ion-item padding-right>
-      <ion-label floating>Password</ion-label>
-      <ion-input [(ngModel)]="pass" (input)="verificaLlenado()" type="password"></ion-input>
-    </ion-item>
-    
-    <ion-item>
-      <button ion-button block large color="primary" (click)="login()" [disabled]="buttonDisabled">Acceder</button>
-      <button margin-top ion-button block large color="secondary" *ngIf="tipoUser == false" (click)="registro()">Registrarse</button>
-    </ion-item>
+    <ion-list no-margin margin-top class="boxshadow">
+      
+      <ion-list-header no-margin text-left color="primarymedium">
+        <ion-toggle [(ngModel)]="tipoUser" (ionChange)="tipoUserToggle()" (ionChange)="verificaLlenado()"></ion-toggle>
+        <ion-label color="dark">
+          {{txtTipoUser}}
+        </ion-label>
+      </ion-list-header>
+      
+      <ion-item no-padding padding-horizontal no-margin>
+        <ion-label floating>Username</ion-label>
+        <ion-input [(ngModel)]="user" (input)="verificaLlenado()" type="text"></ion-input>
+      </ion-item>
 
-  </ion-list>  
+      <ion-item no-padding padding-horizontal no-margin>
+        <ion-label floating>Password</ion-label>
+        <ion-input [(ngModel)]="pass" (input)="verificaLlenado()" type="password"></ion-input>
+      </ion-item>
+      
+      <ion-item text-center>
+        <button ion-button block large color="primary" (click)="login()" [disabled]="buttonDisabled">Acceder</button>
+        <button no-margin ion-button small icon-right clear color="dark" *ngIf="tipoUser == false" (click)="registro()">
+          Registrar nueva cuenta <ion-icon name="person-add"></ion-icon></button>
+      </ion-item>
+
+    </ion-list>  
+
+    <ion-col text-right>
+      <small color="white">©2017 BIXNIA </small>
+    </ion-col>
+
+  </div>
 
 </ion-content>
-
-<ion-footer text-center no-padding>
-
-  <p color="white">©2017 BIXNIA </p>
-
-</ion-footer>

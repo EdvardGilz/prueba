@@ -8,15 +8,14 @@
 
   <ion-list>
 
-    <ion-list-header>
+    <ion-list-header margin-top color="dark">
 
-      <h2 padding-top padding-bottom color="primary">Agregar Producto</h2>
+      <button ion-button clear icon-only item-left color="danger" (click)="regresar()">
+        <ion-icon name="close"></ion-icon>
+      </button>       
 
-      <ion-fab right top>
-        <button ion-fab mini color="primary" (click)="regresar()">
-          <ion-icon name="close"></ion-icon>
-        </button>       
-      </ion-fab>      
+      <h2>Ficha de Producto</h2>
+      <p color="primarymedium">Agregar</p>
 
     </ion-list-header>    
   
@@ -48,13 +47,11 @@
         <ion-option *ngFor="let categoriaD of categoriasData" value="{{categoriaD.id}}">{{categoriaD.descripcion}}</ion-option>
       </ion-select>
     </ion-item>
+    <ion-item no-lines>
+      <button ion-button large block (click)="guardar()" [disabled]="buttonDisabled">Guardar</button>
+    </ion-item>
     
   </ion-list>
   
 </ion-content>
 
-<ion-footer>
-  <ion-toolbar padding>
-    <button ion-button block (click)="guardar()" [disabled]="buttonDisabled">Guardar</button>
-  </ion-toolbar>
-</ion-footer>

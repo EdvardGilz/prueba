@@ -6,41 +6,29 @@
 -->
 <ion-content>
 
-  <ion-list no-padding no-margin>
+  <ion-list>
 
-    <ion-list-header>
+    <ion-list-header color="dark">
 
-      <h2>Mi Stock</h2>
-      <p>Administración</p>
-      
-      <ion-fab right middle>
-        <button ion-fab mini color="primary" (click)="regresar()">
-          <ion-icon name="close"></ion-icon>
-        </button>       
-      </ion-fab>
+      <button ion-button clear item-left color="danger" (click)="regresar()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>       
+
+      <h2>Administración</h2>
+      <p color="primarymedium">Stock</p>
 
     </ion-list-header>    
 
-    <ion-item *ngFor="let producto of productosAll" (click)="verificarStock(producto)">        
+    <ion-item no-padding text-wrapp *ngFor="let producto of productosAll" (click)="verificarStock(producto)">        
 
-      <ion-row padding-bottom>
-        <ion-col no-padding width-80 text-wrap>
-          <h1 color="dark">{{producto.nombre}}</h1> 
-          <h2 color="black">{{producto.marca}} </h2>
-        </ion-col>
-        <ion-col text-right>
-          <!-- desplegar la cantidad de stock -->
-          <ion-badge color="{{producto.color}}">x {{producto.stock}}</ion-badge>
-        </ion-col>
-      </ion-row>
-      <ion-row no-padding>
-        <ion-col no-padding width-50 text-wrap>
-          <ion-icon name="eye" color="primary"></ion-icon> {{producto.presentacion}}
-        </ion-col>
-        <ion-col no-padding text-right>
-          {{producto.codigo}}
-        </ion-col>
-      </ion-row>
+        <div padding-left>
+          <ion-badge style="float:right;" color="{{producto.color}}">{{producto.stock}}</ion-badge>
+          <h2 no-margin>{{producto.nombre}}</h2> 
+          <p color="primary">{{producto.marca}}</p>
+        </div>
+        <div padding-left>
+          <p><ion-icon name="eye"></ion-icon> {{producto.presentacion}} <span style="float:right;">{{producto.codigo}}</span></p>          
+        </div>
 
     </ion-item>
 
@@ -49,16 +37,16 @@
 </ion-content>
 
 <ion-footer>
-  <ion-toolbar padding>
+  <ion-toolbar>
 
-    <ion-row no-padding>
+    <ion-row>
 
-      <ion-col width-80>
+      <ion-col width-75 no-padding>
         <ion-searchbar [(ngModel)]="txtSearchBar" (ionInput)="searchProduct($event, 0)"></ion-searchbar>
       </ion-col>
 
-      <ion-col no-padding>
-        <button ion-button large icon-only block color="danger" (click)="scanner()">
+      <ion-col>
+        <button ion-button small block color="danger" (click)="scanner()">
           <ion-icon name="barcode"></ion-icon>
         </button>
       </ion-col>

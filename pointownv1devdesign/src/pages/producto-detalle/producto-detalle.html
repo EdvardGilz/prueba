@@ -6,31 +6,33 @@
 -->
 <ion-content>
 
-  <ion-list no-lines>
+  <ion-list>
 
-    <ion-list-header>
+    <ion-list-header margin-top color="dark">
 
-      <h2 padding-top padding-bottom color="primary">Detalle</h2>
+      <button ion-button clear icon-only item-left color="danger" (click)="regresar()">
+        <ion-icon name="close"></ion-icon>
+      </button>       
 
-      <ion-fab right top>
-        <button ion-fab mini color="primary" (click)="regresar()">
-          <ion-icon name="close"></ion-icon>
-        </button>       
-      </ion-fab>      
+      <h2>Ficha de Producto</h2>
+      <p color="primarymedium">Detalle</p>
 
     </ion-list-header>
     
-    <ion-item padding-right color="black">
+    <ion-item padding-right>
       <ion-label floating>Código</ion-label>
       <ion-input type="text" [(ngModel)]="codigo" [disabled]="true"></ion-input>
     </ion-item>
-    <ion-item padding-right color="black">
+    <ion-item padding-right>
       <ion-label floating>Nombre</ion-label>
       <ion-input type="text" [(ngModel)]="nombre" [disabled]="true"></ion-input>
     </ion-item>
-    <ion-item padding-right color="black">
+    <ion-item padding-right>
       <ion-label floating>{{txtStock}}</ion-label>
       <ion-input type="text" [(ngModel)]="stock" [disabled]="true"></ion-input>
+    </ion-item>
+    <ion-item no-lines>
+      <button ion-button large block (click)="agregarStock()">Reabastecer stock</button>
     </ion-item>
 
     <ion-item padding-right color="white">
@@ -38,14 +40,11 @@
       <ion-input type="text" [(ngModel)]="precio" (input)="verificaLlenado()"></ion-input>
     </ion-item>     
 
+    <ion-item no-lines color="white">
+      <button ion-button large block color="secondary" (click)="guardar()" [disabled]="buttonDisabled">Actualizar precio</button>
+    </ion-item>
+
 
   </ion-list>
 
 </ion-content>
-
-<ion-footer>
-  <ion-toolbar padding>
-    <button ion-button large block color="dark" (click)="agregarStock()">Abastecer stock</button>
-    <button ion-button large block (click)="guardar()" [disabled]="buttonDisabled">Guardar o actualizar</button>
-  </ion-toolbar>
-</ion-footer>

@@ -12,12 +12,6 @@ $font-path: "../assets/fonts";
 // To view all the possible Ionic variables, see:
 // http://ionicframework.com/docs/v2/theming/overriding-ionic-variables/
 
-/* 1) Paleta de color predeterminada de ionic */
-// $ionicdefaultcolors: #387ef5, #32db64, #f53d3d, #f4f4f4, #222;
-/* 2) Paleta de color predeterminada de pointown */
- $pointowndefaultcolors: #00B0B8, #58DA87, #FBCD23, #E66F66, #10696E;
-
-
 
 // Named Color Variables
 // --------------------------------------------------
@@ -38,9 +32,6 @@ $colors: (
     // tonos medios
     primarymedium: desaturate( lighten( #00B0B8, 50% ), 65% )
      );
-
-
-.bg-white{background-color: color($colors, white);color: color($colors, primary);}
 
 /* Degradados 
 // posiblemente android de problemas, añadir esto: https://sujitaweb.wordpress.com/2016/05/27/gradient-background-in-ionic/
@@ -69,11 +60,11 @@ tint( $base-color, 10% ) | shade( $base-color, 10% )
 
 /* Globales */
 $background-color: desaturate( lighten( color($colors, light), 42% ), 50% );
-$toolbar-background:  color($colors, dark);
-// $list-background-color: lighten( color($colors, primary), 100% );
 $text-color: lighten(desaturate(color($colors, dark), 100%),15%);
 $list-border-color: lighten( $text-color, 50%);
-$toolbar-background: color($colors, primarymedium);
+$toolbar-background: color($colors, dark);
+$button-md-text-transform: none;
+$button-md-box-shadow: false;
 
 /* Sombra */
 .boxshadow{box-shadow: 0px 0px 16px rgba(color($colors, dark), .8);}
@@ -93,17 +84,12 @@ $toolbar-background: color($colors, primarymedium);
 .item-label-floating .text-input{ font-size: 1.2em; }
 
 /*clases que no estan sujetas a las variables sass*/
-.item-md.list-header-md {background-color:lighten( desaturate(color($colors, primary), 45% ), 55% );text-transform:uppercase;letter-spacing: .1rem;}
+.footer-md::before{background-image:none !important;}
+input{box-shadow: none !important;}
 .md ion-list > .item:last-child, .md ion-list > .item-wrapper:last-child .item,
 .wp ion-list > .item:last-child, .wp ion-list > .item-wrapper:last-child .item,
 .ios ion-list > .item:last-child, .ios ion-list > .item-wrapper:last-child .item {
     border-bottom: none;
-}
-.footer-md::before{background-image:none !important;}
-input{box-shadow: none !important;}
-.item-divider {
-    text-transform: uppercase !important;
-    text-shadow: 0px 1px 0px #fff;
 }
 
 // App iOS Variables
@@ -113,14 +99,12 @@ input{box-shadow: none !important;}
 $card-ios-background-color: color($colors, white);
 $item-ios-divider-background: desaturate( lighten( color($colors, light), 40% ), 100% );
 $item-ios-divider-color: desaturate( lighten( color($colors, primary), 30% ), 80% );
-
 $item-ios-body-text-font-size: 1.8rem;
 $item-ios-font-size: 1.8rem;
+$list-ios-header-text-transform: none;
+$list-ios-header-letter-spacing: none;
 $list-ios-border-color: $list-border-color;
-$list-ios-header-background-color: desaturate( lighten( color($colors, primary), 60% ), 70% );
 $searchbar-ios-toolbar-input-background: color($colors, white) ;
-$searchbar-ios-input-height: 5.4rem;
-
 // color en el label
 .input-has-focus .label-ios[floating], .input-has-value .label-ios[floating] { color: color($colors, primary);}
 
@@ -132,15 +116,11 @@ $card-md-background-color: $card-ios-background-color;
 $item-md-divider-background: $item-ios-divider-background;
 $item-md-divider-color: $item-ios-divider-color;
 $item-md-divider-border-bottom: false;
-
 $text-input-md-highlight-color: color($colors, white);
-$item-md-body-text-font-size: 1.8rem;
-$item-md-font-size: 1.8rem;
+$item-md-body-text-font-size: $item-ios-body-text-font-size;
+$item-md-font-size: $item-ios-font-size;
 $list-md-border-color: $list-border-color;
-$list-md-header-background-color: color($colors, dark);
-$searchbar-md-toolbar-input-background: color($colors, white) ;
-$searchbar-md-input-height: $searchbar-ios-input-height;
-
+$searchbar-md-toolbar-input-background: $searchbar-ios-toolbar-input-background;
 // color en el label
 $label-md-text-color-focused:color($colors, primary);
 // ocultar la alerta de borde en inputs
@@ -153,15 +133,11 @@ $text-input-md-show-focus-highlight: false;
 $card-wp-background-color: $card-ios-background-color;
 $item-wp-divider-background: $item-ios-divider-background;
 $item-wp-divider-color: $item-ios-divider-color;
-$item-wp-body-text-font-size: 1.8rem;
-$item-wp-font-size: 1.8rem;
+$item-wp-body-text-font-size: $item-ios-body-text-font-size;
+$item-wp-font-size: $item-ios-font-size;
 $list-wp-border-color: $list-border-color;
-$list-wp-header-background-color: color($colors, dark);
-$searchbar-wp-toolbar-input-background: color($colors, white) ;
-$searchbar-wp-input-height: $searchbar-ios-input-height;
-
-
-
+$searchbar-wp-toolbar-input-background: $searchbar-ios-toolbar-input-background;
+$text-input-wp-border-width: 0px;
 
 // App Theme
 // --------------------------------------------------
@@ -172,14 +148,12 @@ $searchbar-wp-input-height: $searchbar-ios-input-height;
 
 @import "ionic.theme.default";
 
-
 // Ionicons
 // --------------------------------------------------
 // The premium icon font for Ionic. For more info, please see:
 // http://ionicframework.com/docs/v2/ionicons/
 
 @import "ionicons";
-
 
 // Fonts
 // --------------------------------------------------

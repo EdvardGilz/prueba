@@ -8,21 +8,19 @@
     
   <ion-list>
 
-    <ion-list-header text-center>
+    <ion-list-header color="primary">
 
-      <h2 padding-top padding-bottom color="primary">Ubiciación</h2>
+      <h2>Ubiciación</h2>
 
-      <ion-fab left top>
-        <button ion-fab mini color="primary" (click)="volver()">
-          <ion-icon name="arrow-back"></ion-icon>
+      <button ion-button small item-left no-margin clear color="white" (click)="volver()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>       
+
+      <span item-right *ngIf="nuevo == 1 || nuevo == 2">
+        <button ion-button small no-margin color="dark" (click)="cancelar()">
+          <ion-icon name="close"></ion-icon>
         </button>       
-      </ion-fab>
-
-      <ion-fab right top *ngIf="nuevo == 1 || nuevo == 2">
-            <button ion-fab mini color="primary" (click)="cancelar()">
-              <ion-icon name="close"></ion-icon>
-            </button>
-      </ion-fab>
+      </span>
 
     </ion-list-header>
   
@@ -91,8 +89,10 @@
   
 </ion-content>
 
-<ion-footer>
-    <ion-toolbar padding>
-      <button ion-button large block (click)="siguiente()" [disabled]="buttonDisabled">{{txtBtn}}</button>
-    </ion-toolbar>
+<ion-footer text-right padding>
+
+    <button ion-button no-margin small icon-right (click)="siguiente()" [disabled]="buttonDisabled">
+      {{txtBtn}}<ion-icon name="arrow-forward"></ion-icon>
+    </button>
+
 </ion-footer>

@@ -8,15 +8,14 @@
 
   <ion-list>
 
-    <ion-list-header>
+    <ion-list-header color="primary">
 
-      <h2 padding-top padding-bottom color="primary">Mis datos</h2>
+      <h2>Mis datos</h2>
 
-      <ion-fab right top>
-        <button ion-fab mini color="primary" (click)="regresar()">
-          <ion-icon name="close"></ion-icon>
-        </button>       
-      </ion-fab>      
+      <button ion-button small item-right no-margin color="dark" (click)="regresar()">
+        <ion-icon name="close"></ion-icon>
+      </button>       
+
 
     </ion-list-header>
 
@@ -60,15 +59,12 @@
     </ion-item>
     <ion-item text-center>
       <ion-badge margin-top color="danger" *ngIf="differentPass == true">Contraseñas diferentes</ion-badge>
+      <button ion-button large block icon-right color="secondary" (click)="guardar()" [disabled]="buttonDisabled">Guardar
+          <ion-icon name="checkmark-circle"></ion-icon>
+      </button>
     </ion-item>
         
   </ion-list>
   
 
 </ion-content>
-
-<ion-footer>
-  <ion-toolbar padding>
-    <button ion-button large block (click)="guardar()" [disabled]="buttonDisabled">Guardar</button>
-  </ion-toolbar>
-</ion-footer>
