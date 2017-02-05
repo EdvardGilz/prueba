@@ -9,12 +9,12 @@
 
   <ion-list>
 
-    <ion-list-header color="primary">
+    <ion-list-header padding color="primary">
 
-      <h2>Añadir negocio</h2>
+      <h2 no-margin>Datos de mi negocio</h2>
 
       <span item-right *ngIf="nuevo == 1 || nuevo == 2">
-        <button ion-button small  no-margin color="dark" (click)="cancelar()">
+        <button ion-button icon-only no-margin clear color="light" (click)="cancelar()">
           <ion-icon name="close"></ion-icon>
         </button>       
       </span>
@@ -22,7 +22,7 @@
     </ion-list-header>
 
     <ion-item padding-right margin-bottom>
-      <ion-label floating>Nombre de la tienda</ion-label>
+      <ion-label floating>Nombre de establecimiento</ion-label>
       <ion-input [(ngModel)]="nombre" (input)="verificaLlenado()" type="text"></ion-input>
     </ion-item>
 
@@ -73,7 +73,7 @@
           </ion-item>
         </ion-col>
         <ion-col width-50 no-padding>          
-          <ion-item padding-right>
+          <ion-item padding-left>
             <ion-label floating>Cierra (HH:MM)</ion-label>
             <ion-datetime displayFormat="HH:mm" hourValues="{{misHoras}}" [(ngModel)]="hora_c" [disabled]="horasDisabled" (ionChange)="verificaLlenado()"></ion-datetime>
           </ion-item>

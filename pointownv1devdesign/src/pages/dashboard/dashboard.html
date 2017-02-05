@@ -9,16 +9,16 @@
 
   <ion-list no-lines no-padding no-margin>
 
-    <ion-list-header color="primarymedium">
+    <ion-list-header color="primary">
 
       <ion-avatar item-left (click)="perfil()">
         <img style="width: 40px; height: 40px;" src="assets/img/pt-user.svg"/>
       </ion-avatar>
 
       <h2 (click)="perfil()">{{username}}</h2>
-      <p color="dark" (click)="perfil()">Socio: PT-{{userId}}</p>
+      <p color="light" (click)="perfil()">Socio: PT-{{userId}}</p>
       
-      <button ion-button small item-right no-margin margin-right color="danger" (click)="salir()">
+      <button ion-button icon-only small item-right margin-right color="danger" (click)="salir()">
         <ion-icon name="log-out"></ion-icon>
       </button>       
       

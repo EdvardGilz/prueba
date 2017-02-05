@@ -8,16 +8,20 @@
 
   <ion-list>
 
-    <ion-list-header color="primary">
+    <ion-list-header padding color="primary">
 
-      <h2>Hola <strong>{{username}}</strong>
-      <br/> <small> Completa tus datos. </small></h2>
+      <h2 no-margin>Hola <strong>{{username}}</strong></h2>
 
-      <button ion-button small item-left no-margin clear color="white" (click)="volver()">
+      <button ion-button item-left no-margin clear color="white" (click)="volver()">
         <ion-icon name="arrow-back"></ion-icon>
       </button>       
       
     </ion-list-header>
+
+    <ion-item-divider text-wrap text-center>
+      <p>Por favor complementa tu información.</p>
+    </ion-item-divider>
+    
   
     <ion-item padding-right>
       <ion-label floating>Nombre</ion-label>

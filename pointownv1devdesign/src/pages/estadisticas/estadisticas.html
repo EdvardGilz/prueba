@@ -6,79 +6,108 @@
 -->
 <ion-header>
 
-  <ion-toolbar>
+  <ion-navbar padding color="primary">
 
     <ion-title>
-      Mi tienda
+      Estatus
     </ion-title>
     
-      <ion-fab right middle>
-        <button ion-fab mini color="primary">
-          <ion-icon name="close"></ion-icon>
-        </button>       
-      </ion-fab>
+    <ion-buttons end>
+      <button item-right ion-button no-margin icon-right color="light">
+        Mes <ion-icon name="arrow-down"></ion-icon>
+      </button>
+    </ion-buttons>
 
-  </ion-toolbar>
+
+  </ion-navbar>
 
 </ion-header>
 
 <ion-content>
 
   <!-- El resumen del mes-->
-  <ion-card>
-    <ion-card-header color="dark">
-      Resúmen de Febrero
-    </ion-card-header>
-    <ion-card-content>
-      <h2>Total: $000.00 (de dinero vendido en el mes)</h2>
-      <p>Invertido: $000.00 (gastado en abastecer en el mes)</p>
-      <p>Transacciones: #### (numero ventas realizadas en el mes)</p>
-      <p color="secondary">Liquidez: #### (el margen de ganacia del producto que vendio)</p>
-      <h2>Almacén/Stock: (total de productos vendidos por transacción, restados al stock)</h2>
-      <p>Productos vendidos: (total de productos vendidos por transacción)</p>
-      <p>Producto más vendido:</p>
-    </ion-card-content>
-  </ion-card>
+  <ion-item-divider color="dark">
+    <h2>Resúmen: Febrero</h2>
+  </ion-item-divider>
+  <ion-item text-wrap color="white">
+    <span color="primary">Total:</span> <span item-right>$100,000.00</span> 
+    <br /><small>Vendido en el mes</small>
+  </ion-item>
+  <ion-item text-wrap color="white">
+    <span color="primary">Invertido:</span> <span item-right>$10,000.00</span>
+    <br /><small>Invertido en abastecer</small>
+  </ion-item>
+  <ion-item text-wrap color="white">
+    <span color="primary">Transacciones:</span><span item-right>500</span>
+    <br /><small>Ventas realizadas</small>
+  </ion-item>
+  <ion-item text-wrap color="white">
+    <span color="primary">Liquidez:</span><span item-right>$000.00</span>
+    <br /><small>Ganacia de las ventas</small>
+  </ion-item>
+  <ion-item text-wrap color="white">
+    <span color="primary">En stock:</span><span item-right>1000</span>
+    <br /><small>Total de productos vendidos por transacción, restados al stock</small>
+  </ion-item>
+  <ion-item text-wrap color="white">
+    <span color="primary">Productos vendidos:</span><span item-right>1000</span>
+    <br /><small>Total de productos vendidos por transacción</small>
+  </ion-item>
+  <ion-item text-wrap color="white">
+    <span color="primary">Producto más vendido:</span><span item-right>Producto nombre</span>
+  </ion-item>
 
-  <!-- La lista de dias-->
-  <ion-list>
+  <!-- La lista de transacciones de ese mes-->
+  <ion-item-divider color="dark">
+    <h2> Resúmen por días</h2>
+  </ion-item-divider>
     
-    <ion-item padding-right>
-      <h2>05 de Febrero</h2>
-      <p>Total: $000.00</p>
-      <p>Transacciones: #### (ventas realizadas)</p>
-      <p color="danger">Quedan 2 aguas bonafont</p>
-      <button ion-button icon-left small color="primary"><ion-icon name="document"></ion-icon> ir a stock</button>
-    </ion-item>
-    <ion-item padding-right>
-      <h2>04 de Febrero</h2>
-      <p>Total: $000.00</p>
-      <p>Ingreso: $000.00 | Egreso: $000.00</p>
-      <p>Stock:</p>
-      <p color="secondary">Resurtido: galletas</p>
-      <button ion-button icon-left small color="primary"><ion-icon name="document"></ion-icon> ir a stock</button>
-    </ion-item>
-    <ion-item padding-right>
-      <h2>03 de Febrero</h2>
-      <p>Total: $000.00</p>
-      <p>Ingreso: $000.00 | Egreso: $000.00</p>
-      <p>Stock:</p>
-    </ion-item>
-    <ion-item padding-right>
-      <h2>02 de Febrero</h2>
-      <p>Total: $000.00</p>
-      <p>Ingreso: $000.00 | Egreso: $000.00</p>
-      <p>Stock:</p>
-    </ion-item>
-    <ion-item padding-right>
-      <h2>01 de Febrero</h2>
-      <p>Total: $000.00</p>
-      <p>Ingreso: $000.00 | Egreso: $000.00</p>
-      <p>Stock:</p>
-    </ion-item>
+    <ion-card>
+      <ion-card-header color="dark">
+        <h2>06 de Febrero</h2>
+      </ion-card-header>
+      <ion-card-content>
+        <p>Total: $000.00</p>
+        <p>Ingreso: $000.00 | Egreso: $000.00</p>
+        <p>Stock:</p>
+      </ion-card-content>
+    </ion-card>
+    
+    <ion-card>
+      <ion-card-header color="dark">
+        <h2>05 de Febrero</h2>
+      </ion-card-header>
+      <ion-card-content>
+        <p>Total: $000.00</p>
+        <p>Transacciones: #### (ventas realizadas)</p>
+        <p color="danger">Quedan 2 aguas bonafont</p>
+        <button ion-button icon-left small color="primary"><ion-icon name="document"></ion-icon> Revisar stock</button>
+      </ion-card-content>
+    </ion-card>
 
+    <ion-card>
+      <ion-card-header color="dark">
+        <h2>04 de Febrero</h2>
+      </ion-card-header>
+      <ion-card-content>
+        <p>Total: $000.00</p>
+        <p>Ingreso: $000.00 | Egreso: $000.00</p>
+        <p>Stock:</p>
+        <p color="secondary">Resurtido: galletas</p>
+        <button ion-button icon-left small color="primary"><ion-icon name="document"></ion-icon> Revisar stock</button>
+      </ion-card-content>
+    </ion-card>
 
-  </ion-list>
+    <ion-card>
+      <ion-card-header color="dark">
+        <h2>03 de Febrero</h2>
+      </ion-card-header>
+      <ion-card-content>
+        <p>Total: $000.00</p>
+        <p>Ingreso: $000.00 | Egreso: $000.00</p>
+        <p>Stock:</p>
+      </ion-card-content>
+    </ion-card>
 
 </ion-content>
 
@@ -86,25 +115,9 @@
 <ion-footer>
   <ion-toolbar>
 
-      <ion-row wrap>
-
-        <ion-col width-80>
-          <ion-item no-lines>
-            <ion-label>Mes</ion-label>
-            <ion-select>
-              <ion-option>Enero</ion-option>
-              <ion-option>Febrero *corriente</ion-option>
-              <ion-option>Marzo</ion-option>
-            </ion-select>
-          </ion-item>
-        </ion-col>
-
-        <ion-col>
-          <button ion-button icon-left block color="primary"><ion-icon name="document"></ion-icon> Enviar</button>
-        </ion-col>
-
-      </ion-row>
-
+      <button item-right ion-button icon-right>
+        Descargar informe <ion-icon name="document"></ion-icon>
+      </button>
 
   </ion-toolbar>
 </ion-footer>

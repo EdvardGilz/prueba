@@ -8,16 +8,16 @@
     
   <ion-list>
 
-    <ion-list-header color="primary">
+    <ion-list-header padding color="primary">
 
-      <h2>Ubiciación</h2>
+      <h2 no-margin>Ubiciación</h2>
 
-      <button ion-button small item-left no-margin clear color="white" (click)="volver()">
+      <button ion-button icon-only item-left no-margin clear color="white" (click)="volver()">
         <ion-icon name="arrow-back"></ion-icon>
       </button>       
 
       <span item-right *ngIf="nuevo == 1 || nuevo == 2">
-        <button ion-button small no-margin color="dark" (click)="cancelar()">
+        <button ion-button icon-only no-margin clear color="light" (click)="cancelar()">
           <ion-icon name="close"></ion-icon>
         </button>       
       </span>
@@ -44,9 +44,9 @@
           </ion-item>
         </ion-col>
         <ion-col width-33 no-padding>
-          <ion-item no-padding>
+          <ion-item no-margin>
             <ion-label floating>C.P.</ion-label>
-            <ion-input [(ngModel)]="cp" (input)="verificaLlenado()" type="number"></ion-input>
+            <ion-input no-margin [(ngModel)]="cp" (input)="verificaLlenado()" type="number"></ion-input>
           </ion-item>
         </ion-col>
       </ion-row>
