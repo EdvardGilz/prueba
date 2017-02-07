@@ -9,9 +9,14 @@
 
   <ion-list>
 
-    <ion-list-header padding color="primary">
+    <ion-list-header color="primary">
 
-      <h2 no-margin>Datos de mi negocio</h2>
+      <ion-avatar item-left>
+        <img style="width: 40px; height: 40px;" src="assets/img/pt-est.svg"/>
+      </ion-avatar>
+
+      <h2>Mi negocio</h2>
+      <p color="light">Datos</p>
 
       <span item-right *ngIf="nuevo == 1 || nuevo == 2">
         <button ion-button icon-only no-margin clear color="light" (click)="cancelar()">
