@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, AlertController } from 'ionic-angular';
+import { NavController, AlertController, LoadingController } from 'ionic-angular';
 
 import { Api } from '../../providers/api';
 import { CommonFunctions } from '../../providers/common-functions';
@@ -32,6 +32,7 @@ export class PerfilPage {
 
   constructor(public navCtrl: NavController,
               public alertCtrl: AlertController,
+              public loadingCtrl: LoadingController,
               public api: Api,
               public commonFunctions: CommonFunctions) {
     
@@ -107,6 +108,11 @@ export class PerfilPage {
   }
 
   guardando() {
+    let loading = this.loadingCtrl.create({
+      content: 'Guardando'
+    });
+    loading.present();
+
     this.api.editarUserData(this.userData).then((data) => {
       if (data.id == -1) {
         this.commonFunctions.despliegaAlerta("Error", "Contraseña incorrecta");
@@ -118,6 +124,8 @@ export class PerfilPage {
       this.pass = null;
       this.pass2 = null;
       this.buttonDisabled = true;
+
+      loading.dismiss();
     });
   }
 
