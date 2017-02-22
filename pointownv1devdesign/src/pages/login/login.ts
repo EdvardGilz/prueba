@@ -26,7 +26,7 @@ export class LoginPage {
   public pass;
   public plataforma: number;
   public tipoUser = false;
-  public txtTipoUser = "Dueño";
+  public txtTipoUser = "Propietario";
 
   public buttonDisabled = true;
   
@@ -81,10 +81,10 @@ export class LoginPage {
   
   tipoUserToggle() {
     if (this.tipoUser == false) {
-      this.txtTipoUser = "Dueño";
+      this.txtTipoUser = "Propietario";
     }
     else if (this.tipoUser == true) {
-      this.txtTipoUser = "Empleado";
+      this.txtTipoUser = "Colaborador";
     }
   }
   
