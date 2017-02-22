@@ -31,6 +31,7 @@ export class TiendaForm2Page {
   public pais;
   public estado;
   public txtBtn;
+  public estados;
 
   public tienda: TiendaDataModel;
 
@@ -41,6 +42,14 @@ export class TiendaForm2Page {
               public global: Global,
               public api: Api,
               public commonFunctions: CommonFunctions) {
+    this.estados = ["Aguascalientes", "Baja California Norte", "Baja California Sur",
+                    "Campeche", "Ciudad de México", "Coahuila", "Colima", "Chiapas", 
+                    "Chihuahua", "Durango", "Estado de México", "Guanajuato", "Guerrero",
+                    "Hidalgo", "Jalisco", "Michoacan", "Morelos", "Nayarit", "Nuevo Leon",
+                    "Oaxaca", "Puebla", "Querétaro", "Quintana Roo", "San Luis Potosí",
+                    "Sinaloa", "Sonora", "Tabasco", "Tamaulipas", "Tlaxcala", "Veracruz",
+                    "Yucatán", "Zacatecas"];
+
     this.tienda = global.getTiendaData2();
     this.nuevo = global.getNuevaTienda();
 
