@@ -21,7 +21,7 @@ export class Api {
   
   loginApi(user: string, pass: string, tipo: boolean) {
     return new Promise<SuccessModel>(resolve => {
-      this.http.get(`http://bixnia.com/labs/api_v4/api.php/login/${user}/${pass}/${tipo}`)
+      this.http.get(`http://pointown.com/tech/api/api.php/login/${user}/${pass}/${tipo}`)
         .map(res => <SuccessModel>(res.json()))
         .subscribe(data => {
           resolve(data);
@@ -32,7 +32,7 @@ export class Api {
   registroD(userData: UserDataModel) {
     var data = JSON.stringify(userData);
     return new Promise<SuccessModel>(resolve => {
-      this.http.post(`http://bixnia.com/labs/api_v4/api.php/registroD/`, data)
+      this.http.post(`http://pointown.com/tech/api/api.php/registroD/`, data)
         .map(res => <SuccessModel>(res.json()))
         .subscribe(data => {
           resolve(data);
@@ -45,7 +45,7 @@ export class Api {
     var userId = this.global.getUser();
     
     return new Promise<SuccessModel>(resolve => {
-      this.http.post(`http://bixnia.com/labs/api_v4/api.php/registroT/${userId}`, data)
+      this.http.post(`http://pointown.com/tech/api/api.php/registroT/${userId}`, data)
         .map(res => <SuccessModel>(res.json()))
         .subscribe(data => {
           resolve(data);
@@ -58,7 +58,7 @@ export class Api {
     var userTipo = this.global.getTipoUser();
     
     return new Promise<TiendaModel>(resolve => {
-      this.http.get(`http://bixnia.com/labs/api_v4/api.php/verificaTienda/${userId}/${userTipo}`)
+      this.http.get(`http://pointown.com/tech/api/api.php/verificaTienda/${userId}/${userTipo}`)
         .map(res => <TiendaModel>(res.json()))
         .subscribe(data => {
           resolve(data);
@@ -71,7 +71,7 @@ export class Api {
     var tiendaId = this.global.getTiendaId();
 
     return new Promise<SuccessModel>(resolve => {
-      this.http.post(`http://bixnia.com/labs/api_v4/api.php/updateTienda/${tiendaId}`, data)
+      this.http.post(`http://pointown.com/tech/api/api.php/updateTienda/${tiendaId}`, data)
         .map(res => <SuccessModel>(res.json()))
         .subscribe(data => {
           resolve(data);
@@ -81,7 +81,7 @@ export class Api {
 
   verificaTienda2(tiendaId) {
     return new Promise<TiendaModel>(resolve => {
-      this.http.get(`http://bixnia.com/labs/api_v4/api.php/verificaTienda2/${tiendaId}`)
+      this.http.get(`http://pointown.com/tech/api/api.php/verificaTienda2/${tiendaId}`)
         .map(res => <TiendaModel>(res.json()))
         .subscribe(data => {
           resolve(data);
@@ -93,7 +93,7 @@ export class Api {
     var tiendaId = this.global.getTiendaId();
 
     return new Promise<UserModel>(resolve => {
-      this.http.get(`http://bixnia.com/labs/api_v4/api.php/verificaEmpleados/${tiendaId}`)
+      this.http.get(`http://pointown.com/tech/api/api.php/verificaEmpleados/${tiendaId}`)
         .map(res => <UserModel>(res.json()))
         .subscribe(data => {
           resolve(data);
@@ -106,7 +106,7 @@ export class Api {
     var data = JSON.stringify(user);
 
     return new Promise<SuccessModel>(resolve => {
-      this.http.post(`http://bixnia.com/labs/api_v4/api.php/nuevoEmpleado/${tiendaId}`, data)
+      this.http.post(`http://pointown.com/tech/api/api.php/nuevoEmpleado/${tiendaId}`, data)
         .map(res => <SuccessModel>(res.json()))
         .subscribe(data => {
           resolve(data);
@@ -116,7 +116,7 @@ export class Api {
 
   eliminarEmpleado(empleadoId) {
     return new Promise<SuccessModel>(resolve => {
-      this.http.get(`http://bixnia.com/labs/api_v4/api.php/eliminarEmpleado/${empleadoId}`)
+      this.http.get(`http://pointown.com/tech/api/api.php/eliminarEmpleado/${empleadoId}`)
         .map(res => <SuccessModel>(res.json()))
         .subscribe(data => {
           resolve(data);
@@ -129,7 +129,7 @@ export class Api {
     var userTipo = this.global.getTipoUser();
 
     return new Promise<UserModel>(resolve => {
-      this.http.get(`http://bixnia.com/labs/api_v4/api.php/verificaUserData/${userId}/${userTipo}`)
+      this.http.get(`http://pointown.com/tech/api/api.php/verificaUserData/${userId}/${userTipo}`)
         .map(res => <UserModel>(res.json()))
         .subscribe(data => {
           resolve(data);
@@ -143,7 +143,7 @@ export class Api {
     var data = JSON.stringify(user);
 
     return new Promise<SuccessModel>(resolve => {
-      this.http.post(`http://bixnia.com/labs/api_v4/api.php/editarUserData/${userId}/${userTipo}`, data)
+      this.http.post(`http://pointown.com/tech/api/api.php/editarUserData/${userId}/${userTipo}`, data)
         .map(res => <SuccessModel>(res.json()))
         .subscribe(data => {
           resolve(data);
@@ -155,7 +155,7 @@ export class Api {
     var tiendaId = this.global.getTiendaId();
 
     return new Promise<ProductosModel>(resolve => {
-      this.http.get(`http://bixnia.com/labs/api_v4/api.php/productosTodos/${tiendaId}`)
+      this.http.get(`http://pointown.com/tech/api/api.php/productosTodos/${tiendaId}`)
         .map(res => <ProductosModel>(res.json()))
         .subscribe(data => {
           resolve(data);
@@ -167,7 +167,7 @@ export class Api {
     var tiendaId = this.global.getTiendaId();
     
     return new Promise<ProductosModel>(resolve => {
-      this.http.get(`http://bixnia.com/labs/api_v4/api.php/verificarStock/${tiendaId}/${codigo}`)
+      this.http.get(`http://pointown.com/tech/api/api.php/verificarStock/${tiendaId}/${codigo}`)
         .map(res => <ProductosModel>(res.json()))
         .subscribe(data => {
           resolve(data);
@@ -179,7 +179,7 @@ export class Api {
     var tiendaId = this.global.getTiendaId();
     
     return new Promise<SuccessModel>(resolve => {
-      this.http.get(`http://bixnia.com/labs/api_v4/api.php/guardarStock/${tiendaId}/${precio}/${stock}/${codigo}/${id_pv}/${productoTipo}/${cantidad}/${precioCompra}`)
+      this.http.get(`http://pointown.com/tech/api/api.php/guardarStock/${tiendaId}/${precio}/${stock}/${codigo}/${id_pv}/${productoTipo}/${cantidad}/${precioCompra}`)
         .map(res => <SuccessModel>(res.json()))
         .subscribe(data => {
           resolve(data);
@@ -191,7 +191,7 @@ export class Api {
     var tiendaId = this.global.getTiendaId();
     
     return new Promise<ProductosModel>(resolve => {
-      this.http.get(`http://bixnia.com/labs/api_v4/api.php/buscarCodigo/${tiendaId}/${codigo}`)
+      this.http.get(`http://pointown.com/tech/api/api.php/buscarCodigo/${tiendaId}/${codigo}`)
         .map(res => <ProductosModel>(res.json()))
         .subscribe(data => {
           resolve(data);
@@ -204,7 +204,7 @@ export class Api {
     var data = JSON.stringify(this.productos);
     
     return new Promise<SuccessModel>(resolve => {
-      this.http.post(`http://bixnia.com/labs/api_v4/api.php/addSells/`, data)
+      this.http.post(`http://pointown.com/tech/api/api.php/addSells/`, data)
         .map(res => <SuccessModel>(res.json()))
         .subscribe(data => {
           resolve(data);
@@ -214,7 +214,7 @@ export class Api {
 
   getCategorias() {
     return new Promise<CategoriaModel>(resolve => {
-      this.http.get(`http://bixnia.com/labs/api_v4/api.php/getCategorias/`)
+      this.http.get(`http://pointown.com/tech/api/api.php/getCategorias/`)
         .map(res => <CategoriaModel>(res.json()))
         .subscribe(data => {
           resolve(data);
@@ -226,7 +226,7 @@ export class Api {
     var data = JSON.stringify(producto);
     
     return new Promise<SuccessModel>(resolve => {
-      this.http.post(`http://bixnia.com/labs/api_v4/api.php/addProducto/`, data)
+      this.http.post(`http://pointown.com/tech/api/api.php/addProducto/`, data)
         .map(res => <SuccessModel>(res.json()))
         .subscribe(data => {
           resolve(data);
@@ -248,7 +248,7 @@ export class Api {
   
   allCodes() {
     return new Promise<ProductosModel>(resolve => {
-      this.http.get(`http://bixnia.com/labs/api_v4/api.php/allCodes`)
+      this.http.get(`http://pointown.com/tech/api/api.php/allCodes`)
         .map(res => <ProductosModel>(res.json()))
         .subscribe(data => {
           resolve(data);
@@ -259,7 +259,7 @@ export class Api {
   getProducts() {
     var userId = this.global.getUser();
     return new Promise<ProductosModel>(resolve => {
-      this.http.get(`http://bixnia.com/labs/api_v4/api.php/getProducts/${userId}`)
+      this.http.get(`http://pointown.com/tech/api/api.php/getProducts/${userId}`)
         .map(res => <ProductosModel>(res.json()))
         .subscribe(data => {
           resolve(data);
@@ -272,7 +272,7 @@ export class Api {
     var data = JSON.stringify(prodData);
     
     return new Promise<SuccessModel>(resolve => {
-      this.http.post(`http://bixnia.com/labs/api_v4/api.php/addProduct/${userId}/`, data)
+      this.http.post(`http://pointown.com/tech/api/api.php/addProduct/${userId}/`, data)
         .map(res => <SuccessModel>(res.json()))
         .subscribe(data => {
           resolve(data);
@@ -286,7 +286,7 @@ export class Api {
     var userId = this.global.getUser();
     
     return new Promise<SuccessModel>(resolve => {
-      this.http.get(`http://bixnia.com/labs/api_v4/api.php/desactivarProducto/${userId}/${codigo}`)
+      this.http.get(`http://pointown.com/tech/api/api.php/desactivarProducto/${userId}/${codigo}`)
         .map(res => <SuccessModel>(res.json()))
         .subscribe(data => {
           resolve(data);
@@ -298,7 +298,7 @@ export class Api {
     var userId = this.global.getUser();
     
     return new Promise<ProductosModel>(resolve => {
-      this.http.get(`http://bixnia.com/labs/api_v4/api.php/activarProducto/${userId}/${codigo}`)
+      this.http.get(`http://pointown.com/tech/api/api.php/activarProducto/${userId}/${codigo}`)
         .map(res => <ProductosModel>(res.json()))
         .subscribe(data => {
           resolve(data);
@@ -308,7 +308,7 @@ export class Api {
   
   actualizarProducto(precio: string, stock: string, id_pv: string) {
     return new Promise<SuccessModel>(resolve => {
-      this.http.get(`http://bixnia.com/labs/api_v4/api.php/actualizarProducto/${precio}/${stock}/${id_pv}`)
+      this.http.get(`http://pointown.com/tech/api/api.php/actualizarProducto/${precio}/${stock}/${id_pv}`)
         .map(res => <SuccessModel>(res.json()))
         .subscribe(data => {
           resolve(data);
