@@ -247,74 +247,74 @@ export class Api {
   
   
   
-  allCodes() {
-    return new Promise<ProductosModel>(resolve => {
-      this.http.get(`http://pointown.com/tech/api/api.php/allCodes`)
-        .map(res => <ProductosModel>(res.json()))
-        .subscribe(data => {
-          resolve(data);
-        });
-    });
-  }
+  // allCodes() {
+  //   return new Promise<ProductosModel>(resolve => {
+  //     this.http.get(`http://pointown.com/tech/api/api.php/allCodes`)
+  //       .map(res => <ProductosModel>(res.json()))
+  //       .subscribe(data => {
+  //         resolve(data);
+  //       });
+  //   });
+  // }
   
-  getProducts() {
-    var userId = this.global.getUser();
-    return new Promise<ProductosModel>(resolve => {
-      this.http.get(`http://pointown.com/tech/api/api.php/getProducts/${userId}`)
-        .map(res => <ProductosModel>(res.json()))
-        .subscribe(data => {
-          resolve(data);
-        });
-    });
-  }
+  // getProducts() {
+  //   var userId = this.global.getUser();
+  //   return new Promise<ProductosModel>(resolve => {
+  //     this.http.get(`http://pointown.com/tech/api/api.php/getProducts/${userId}`)
+  //       .map(res => <ProductosModel>(res.json()))
+  //       .subscribe(data => {
+  //         resolve(data);
+  //       });
+  //   });
+  // }
   
-  addProduct(prodData: ProductosDataModel) {
-    var userId = this.global.getUser();
-    var data = JSON.stringify(prodData);
+  // addProduct(prodData: ProductosDataModel) {
+  //   var userId = this.global.getUser();
+  //   var data = JSON.stringify(prodData);
     
-    return new Promise<SuccessModel>(resolve => {
-      this.http.post(`http://pointown.com/tech/api/api.php/addProduct/${userId}/`, data)
-        .map(res => <SuccessModel>(res.json()))
-        .subscribe(data => {
-          resolve(data);
-        });
-    });
-  }
+  //   return new Promise<SuccessModel>(resolve => {
+  //     this.http.post(`http://pointown.com/tech/api/api.php/addProduct/${userId}/`, data)
+  //       .map(res => <SuccessModel>(res.json()))
+  //       .subscribe(data => {
+  //         resolve(data);
+  //       });
+  //   });
+  // }
   
   
   
-  desactivarProducto(codigo: string) {
-    var userId = this.global.getUser();
+  // desactivarProducto(codigo: string) {
+  //   var userId = this.global.getUser();
     
-    return new Promise<SuccessModel>(resolve => {
-      this.http.get(`http://pointown.com/tech/api/api.php/desactivarProducto/${userId}/${codigo}`)
-        .map(res => <SuccessModel>(res.json()))
-        .subscribe(data => {
-          resolve(data);
-        });
-    });
-  }
+  //   return new Promise<SuccessModel>(resolve => {
+  //     this.http.get(`http://pointown.com/tech/api/api.php/desactivarProducto/${userId}/${codigo}`)
+  //       .map(res => <SuccessModel>(res.json()))
+  //       .subscribe(data => {
+  //         resolve(data);
+  //       });
+  //   });
+  // }
   
-  activarProducto(codigo: string) {
-    var userId = this.global.getUser();
+  // activarProducto(codigo: string) {
+  //   var userId = this.global.getUser();
     
-    return new Promise<ProductosModel>(resolve => {
-      this.http.get(`http://pointown.com/tech/api/api.php/activarProducto/${userId}/${codigo}`)
-        .map(res => <ProductosModel>(res.json()))
-        .subscribe(data => {
-          resolve(data);
-        });
-    });
-  }
+  //   return new Promise<ProductosModel>(resolve => {
+  //     this.http.get(`http://pointown.com/tech/api/api.php/activarProducto/${userId}/${codigo}`)
+  //       .map(res => <ProductosModel>(res.json()))
+  //       .subscribe(data => {
+  //         resolve(data);
+  //       });
+  //   });
+  // }
   
-  actualizarProducto(precio: string, stock: string, id_pv: string) {
-    return new Promise<SuccessModel>(resolve => {
-      this.http.get(`http://pointown.com/tech/api/api.php/actualizarProducto/${precio}/${stock}/${id_pv}`)
-        .map(res => <SuccessModel>(res.json()))
-        .subscribe(data => {
-          resolve(data);
-        });
-    });
-  }
+  // actualizarProducto(precio: string, stock: string, id_pv: string) {
+  //   return new Promise<SuccessModel>(resolve => {
+  //     this.http.get(`http://pointown.com/tech/api/api.php/actualizarProducto/${precio}/${stock}/${id_pv}`)
+  //       .map(res => <SuccessModel>(res.json()))
+  //       .subscribe(data => {
+  //         resolve(data);
+  //       });
+  //   });
+  // }
 
 }
