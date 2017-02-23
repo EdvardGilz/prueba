@@ -69,6 +69,11 @@ export class EmpleadosPage {
   }
 
   guardar() {
+    let loading = this.loadingCtrl.create({
+      content: 'Guardando...'
+    });
+    loading.present();
+
     this.empleadoNuevo.mail = this.mail;
     this.empleadoNuevo.username = this.user;
     this.empleadoNuevo.password = this.pass;
@@ -91,6 +96,7 @@ export class EmpleadosPage {
         this.verificaLlenado();
         this.verificaEmpleados();
       }
+      loading.dismiss();
     });
   }
 
