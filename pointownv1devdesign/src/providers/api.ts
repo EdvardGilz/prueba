@@ -103,10 +103,11 @@ export class Api {
 
   nuevoEmpleado(user: UserDataModel) {
     var tiendaId = this.global.getTiendaId();
+    var username = this.global.getUsername();
     var data = JSON.stringify(user);
 
     return new Promise<SuccessModel>(resolve => {
-      this.http.post(`http://pointown.com/tech/api/api.php/nuevoEmpleado/${tiendaId}`, data)
+      this.http.post(`http://pointown.com/tech/api/api.php/nuevoEmpleado/${tiendaId}/${username}`, data)
         .map(res => <SuccessModel>(res.json()))
         .subscribe(data => {
           resolve(data);
