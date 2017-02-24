@@ -47,9 +47,7 @@ export class ProductosPage {
     loading.present();
 
     this.api.productosTodos().then((data) => {
-      console.log(data.data);
       for (var i in data.data) {
-        console.log(data.data[i]);
         if (data.data[i].tipo == 0) {
           if (data.data[i].stock < 5) {
             data.data[i].color = "danger";
