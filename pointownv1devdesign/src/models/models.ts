@@ -77,3 +77,17 @@ export class CategoriaDataModel {
 	id: number;
 	descripcion: string;
 }
+
+export class StatsModel {
+	success: number;
+	data: Array<StatsDataModel>;
+}
+
+export class StatsDataModel {
+	totalMes: number;
+	totalInvertido: number;
+	totalVentas: number;
+	totalStock: number;
+	totalVendidos: number;
+	masVendido: string;
+}
