@@ -229,6 +229,12 @@ export class CuentaPage {
             }
           }
           else {
+            this.sumatoria -= precioPrev;
+            data.cantidad = 0;
+            data.total = 0;
+            if (this.sumatoria <= 0) {
+              this.buttonDisabled = true;
+            }
             this.commonFunctions.despliegaAlerta("Falta de Stock", "Ya no hay stock");
           }
         }
@@ -282,6 +288,12 @@ export class CuentaPage {
                 }
               }
               else {
+                this.sumatoria -= precioPrev;
+                data.cantidad = 0;
+                data.total = 0;
+                if (this.sumatoria <= 0) {
+                  this.buttonDisabled = true;
+                }
                 this.commonFunctions.despliegaAlerta("Falta de Stock", "Ya no hay stock");
               }
             }
