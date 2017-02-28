@@ -30,7 +30,6 @@ export class EstadisticasPage {
 
     api.getStats(false).then((data) => {
       this.estadisticasDia = data.data;
-      console.log(this.estadisticasDia);
     });
   }
 
