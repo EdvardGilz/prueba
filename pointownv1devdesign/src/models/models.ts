@@ -90,4 +90,5 @@ export class StatsDataModel {
 	totalStock: number;
 	totalVendidos: number;
 	masVendido: string;
+	fecha: string;
 }

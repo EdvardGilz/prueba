@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
-import { SuccessModel, ProductosModel, ProductosDataModel, UserModel, UserDataModel, TiendaModel, TiendaDataModel, CategoriaModel } from '../models/models';
+import { SuccessModel, ProductosModel, ProductosDataModel, UserModel, 
+         UserDataModel, TiendaModel, TiendaDataModel, CategoriaModel, StatsModel } from '../models/models';
 
 import { Global } from './global';
 
@@ -235,6 +236,17 @@ export class Api {
     });
   }
 
+  getStats(bandera) {
+    var tiendaId = this.global.getTiendaId();
+
+    return new Promise<StatsModel>(resolve => {
+      this.http.get(`http://pointown.com/tech/api/api.php/getStats/${tiendaId}/${bandera}`)
+        .map(res => <StatsModel>(res.json()))
+        .subscribe(data => {
+          resolve(data);
+        });
+    });
+  }
 
 
 
