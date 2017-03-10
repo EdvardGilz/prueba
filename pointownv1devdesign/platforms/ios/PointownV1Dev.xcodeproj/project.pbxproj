@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		0207DA581B56EA530066E2B4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0207DA571B56EA530066E2B4 /* Images.xcassets */; };
 		035244D7C2F1419EA6598482 /* CDVViewController+SplashScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = A44A475EC0C842928B091D05 /* CDVViewController+SplashScreen.m */; };
@@ -36,6 +35,8 @@
 		DE170443AF9144CD9D31ABB0 /* scannerOverlay.xib in Resources */ = {isa = PBXBuildFile; fileRef = 594DFFD79E81437F903C7D20 /* scannerOverlay.xib */; };
 		E1932BF435444B03973F0FDD /* IonicKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 809F988FBB5048CCA6A34CB0 /* IonicKeyboard.m */; };
 		F5CC84CF486A48588AE54735 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E447DEEF85CE446A8FD0E128 /* libiconv.dylib */; };
+		B451CE4EF3074F0CA13CEDDA /* Toast+UIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F87AD7F73B42B9BC702E58 /* Toast+UIView.m */; };
+		9E85130666474A93ACDF5AA9 /* Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = E2EFEEED62C546B38F5D218D /* Toast.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +105,10 @@
 		ED33DF2A687741AEAF9F8254 /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		F595B1619B93490595F663BA /* zxing-all-in-one.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = "zxing-all-in-one.h"; path = "phonegap-plugin-barcodescanner/zxing-all-in-one.h"; sourceTree = "<group>"; };
 		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = PointownV1Dev/config.xml; sourceTree = "<group>"; };
+		38F87AD7F73B42B9BC702E58 /* Toast+UIView.m */ = {isa = PBXFileReference; name = "Toast+UIView.m"; path = "cordova-plugin-x-toast/Toast+UIView.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		E2EFEEED62C546B38F5D218D /* Toast.m */ = {isa = PBXFileReference; name = "Toast.m"; path = "cordova-plugin-x-toast/Toast.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		B3AE09AFB341449285CCFCE1 /* Toast+UIView.h */ = {isa = PBXFileReference; name = "Toast+UIView.h"; path = "cordova-plugin-x-toast/Toast+UIView.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		7763061984694AF88574EA56 /* Toast.h */ = {isa = PBXFileReference; name = "Toast.h"; path = "cordova-plugin-x-toast/Toast.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -243,6 +248,10 @@
 				4F1CBD92C0494F3E93E0F001 /* CDVBarcodeScanner.mm */,
 				8650E44C676E4CB1937FA46E /* zxing-all-in-one.cpp */,
 				F595B1619B93490595F663BA /* zxing-all-in-one.h */,
+				38F87AD7F73B42B9BC702E58 /* Toast+UIView.m */,
+				E2EFEEED62C546B38F5D218D /* Toast.m */,
+				B3AE09AFB341449285CCFCE1 /* Toast+UIView.h */,
+				7763061984694AF88574EA56 /* Toast.h */,
 			);
 			name = Plugins;
 			path = PointownV1Dev/Plugins;
@@ -377,6 +386,8 @@
 				D4C1B6647B3843AE8580F4A7 /* sqlite3.c in Sources */,
 				D4C72B5060EA49239FD25DD9 /* CDVBarcodeScanner.mm in Sources */,
 				B3CFDDDD1B2947DCBA550D84 /* zxing-all-in-one.cpp in Sources */,
+				B451CE4EF3074F0CA13CEDDA /* Toast+UIView.m in Sources */,
+				9E85130666474A93ACDF5AA9 /* Toast.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

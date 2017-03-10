@@ -1,18 +1,10 @@
 [
     {
-        "merged": "/Users/eduardogiles/MEGA/apps/PointownV1Dev/platforms/android/build/intermediates/res/merged/debug/xml/preferences.xml",
-        "source": "/Users/eduardogiles/MEGA/apps/PointownV1Dev/platforms/android/build/intermediates/exploded-aar/barcodescanner/res/xml/preferences.xml"
+        "merged": "/Users/eduardogiles/Documents/proyectosGit/prueba/pointownv1devdesign/platforms/android/build/intermediates/res/merged/debug/xml/config.xml",
+        "source": "/Users/eduardogiles/Documents/proyectosGit/prueba/pointownv1devdesign/platforms/android/res/xml/config.xml"
     },
     {
-        "merged": "/Users/eduardogiles/MEGA/apps/PointownV1DevDesign/platforms/android/build/intermediates/res/merged/debug/xml/config.xml",
-        "source": "/Users/eduardogiles/MEGA/apps/PointownV1DevDesign/platforms/android/res/xml/config.xml"
-    },
-    {
-        "merged": "/Users/eduardogiles/MEGA/apps/PointownV1Dev/platforms/android/build/intermediates/res/merged/debug/xml/config.xml",
-        "source": "/Users/eduardogiles/MEGA/apps/PointownV1Dev/platforms/android/res/xml/config.xml"
-    },
-    {
-        "merged": "/Users/eduardogiles/MEGA/apps/PointownV1DevDesign/platforms/android/build/intermediates/res/merged/debug/xml/preferences.xml",
-        "source": "/Users/eduardogiles/MEGA/apps/PointownV1DevDesign/platforms/android/build/intermediates/exploded-aar/barcodescanner/res/xml/preferences.xml"
+        "merged": "/Users/eduardogiles/Documents/proyectosGit/prueba/pointownv1devdesign/platforms/android/build/intermediates/res/merged/debug/xml/preferences.xml",
+        "source": "/Users/eduardogiles/Documents/proyectosGit/prueba/pointownv1devdesign/platforms/android/build/intermediates/exploded-aar/barcodescanner/res/xml/preferences.xml"
     }
 ]

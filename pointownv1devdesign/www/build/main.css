@@ -1,17 +1,11 @@
 @charset "UTF-8";
-/* 1) Paleta de color predeterminada de ionic */
-/* 2) Paleta de color predeterminada de pointown */
-.bg-white {
-  background-color: #FFFFFF;
-  color: #00B0B8;
-}
-
 /* Degradados 
 // posiblemente android de problemas, añadir esto: https://sujitaweb.wordpress.com/2016/05/27/gradient-background-in-ionic/
  .content-md, .content-ios, .content-wp { background-image: -webkit-gradient( linear, 50% 0%, 50% 100%, color-stop(0%, color($colors, light) ), color-stop(100%, color($colors, dark) )) !important; }
 */
 page-login .content-md, page-login .content-ios, page-login .content-wp {
-  background: linear-gradient(180deg, #00B0B8, #10696E);
+  background: radial-gradient(circle, #FBCD23 6%, transparent 6%), radial-gradient(circle, #cfe7e8 6%, #00B0B8 6%) 30px 30px;
+  background-size: 20px 20px;
 }
 
 /* Sobreescritura para las variables globales 
@@ -140,22 +134,10 @@ tint( $base-color, 10% ) | shade( $base-color, 10% )
 
 /*para cambiar el tamaño de texto en inputs*/
 .item-label-floating .text-input {
-  font-size: 1.4em;
+  font-size: 1.2em;
 }
 
 /*clases que no estan sujetas a las variables sass*/
-.item-md.list-header-md {
-  background-color: #dcf4f5;
-  text-transform: uppercase;
-  letter-spacing: .1rem;
-}
-
-.md ion-list > .item:last-child, .md ion-list > .item-wrapper:last-child .item,
-.wp ion-list > .item:last-child, .wp ion-list > .item-wrapper:last-child .item,
-.ios ion-list > .item:last-child, .ios ion-list > .item-wrapper:last-child .item {
-  border-bottom: none;
-}
-
 .footer-md::before {
   background-image: none !important;
 }
@@ -164,9 +146,10 @@ input {
   box-shadow: none !important;
 }
 
-.item-divider {
-  text-transform: uppercase !important;
-  text-shadow: 0px 1px 0px #fff;
+.md ion-list > .item:last-child, .md ion-list > .item-wrapper:last-child .item,
+.wp ion-list > .item:last-child, .wp ion-list > .item-wrapper:last-child .item,
+.ios ion-list > .item:last-child, .ios ion-list > .item-wrapper:last-child .item {
+  border-bottom: none;
 }
 
 .input-has-focus .label-ios[floating], .input-has-value .label-ios[floating] {
@@ -6837,10 +6820,10 @@ button[disabled],
   border-radius: 2px;
   font-size: 1.4rem;
   font-weight: 500;
-  text-transform: uppercase;
+  text-transform: none;
   color: #fff;
   background-color: #00B0B8;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  box-shadow: false;
   transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1), background-color 300ms cubic-bezier(0.4, 0, 0.2, 1), color 300ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -12214,7 +12197,7 @@ input.text-input:-webkit-autofill {
   margin: 13px 8px 13px 8px;
   padding: 0 8px;
   width: calc(100% - 8px - 8px);
-  border: 2px solid rgba(0, 0, 0, 0.5);
+  border: 0px solid rgba(0, 0, 0, 0.5);
   line-height: 3rem;
 }
 
@@ -14012,10 +13995,10 @@ ion-list[inset] {
   border-bottom: 0.55px solid #e5e5e5;
   font-size: 1.2rem;
   font-weight: 500;
-  letter-spacing: 0.1rem;
-  text-transform: uppercase;
+  letter-spacing: none;
+  text-transform: none;
   color: #333;
-  background: #f2f8f8;
+  background: transparent;
 }
 
 .list-header-ios-primary {
@@ -16617,7 +16600,7 @@ ion-searchbar {
 
 .searchbar-ios .searchbar-input {
   padding: 0 28px;
-  height: 5.4rem;
+  height: 3rem;
   border-radius: 5px;
   font-size: 1.4rem;
   font-weight: 400;
@@ -17058,7 +17041,7 @@ ion-searchbar {
 
 .searchbar-md .searchbar-input {
   padding: 6px 55px;
-  height: 5.4rem;
+  height: auto;
   border-radius: 2px;
   font-size: 1.6rem;
   font-weight: 400;
@@ -17147,7 +17130,7 @@ ion-searchbar {
 
 .searchbar-wp .searchbar-input {
   padding: 0 8px;
-  height: 5.4rem;
+  height: auto;
   border-radius: 0;
   font-size: 1.4rem;
   font-weight: 400;
@@ -20473,7 +20456,7 @@ ion-navbar.toolbar {
 }
 
 .toolbar-background-ios {
-  background: #cfe7e8;
+  background: #10696E;
 }
 
 .header-ios .toolbar-background-ios,
@@ -20512,7 +20495,7 @@ ion-navbar.toolbar {
   font-size: 1.7rem;
   font-weight: 600;
   text-align: center;
-  color: #000;
+  color: #fff;
   pointer-events: auto;
 }
 
@@ -20567,8 +20550,8 @@ ion-navbar.toolbar {
 .bar-button-outline-ios {
   border-width: 1px;
   border-style: solid;
-  border-color: #00B0B8;
-  color: #00B0B8;
+  border-color: #fff;
+  color: #fff;
   background-color: transparent;
 }
 
@@ -20577,23 +20560,23 @@ ion-navbar.toolbar {
 }
 
 .bar-button-outline-ios.activated {
-  color: #fff;
-  background-color: #00B0B8;
+  color: #000;
+  background-color: #fff;
 }
 
 .bar-button-solid-ios {
-  color: #fff;
-  background-color: #00B0B8;
+  color: #000;
+  background-color: #fff;
 }
 
 .bar-button-solid-ios:hover:not(.disable-hover) {
-  color: #fff;
+  color: #000;
   opacity: .4;
 }
 
 .bar-button-solid-ios.activated {
-  color: #fff;
-  background-color: #14b6be;
+  color: #000;
+  background-color: #ebebeb;
   opacity: .4;
 }
 
@@ -20671,14 +20654,14 @@ ion-navbar.toolbar {
 .bar-button-default-ios,
 .bar-button-default.bar-button-ios-default,
 .bar-button-clear-ios-default {
-  color: #00B0B8;
+  color: #fff;
   background-color: transparent;
 }
 
 .bar-button-default-ios:hover:not(.disable-hover),
 .bar-button-default.bar-button-ios-default:hover:not(.disable-hover),
 .bar-button-clear-ios-default:hover:not(.disable-hover) {
-  color: #00B0B8;
+  color: #fff;
 }
 
 .bar-button-default-ios.activated,
@@ -20690,14 +20673,14 @@ ion-navbar.toolbar {
 .bar-button-clear-ios,
 .bar-button-default.bar-button-ios-clear,
 .bar-button-clear-ios-clear {
-  color: #00B0B8;
+  color: #fff;
   background-color: transparent;
 }
 
 .bar-button-clear-ios:hover:not(.disable-hover),
 .bar-button-default.bar-button-ios-clear:hover:not(.disable-hover),
 .bar-button-clear-ios-clear:hover:not(.disable-hover) {
-  color: #00B0B8;
+  color: #fff;
 }
 
 .bar-button-clear-ios.activated,
@@ -23677,7 +23660,7 @@ ion-navbar.toolbar {
 
 .toolbar-background-md {
   border-color: #b2b2b2;
-  background: #cfe7e8;
+  background: #10696E;
 }
 
 .header-md::after,
@@ -23725,7 +23708,7 @@ ion-navbar.toolbar {
   padding: 0 12px;
   font-size: 2rem;
   font-weight: 500;
-  color: #424242;
+  color: #fff;
 }
 
 .bar-buttons-md {
@@ -23782,8 +23765,8 @@ ion-navbar.toolbar {
 .bar-button-outline-md {
   border-width: 1px;
   border-style: solid;
-  border-color: #424242;
-  color: #424242;
+  border-color: #fff;
+  color: #fff;
   background-color: transparent;
 }
 
@@ -23796,21 +23779,21 @@ ion-navbar.toolbar {
 }
 
 .bar-button-outline-md .button-effect {
-  background-color: #424242;
+  background-color: #fff;
 }
 
 .bar-button-solid-md {
-  color: #fff;
-  background-color: #424242;
+  color: #424242;
+  background-color: #fff;
 }
 
 .bar-button-solid-md:hover:not(.disable-hover) {
-  color: #fff;
+  color: #424242;
 }
 
 .bar-button-solid-md.activated {
-  color: #fff;
-  background-color: #515151;
+  color: #424242;
+  background-color: #ebebeb;
 }
 
 .bar-button-md.bar-button-icon-left ion-icon {
@@ -23879,27 +23862,27 @@ ion-navbar.toolbar {
 .bar-button-default-md,
 .bar-button-clear-md-default,
 .bar-button-md-default {
-  color: #424242;
+  color: #fff;
   background-color: transparent;
 }
 
 .bar-button-default-md:hover:not(.disable-hover),
 .bar-button-clear-md-default:hover:not(.disable-hover),
 .bar-button-md-default:hover:not(.disable-hover) {
-  color: #424242;
+  color: #fff;
 }
 
 .bar-button-clear-md,
 .bar-button-clear-md-clear,
 .bar-button-md-clear {
-  color: #424242;
+  color: #fff;
   background-color: transparent;
 }
 
 .bar-button-clear-md:hover:not(.disable-hover),
 .bar-button-clear-md-clear:hover:not(.disable-hover),
 .bar-button-md-clear:hover:not(.disable-hover) {
-  color: #424242;
+  color: #fff;
 }
 
 .toolbar-md-primary .toolbar-background-md {
@@ -26745,7 +26728,7 @@ ion-navbar.toolbar {
 
 .toolbar-background-wp {
   border-color: #b2b2b2;
-  background: #cfe7e8;
+  background: #10696E;
 }
 
 .toolbar-content-wp {
@@ -26764,7 +26747,7 @@ ion-navbar.toolbar {
   font-size: 1.5rem;
   font-weight: bold;
   text-transform: uppercase;
-  color: #000;
+  color: #fff;
 }
 
 .bar-buttons-wp {
@@ -26821,8 +26804,8 @@ ion-navbar.toolbar {
 .bar-button-outline-wp {
   border-width: 1px;
   border-style: solid;
-  border-color: #000;
-  color: #000;
+  border-color: #fff;
+  color: #fff;
   background-color: transparent;
 }
 
@@ -26831,22 +26814,22 @@ ion-navbar.toolbar {
 }
 
 .bar-button-outline-wp.activated {
-  color: #fff;
-  background-color: #000;
+  color: #000;
+  background-color: #fff;
 }
 
 .bar-button-solid-wp {
-  color: #fff;
-  background-color: #000;
+  color: #000;
+  background-color: #fff;
 }
 
 .bar-button-solid-wp:hover:not(.disable-hover) {
-  color: #fff;
+  color: #000;
 }
 
 .bar-button-solid-wp.activated {
-  color: #fff;
-  background-color: #141414;
+  color: #000;
+  background-color: #ebebeb;
 }
 
 .bar-button-wp.bar-button-icon-left ion-icon {
@@ -26915,27 +26898,27 @@ ion-navbar.toolbar {
 .bar-button-default-wp,
 .bar-button-clear-wp-default,
 .bar-button-wp-default {
-  color: #000;
+  color: #fff;
   background-color: transparent;
 }
 
 .bar-button-default-wp:hover:not(.disable-hover),
 .bar-button-clear-wp-default:hover:not(.disable-hover),
 .bar-button-wp-default:hover:not(.disable-hover) {
-  color: #000;
+  color: #fff;
 }
 
 .bar-button-clear-wp,
 .bar-button-clear-wp-clear,
 .bar-button-wp-clear {
-  color: #000;
+  color: #fff;
   background-color: transparent;
 }
 
 .bar-button-clear-wp:hover:not(.disable-hover),
 .bar-button-clear-wp-clear:hover:not(.disable-hover),
 .bar-button-wp-clear:hover:not(.disable-hover) {
-  color: #000;
+  color: #fff;
 }
 
 .toolbar-wp-primary .toolbar-background-wp {

@@ -1,18 +1,10 @@
 [
     {
-        "merged": "/Users/eduardogiles/MEGA/apps/PointownV1DevDesign/platforms/android/build/intermediates/res/merged/debug/layout-land/share.xml",
-        "source": "/Users/eduardogiles/MEGA/apps/PointownV1DevDesign/platforms/android/build/intermediates/exploded-aar/barcodescanner/res/layout-land/share.xml"
+        "merged": "/Users/eduardogiles/Documents/proyectosGit/prueba/pointownv1devdesign/platforms/android/build/intermediates/res/merged/debug/layout-land/encode.xml",
+        "source": "/Users/eduardogiles/Documents/proyectosGit/prueba/pointownv1devdesign/platforms/android/build/intermediates/exploded-aar/barcodescanner/res/layout-land/encode.xml"
     },
     {
-        "merged": "/Users/eduardogiles/MEGA/apps/PointownV1DevDesign/platforms/android/build/intermediates/res/merged/debug/layout-land/encode.xml",
-        "source": "/Users/eduardogiles/MEGA/apps/PointownV1DevDesign/platforms/android/build/intermediates/exploded-aar/barcodescanner/res/layout-land/encode.xml"
-    },
-    {
-        "merged": "/Users/eduardogiles/MEGA/apps/PointownV1Dev/platforms/android/build/intermediates/res/merged/debug/layout-land/encode.xml",
-        "source": "/Users/eduardogiles/MEGA/apps/PointownV1Dev/platforms/android/build/intermediates/exploded-aar/barcodescanner/res/layout-land/encode.xml"
-    },
-    {
-        "merged": "/Users/eduardogiles/MEGA/apps/PointownV1Dev/platforms/android/build/intermediates/res/merged/debug/layout-land/share.xml",
-        "source": "/Users/eduardogiles/MEGA/apps/PointownV1Dev/platforms/android/build/intermediates/exploded-aar/barcodescanner/res/layout-land/share.xml"
+        "merged": "/Users/eduardogiles/Documents/proyectosGit/prueba/pointownv1devdesign/platforms/android/build/intermediates/res/merged/debug/layout-land/share.xml",
+        "source": "/Users/eduardogiles/Documents/proyectosGit/prueba/pointownv1devdesign/platforms/android/build/intermediates/exploded-aar/barcodescanner/res/layout-land/share.xml"
     }
 ]

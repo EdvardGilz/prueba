@@ -31,6 +31,9 @@
         "phonegap-plugin-barcodescanner": {
             "CAMERA_USAGE_DESCRIPTION": " ",
             "PACKAGE_NAME": "com.ionicframework.pointownv1dev761858"
+        },
+        "cordova-plugin-x-toast": {
+            "PACKAGE_NAME": "com.ionicframework.pointownv1dev761858"
         }
     },
     "dependent_plugins": {}

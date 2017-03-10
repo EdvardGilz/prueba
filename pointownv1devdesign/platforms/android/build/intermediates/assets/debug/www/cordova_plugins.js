@@ -48,6 +48,19 @@ module.exports = [
         "clobbers": [
             "cordova.plugins.barcodeScanner"
         ]
+    },
+    {
+        "id": "cordova-plugin-x-toast.Toast",
+        "file": "plugins/cordova-plugin-x-toast/www/Toast.js",
+        "pluginId": "cordova-plugin-x-toast",
+        "clobbers": [
+            "window.plugins.toast"
+        ]
+    },
+    {
+        "id": "cordova-plugin-x-toast.tests",
+        "file": "plugins/cordova-plugin-x-toast/test/tests.js",
+        "pluginId": "cordova-plugin-x-toast"
     }
 ];
 module.exports.metadata = 
@@ -61,7 +74,8 @@ module.exports.metadata =
     "cordova-sqlite-storage": "2.0.1",
     "ionic-plugin-keyboard": "2.2.1",
     "cordova-plugin-compat": "1.1.0",
-    "phonegap-plugin-barcodescanner": "6.0.5"
+    "phonegap-plugin-barcodescanner": "6.0.5",
+    "cordova-plugin-x-toast": "2.6.0"
 };
 // BOTTOM OF METADATA
 });
