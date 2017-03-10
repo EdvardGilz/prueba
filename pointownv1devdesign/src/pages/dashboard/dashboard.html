@@ -58,11 +58,17 @@
           <ion-icon color="dark" name="create"></ion-icon>
         </button>
       </ion-col>
-      <ion-col no-padding *ngIf="userTipo == false">
+      <!--<ion-col no-padding *ngIf="userTipo == false">
         <button no-margin ion-button full icon-only (click)="agregarEmpleado(tienda)">
           <ion-icon color="light" name="person-add"></ion-icon>
         </button>
+      </ion-col>-->
+      <ion-col no-padding *ngIf="userTipo == false" (click)="proximamente()">
+        <button no-margin ion-button full icon-only disabled="disabled" icon-left (click)="agregarEmpleado(tienda)">
+          <ion-icon color="light" name="person-add"></ion-icon>
+        </button>
       </ion-col>
+
       <ion-col no-padding *ngIf="userTipo == false">
         <button no-margin ion-button full icon-only (click)="estadisticas(tienda)">
           <ion-icon color="secondary" name="stats"></ion-icon>
@@ -77,8 +83,8 @@
     
   </ion-card>
 
-  <ion-fab center bottom>
-    <button ion-fab (click)="nuevaTienda()" *ngIf="userTipo == false">
+  <ion-fab center bottom (click)="proximamente()">
+    <button ion-fab (click)="nuevaTienda()" disabled="disabled" *ngIf="userTipo == false">
       <ion-icon name="add"></ion-icon>
     </button>    
   </ion-fab>

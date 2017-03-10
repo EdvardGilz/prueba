@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, LoadingController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
+import { Toast } from 'ionic-native';
 
 import { Api } from '../../providers/api';
 import { CommonFunctions } from '../../providers/common-functions';
@@ -125,5 +126,9 @@ export class DashboardPage {
     this.global.setTiendaId(data.id);
     this.navCtrl.push(EstadisticasPage);
   }
+
+  proximamente() {
+    Toast.show("Poximamente", '3000', 'bottom').subscribe();
+  };
 
 }

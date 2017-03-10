@@ -20,6 +20,7 @@ import { StatsDataModel } from '../../models/models';
 export class EstadisticasPage {
   public estadisticasMes: StatsDataModel = new StatsDataModel();
   public estadisticasDia: StatsDataModel[] = [];
+  public vacio = 1;
 
   constructor(public navCtrl: NavController, 
               public api: Api) {
@@ -30,7 +31,16 @@ export class EstadisticasPage {
 
     api.getStats(false).then((data) => {
       this.estadisticasDia = data.data;
+      for(var i in this.estadisticasDia) {
+        if (this.estadisticasDia[i].totalMes > 0 || this.estadisticasDia[i].totalVentas > 0 || this.estadisticasDia[i].totalInvertido > 0) {
+          this.vacio = 0;
+        }
+      }
     });
+  }
+
+  regresar() {
+    this.navCtrl.pop();
   }
 
 }
