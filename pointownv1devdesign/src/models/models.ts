@@ -91,4 +91,6 @@ export class StatsDataModel {
 	totalVendidos: number;
 	masVendido: string;
 	fecha: string;
+	fechaVal: string;
+	checked: boolean;
 }

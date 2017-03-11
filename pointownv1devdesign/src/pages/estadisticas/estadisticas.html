@@ -26,7 +26,7 @@
     </ion-title>
     
     <ion-buttons right>
-      <button item-right ion-button no-margin icon-right color="light">
+      <button item-right ion-button no-margin icon-right color="light" (click)="seleccionarMes()">
         Mes <ion-icon name="arrow-down"></ion-icon>
       </button>
     </ion-buttons>
@@ -54,7 +54,7 @@
   </ion-item>
   <ion-item text-wrap color="white">
     <span color="primary">Productos vendidos:</span><span item-right>{{estadisticasMes.totalVendidos}}</span>
-    <br /><small>Total de productos vendidos (sin contar a granel)</small>
+    <br /><small>Total de productos vendidos</small>
   </ion-item>
   <ion-item text-wrap color="white">
     <span color="primary">Producto más vendido:</span><span item-right>{{estadisticasMes.masVendido}}</span>
@@ -91,7 +91,7 @@
   <ion-toolbar>
 
       <button item-right ion-button icon-right>
-        Descargar informe <ion-icon name="document"></ion-icon>
+        Enviar informe <ion-icon name="document"></ion-icon>
       </button>
 
   </ion-toolbar>

@@ -16,6 +16,7 @@ import { ProductoDetallePage } from '../pages/producto-detalle/producto-detalle'
 import { CuentaPage } from '../pages/cuenta/cuenta';
 import { AgregarProductosPage } from '../pages/agregar-productos/agregar-productos';
 import { EstadisticasPage } from '../pages/estadisticas/estadisticas';
+import { MesesPage } from '../pages/meses/meses';
 
 import { Api } from '../providers/api';
 import { CommonFunctions } from '../providers/common-functions';
@@ -36,7 +37,8 @@ import { Global } from '../providers/global';
     ProductoDetallePage,
     CuentaPage,
     AgregarProductosPage,
-    EstadisticasPage
+    EstadisticasPage,
+    MesesPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -56,7 +58,8 @@ import { Global } from '../providers/global';
     ProductoDetallePage,
     CuentaPage,
     AgregarProductosPage,
-    EstadisticasPage
+    EstadisticasPage,
+    MesesPage
   ],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},

@@ -236,11 +236,24 @@ export class Api {
     });
   }
 
-  getStats(bandera) {
+  getStats(bandera, fecha) {
     var tiendaId = this.global.getTiendaId();
 
     return new Promise<StatsModel>(resolve => {
-      this.http.get(`http://pointown.com/tech/api/api.php/getStats/${tiendaId}/${bandera}`)
+      this.http.get(`http://pointown.com/tech/api/api.php/getStats/${tiendaId}/${bandera}/${fecha}`)
+        .map(res => <StatsModel>(res.json()))
+        .subscribe(data => {
+          resolve(data);
+        });
+    });
+  }
+
+  verificaMeses() {
+    var tiendaId = this.global.getTiendaId();
+    var userId = this.global.getUser();
+
+    return new Promise<StatsModel>(resolve => {
+      this.http.get(`http://pointown.com/tech/api/api.php/verificaMeses/${tiendaId}/${userId}`)
         .map(res => <StatsModel>(res.json()))
         .subscribe(data => {
           resolve(data);
