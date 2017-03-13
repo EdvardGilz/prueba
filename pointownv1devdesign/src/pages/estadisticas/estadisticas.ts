@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, ModalController, LoadingController } from 'ionic-angular';
-import { Toast, InAppPurchase } from 'ionic-native';
+import { Toast, InAppPurchase, AdMob } from 'ionic-native';
 
 import { Api } from '../../providers/api';
 
@@ -29,6 +29,8 @@ export class EstadisticasPage {
               public api: Api,
               public modalCtrl: ModalController,
               public loadingCtrl: LoadingController) {
+    AdMob.showInterstitial();
+    
     this.fecha = "actual";
     this.obtenerEstadisticas(this.fecha);
 
@@ -38,6 +40,10 @@ export class EstadisticasPage {
     .catch((err) => {
       console.log(err);
     })
+  }
+
+  ionViewWillEnter() {
+    AdMob.prepareInterstitial('ca-app-pub-1057257651261369/7551627133');
   }
 
   obtenerEstadisticas(fecha) {
