@@ -37,7 +37,14 @@
         },
         "cordova-plugin-inapppurchase": {
             "PACKAGE_NAME": "com.ionicframework.pointownv1dev761858"
+        },
+        "cordova-plugin-admobpro": {
+            "PACKAGE_NAME": "com.ionicframework.pointownv1dev761858"
         }
     },
-    "dependent_plugins": {}
+    "dependent_plugins": {
+        "cordova-plugin-extension": {
+            "PACKAGE_NAME": "com.ionicframework.pointownv1dev761858"
+        }
+    }
 }

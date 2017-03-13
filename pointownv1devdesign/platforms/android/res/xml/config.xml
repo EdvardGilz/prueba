@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.ionicframework.pointownv1dev761858" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.bixnia.pointown" version="0.1.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <feature name="Device">
         <param name="android-package" value="org.apache.cordova.device.Device" />
     </feature>
@@ -31,9 +31,13 @@
     <feature name="InAppBillingV3">
         <param name="android-package" value="com.alexdisler.inapppurchases.InAppBillingV3" />
     </feature>
-    <name>PointownV1Dev</name>
-    <description>An awesome Ionic/Cordova app.</description>
-    <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
+    <feature name="AdMob">
+        <param name="android-package" value="com.rjfun.cordova.admob.AdMobPlugin" />
+        <param name="onload" value="true" />
+    </feature>
+    <name>Pointown</name>
+    <description>Convierte tu smartphone en un punto de venta personal para tu negocio.</description>
+    <author email="eduardo@bixnia.com" href="http://bixnia.com/">Bixnia Team</author>
     <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />

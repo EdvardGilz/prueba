@@ -85,6 +85,14 @@ module.exports = [
         "clobbers": [
             "inAppPurchase"
         ]
+    },
+    {
+        "file": "plugins/cordova-plugin-admobpro/www/AdMob.js",
+        "id": "cordova-plugin-admobpro.AdMob",
+        "pluginId": "cordova-plugin-admobpro",
+        "clobbers": [
+            "window.AdMob"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -99,7 +107,9 @@ module.exports.metadata =
     "cordova-sqlite-storage": "2.0.1",
     "phonegap-plugin-barcodescanner": "6.0.5",
     "cordova-plugin-x-toast": "2.6.0",
-    "cordova-plugin-inapppurchase": "1.1.0"
+    "cordova-plugin-inapppurchase": "1.1.0",
+    "cordova-plugin-extension": "1.5.1",
+    "cordova-plugin-admobpro": "2.28.1"
 }
 // BOTTOM OF METADATA
 });

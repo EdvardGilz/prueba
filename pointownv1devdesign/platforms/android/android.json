@@ -43,13 +43,26 @@
                         {
                             "xml": "<feature name=\"InAppBillingV3\"><param name=\"android-package\" value=\"com.alexdisler.inapppurchases.InAppBillingV3\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"AdMob\"><param name=\"android-package\" value=\"com.rjfun.cordova.admob.AdMobPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
             },
             "AndroidManifest.xml": {
                 "parents": {
-                    "/*": [],
+                    "/*": [
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.INTERNET\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\" />",
+                            "count": 1
+                        }
+                    ],
                     "/manifest/application": [
                         {
                             "xml": "<activity android:clearTaskOnLaunch=\"true\" android:configChanges=\"orientation|keyboardHidden|screenSize\" android:exported=\"false\" android:name=\"com.google.zxing.client.android.CaptureActivity\" android:theme=\"@android:style/Theme.NoTitleBar.Fullscreen\" android:windowSoftInputMode=\"stateAlwaysHidden\" />",
@@ -57,6 +70,10 @@
                         },
                         {
                             "xml": "<activity android:label=\"Share\" android:name=\"com.google.zxing.client.android.encode.EncodeActivity\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<activity android:configChanges=\"keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize\" android:name=\"com.google.android.gms.ads.AdActivity\" android:theme=\"@android:style/Theme.Translucent\" />",
                             "count": 1
                         }
                     ],
@@ -114,6 +131,12 @@
             "PACKAGE_NAME": "com.ionicframework.pointownv1dev761858"
         },
         "cordova-plugin-inapppurchase": {
+            "PACKAGE_NAME": "com.ionicframework.pointownv1dev761858"
+        },
+        "cordova-plugin-extension": {
+            "PACKAGE_NAME": "com.ionicframework.pointownv1dev761858"
+        },
+        "cordova-plugin-admobpro": {
             "PACKAGE_NAME": "com.ionicframework.pointownv1dev761858"
         }
     },
@@ -188,6 +211,14 @@
             "merges": [
                 "inAppPurchase"
             ]
+        },
+        {
+            "id": "cordova-plugin-admobpro.AdMob",
+            "file": "plugins/cordova-plugin-admobpro/www/AdMob.js",
+            "pluginId": "cordova-plugin-admobpro",
+            "clobbers": [
+                "window.AdMob"
+            ]
         }
     ],
     "plugin_metadata": {
@@ -201,6 +232,8 @@
         "cordova-plugin-compat": "1.1.0",
         "phonegap-plugin-barcodescanner": "6.0.5",
         "cordova-plugin-x-toast": "2.6.0",
-        "cordova-plugin-inapppurchase": "1.1.0"
+        "cordova-plugin-inapppurchase": "1.1.0",
+        "cordova-plugin-extension": "1.5.1",
+        "cordova-plugin-admobpro": "2.28.1"
     }
 }

@@ -51,6 +51,10 @@
                         {
                             "xml": "<feature name=\"PaymentsPlugin\"><param name=\"ios-package\" value=\"PaymentsPlugin\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"AdMob\"><param name=\"ios-package\" value=\"CDVAdMobPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -60,6 +64,12 @@
                     "NSCameraUsageDescription": [
                         {
                             "xml": "<string> </string>",
+                            "count": 1
+                        }
+                    ],
+                    "NSAppTransportSecurity": [
+                        {
+                            "xml": "<dict><key>NSAllowsArbitraryLoads</key><true /></dict>",
                             "count": 1
                         }
                     ]
@@ -97,6 +107,12 @@
             "PACKAGE_NAME": "com.ionicframework.pointownv1dev761858"
         },
         "cordova-plugin-inapppurchase": {
+            "PACKAGE_NAME": "com.ionicframework.pointownv1dev761858"
+        },
+        "cordova-plugin-extension": {
+            "PACKAGE_NAME": "com.ionicframework.pointownv1dev761858"
+        },
+        "cordova-plugin-admobpro": {
             "PACKAGE_NAME": "com.ionicframework.pointownv1dev761858"
         }
     },
@@ -187,6 +203,14 @@
             "clobbers": [
                 "inAppPurchase"
             ]
+        },
+        {
+            "file": "plugins/cordova-plugin-admobpro/www/AdMob.js",
+            "id": "cordova-plugin-admobpro.AdMob",
+            "pluginId": "cordova-plugin-admobpro",
+            "clobbers": [
+                "window.AdMob"
+            ]
         }
     ],
     "plugin_metadata": {
@@ -199,6 +223,8 @@
         "cordova-sqlite-storage": "2.0.1",
         "phonegap-plugin-barcodescanner": "6.0.5",
         "cordova-plugin-x-toast": "2.6.0",
-        "cordova-plugin-inapppurchase": "1.1.0"
+        "cordova-plugin-inapppurchase": "1.1.0",
+        "cordova-plugin-extension": "1.5.1",
+        "cordova-plugin-admobpro": "2.28.1"
     }
 }
