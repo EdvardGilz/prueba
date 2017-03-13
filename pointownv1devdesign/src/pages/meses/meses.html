@@ -12,6 +12,12 @@
 
       <h2>Selector de Mes</h2>
 
+      <span item-right>
+        <button ion-button icon-only no-margin clear color="light" (click)="cancelar()">
+          <ion-icon name="close"></ion-icon>
+        </button>       
+      </span>
+
     </ion-list-header>
     
     <ion-item *ngFor="let fecha of fechas">
@@ -19,5 +25,11 @@
       <ion-radio value="{{fecha.fechaVal}}" checked="{{fecha.checked}}" (ionSelect)="seleccionar()"></ion-radio>
     </ion-item>
   </ion-list>
+
+  <ion-card *ngIf="sinData == true">
+    <ion-card-header>
+      Sin Operaciones
+    </ion-card-header>
+  </ion-card>
 
 </ion-content>

@@ -18,18 +18,25 @@ import { StatsDataModel } from '../../models/models';
 export class MesesPage {
   public fechas: StatsDataModel[] = [];
   public fechasSelect;
+  public sinData = false;
 
   constructor(public viewCtrl: ViewController,
               public api: Api,
               public params: NavParams) {
     this.api.verificaMeses().then((data) => {
-      this.fechas = data.data;
-      for (var i=0; i<this.fechas.length; i++) {
-        if (this.fechas[i].fechaVal == params.get('fecha')) {
-          this.fechas[i].checked = true;
-        }
-        else {
-          this.fechas[i].checked = false;
+      if (data.success == 0) {
+        this.sinData = true;
+      }
+      else {
+        this.sinData = false;
+        this.fechas = data.data;
+        for (var i=0; i<this.fechas.length; i++) {
+          if (this.fechas[i].fechaVal == params.get('fecha')) {
+            this.fechas[i].checked = true;
+          }
+          else {
+            this.fechas[i].checked = false;
+          }
         }
       }
     });
@@ -37,6 +44,10 @@ export class MesesPage {
 
   seleccionar() {
     this.viewCtrl.dismiss(this.fechasSelect);
+  }
+
+  cancelar() {
+    this.viewCtrl.dismiss(this.params.get('fecha'));
   }
 
 }
