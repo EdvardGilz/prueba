@@ -47,11 +47,11 @@ export class DashboardPage {
   }
 
   ionViewWillEnter() {
-    console.log("entra");
-    AdMob.prepareInterstitial({
-      adId: 'ca-app-pub-1057257651261369/7551627133',
+    AdMob.createBanner({
+      adId: 'ca-app-pub-1057257651261369/8330356336',
       isTesting: true,
-      autoShow: true
+      autoShow: true,
+      position: 'TOP_CENTER'
     });
 
     let loading = this.loadingCtrl.create({

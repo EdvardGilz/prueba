@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
+import { AdMob } from 'ionic-native';
 
 import { Global } from '../../providers/global';
 
@@ -40,7 +41,14 @@ export class TiendaFormPage {
   constructor(public navCtrl: NavController, 
               public storage: Storage,
               public global: Global) {
-    
+    AdMob.removeBanner();
+
+    AdMob.prepareInterstitial({
+      adId: 'ca-app-pub-1057257651261369/7551627133',
+      isTesting: true,
+      autoShow: false
+    });
+
     this.tienda = global.getTiendaData1();
     this.nuevo = global.getNuevaTienda();
 
@@ -165,6 +173,7 @@ export class TiendaFormPage {
   }
 
   cancelar() {
+    AdMob.showInterstitial();
     this.global.clearTiendaData();
     this.navCtrl.pop();
   }

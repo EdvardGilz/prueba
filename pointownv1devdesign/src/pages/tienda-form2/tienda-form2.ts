@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { AdMob } from 'ionic-native';
 
 import { Api } from '../../providers/api';
 import { CommonFunctions } from '../../providers/common-functions';
@@ -71,6 +72,12 @@ export class TiendaForm2Page {
       this.estado = this.tienda.estado
       this.verificaLlenado();
     }
+
+    AdMob.prepareInterstitial({
+      adId: 'ca-app-pub-1057257651261369/7551627133',
+      isTesting: true,
+      autoShow: false
+    });
   }
 
   verificaLlenado() {
@@ -94,6 +101,7 @@ export class TiendaForm2Page {
         .then((data) => {
           this.global.clearTiendaData();
           if (data.success == 1) {
+            AdMob.showInterstitial();
             this.navCtrl.setRoot(DashboardPage);
           }
           else {
@@ -118,6 +126,7 @@ export class TiendaForm2Page {
           else {
             this.commonFunctions.despliegaAlerta("Error", "Error al actualizar la tienda");
           }
+          AdMob.showInterstitial();
           this.navCtrl.setRoot(DashboardPage);
       });
     }
@@ -128,6 +137,7 @@ export class TiendaForm2Page {
   }
 
   cancelar() {
+    AdMob.showInterstitial();
     this.global.clearTiendaData();
     this.navCtrl.setRoot(DashboardPage);
   }

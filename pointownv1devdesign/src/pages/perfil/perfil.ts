@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, AlertController, LoadingController } from 'ionic-angular';
+import { AdMob } from 'ionic-native';
 
 import { Api } from '../../providers/api';
 import { CommonFunctions } from '../../providers/common-functions';
@@ -45,6 +46,19 @@ export class PerfilPage {
       this.tel = datos.tel;
       this.mail = datos.mail;
       this.user = datos.username;
+    });
+
+    AdMob.prepareInterstitial({
+      adId: 'ca-app-pub-1057257651261369/7551627133',
+      isTesting: true,
+      autoShow: false
+    });
+
+    AdMob.createBanner({
+      adId: 'ca-app-pub-1057257651261369/8330356336',
+      isTesting: true,
+      autoShow: true,
+      position: 'TOP_CENTER'
     });
   }
 
@@ -130,6 +144,7 @@ export class PerfilPage {
   }
 
   regresar() {
+    AdMob.showInterstitial();
     this.navCtrl.pop();
   }
 

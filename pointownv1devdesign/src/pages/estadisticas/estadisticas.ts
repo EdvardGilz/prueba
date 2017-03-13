@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, ModalController, LoadingController } from 'ionic-angular';
-import { Toast, InAppPurchase } from 'ionic-native';
+import { Toast, InAppPurchase, AdMob } from 'ionic-native';
 
 import { Api } from '../../providers/api';
 
@@ -38,6 +38,19 @@ export class EstadisticasPage {
     .catch((err) => {
       console.log(err);
     })
+
+    AdMob.prepareInterstitial({
+      adId: 'ca-app-pub-1057257651261369/7551627133',
+      isTesting: true,
+      autoShow: false
+    });
+
+    AdMob.createBanner({
+      adId: 'ca-app-pub-1057257651261369/8330356336',
+      isTesting: true,
+      autoShow: true,
+      position: 'TOP_CENTER'
+    });
   }
 
   obtenerEstadisticas(fecha) {
@@ -63,6 +76,7 @@ export class EstadisticasPage {
   }
 
   regresar() {
+    AdMob.showInterstitial();
     this.navCtrl.pop();
   }
 

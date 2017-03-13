@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, AlertController, LoadingController } from 'ionic-angular';
-import { BarcodeScanner } from 'ionic-native';
+import { BarcodeScanner, AdMob } from 'ionic-native';
 
 import { Api } from '../../providers/api';
 import { Global } from '../../providers/global';
@@ -35,6 +35,19 @@ export class CuentaPage {
               public commonFunctions: CommonFunctions,
               public loadingCtrl: LoadingController) {
     this.userId = global.getUser();
+
+    AdMob.prepareInterstitial({
+      adId: 'ca-app-pub-1057257651261369/7551627133',
+      isTesting: true,
+      autoShow: false
+    });
+
+    AdMob.createBanner({
+      adId: 'ca-app-pub-1057257651261369/8330356336',
+      isTesting: true,
+      autoShow: true,
+      position: 'TOP_CENTER'
+    });
   }
 
   scanner(tipo) {
@@ -333,6 +346,7 @@ export class CuentaPage {
         loading.dismiss();
         if (data.success == 1) {
           this.commonFunctions.despliegaAlerta("Procesada", "Compra procesada con exito");
+          AdMob.showInterstitial();
           this.navCtrl.pop();
         }
         else {
@@ -343,6 +357,7 @@ export class CuentaPage {
   }
 
   regresar() {
+    AdMob.showInterstitial();
     this.navCtrl.pop();
   }
 

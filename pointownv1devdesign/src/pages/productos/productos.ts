@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, ModalController, AlertController, LoadingController } from 'ionic-angular';
-import { BarcodeScanner } from 'ionic-native';
+import { BarcodeScanner, AdMob } from 'ionic-native';
 
 import { Api } from '../../providers/api';
 import { CommonFunctions } from '../../providers/common-functions';
@@ -33,7 +33,18 @@ export class ProductosPage {
               public commonFunctions: CommonFunctions,
               public alertCtrl: AlertController,
               public loadingCtrl: LoadingController) {
-    
+    AdMob.prepareInterstitial({
+      adId: 'ca-app-pub-1057257651261369/7551627133',
+      isTesting: true,
+      autoShow: false
+    });
+
+    AdMob.createBanner({
+      adId: 'ca-app-pub-1057257651261369/8330356336',
+      isTesting: true,
+      autoShow: true,
+      position: 'TOP_CENTER'
+    });
   }
 
   ionViewWillEnter() {
@@ -149,6 +160,7 @@ export class ProductosPage {
   }
 
   regresar() {
+    AdMob.showInterstitial();
     this.navCtrl.pop();
   }
 

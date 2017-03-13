@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, LoadingController } from 'ionic-angular';
+import { AdMob } from 'ionic-native';
 
 import { Api } from '../../providers/api';
 import { CommonFunctions } from '../../providers/common-functions';
@@ -37,6 +38,12 @@ export class TiendaForm3Page {
               public loadingCtrl: LoadingController) {
     
     this.username = global.getUsername();
+
+    AdMob.prepareInterstitial({
+      adId: 'ca-app-pub-1057257651261369/7551627133',
+      isTesting: true,
+      autoShow: false
+    });
   }
 
   verificaLlenado() {
@@ -64,6 +71,7 @@ export class TiendaForm3Page {
       .then((data) => {
         this.global.clearTiendaData();
         if (data.success == 1) {
+          AdMob.showInterstitial();
           this.navCtrl.setRoot(DashboardPage);
         }
         else {
