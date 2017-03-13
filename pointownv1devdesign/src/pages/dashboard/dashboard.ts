@@ -47,6 +47,11 @@ export class DashboardPage {
   }
 
   ionViewWillEnter() {
+    let loading = this.loadingCtrl.create({
+      content: 'Cargando tiendas'
+    });
+    loading.present();
+
     this.api.verificaTienda().then((data) => {
       this.tienda = data;
     })
@@ -65,6 +70,7 @@ export class DashboardPage {
       if (this.tiendasData != undefined) {
         this.tiendas = this.tiendasData.data;
       }
+      loading.dismiss();
     });
   }
 
