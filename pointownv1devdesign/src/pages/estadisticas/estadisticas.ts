@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, ModalController, LoadingController } from 'ionic-angular';
+import { Toast } from 'ionic-native';
 
 import { Api } from '../../providers/api';
 
@@ -70,7 +71,12 @@ export class EstadisticasPage {
 
   enviarInforme() {
     this.api.enviarInforme(this.fecha).then((data) => {
-      console.log(data);
+      if (data.success == 1) {
+        Toast.show("Se envió el informe a tu correo", '5000', 'bottom').subscribe();
+      }
+      else {
+        Toast.show("Ocurrió un error, intentalo nuevamente", '5000', 'bottom').subscribe();
+      }
     });
   }
 
