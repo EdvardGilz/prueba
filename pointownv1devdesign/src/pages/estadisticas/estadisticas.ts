@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, ModalController, LoadingController } from 'ionic-angular';
-import { Toast } from 'ionic-native';
+import { Toast, InAppPurchase } from 'ionic-native';
 
 import { Api } from '../../providers/api';
 
@@ -31,6 +31,13 @@ export class EstadisticasPage {
               public loadingCtrl: LoadingController) {
     this.fecha = "actual";
     this.obtenerEstadisticas(this.fecha);
+
+    InAppPurchase.getProducts(['pruebasuscripcion1']).then((products) => {
+      console.log(products);
+    })
+    .catch((err) => {
+      console.log(err);
+    })
   }
 
   obtenerEstadisticas(fecha) {
