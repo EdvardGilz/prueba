@@ -21,12 +21,15 @@ export class EstadisticasPage {
   public estadisticasMes: StatsDataModel = new StatsDataModel();
   public estadisticasDia: StatsDataModel[] = [];
   public vacio = 1;
+  public fecha;
+  public btnDisabled = true;
 
   constructor(public navCtrl: NavController, 
               public api: Api,
               public modalCtrl: ModalController,
               public loadingCtrl: LoadingController) {
-    this.obtenerEstadisticas("actual");
+    this.fecha = "actual";
+    this.obtenerEstadisticas(this.fecha);
   }
 
   obtenerEstadisticas(fecha) {
@@ -44,6 +47,7 @@ export class EstadisticasPage {
       for(var i in this.estadisticasDia) {
         if (this.estadisticasDia[i].totalMes > 0 || this.estadisticasDia[i].totalVentas > 0 || this.estadisticasDia[i].totalInvertido > 0) {
           this.vacio = 0;
+          this.btnDisabled = false;
         }
       }
       loading.dismiss();
@@ -57,10 +61,17 @@ export class EstadisticasPage {
   seleccionarMes() {
     let modal = this.modalCtrl.create(MesesPage, {fecha:this.estadisticasMes.fechaVal});
     modal.onDidDismiss(data => {
-      this.obtenerEstadisticas(data);
+      this.fecha = data;
+      this.obtenerEstadisticas(this.fecha);
     });
     
     modal.present();
+  }
+
+  enviarInforme() {
+    this.api.enviarInforme(this.fecha).then((data) => {
+      console.log(data);
+    });
   }
 
 }
