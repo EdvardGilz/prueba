@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, LoadingController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
-import { Toast } from 'ionic-native';
+import { Toast, AdMob } from 'ionic-native';
 
 import { Api } from '../../providers/api';
 import { CommonFunctions } from '../../providers/common-functions';
@@ -47,6 +47,13 @@ export class DashboardPage {
   }
 
   ionViewWillEnter() {
+    console.log("entra");
+    AdMob.prepareInterstitial({
+      adId: 'ca-app-pub-1057257651261369/7551627133',
+      isTesting: true,
+      autoShow: true
+    });
+
     let loading = this.loadingCtrl.create({
       content: 'Cargando tiendas'
     });
