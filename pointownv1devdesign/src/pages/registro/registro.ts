@@ -75,8 +75,9 @@ export class RegistroPage {
         this.global.setUsername(this.user);
         this.global.setNuevaTienda(0);
         this.navCtrl.setRoot(TiendaFormPage);
-        loading.dismiss();
+        
       }
+      loading.dismiss();
     });
   }
   
