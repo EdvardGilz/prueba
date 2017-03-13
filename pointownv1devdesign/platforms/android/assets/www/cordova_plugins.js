@@ -61,6 +61,14 @@ module.exports = [
         "id": "cordova-plugin-x-toast.tests",
         "file": "plugins/cordova-plugin-x-toast/test/tests.js",
         "pluginId": "cordova-plugin-x-toast"
+    },
+    {
+        "id": "cordova-plugin-inapppurchase.InAppBillingV3",
+        "file": "plugins/cordova-plugin-inapppurchase/www/index-android.js",
+        "pluginId": "cordova-plugin-inapppurchase",
+        "merges": [
+            "inAppPurchase"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -75,7 +83,8 @@ module.exports.metadata =
     "ionic-plugin-keyboard": "2.2.1",
     "cordova-plugin-compat": "1.1.0",
     "phonegap-plugin-barcodescanner": "6.0.5",
-    "cordova-plugin-x-toast": "2.6.0"
+    "cordova-plugin-x-toast": "2.6.0",
+    "cordova-plugin-inapppurchase": "1.1.0"
 };
 // BOTTOM OF METADATA
 });

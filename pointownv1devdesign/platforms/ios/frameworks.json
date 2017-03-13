@@ -6,5 +6,6 @@
     "CoreVideo.framework": 1,
     "QuartzCore.framework": 2,
     "CoreImage.framework": 1,
-    "AudioToolbox.framework": 1
+    "AudioToolbox.framework": 1,
+    "StoreKit.framework": 1
 }

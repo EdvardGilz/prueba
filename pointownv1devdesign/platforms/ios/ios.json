@@ -47,6 +47,10 @@
                         {
                             "xml": "<feature name=\"Toast\"><param name=\"ios-package\" value=\"Toast\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"PaymentsPlugin\"><param name=\"ios-package\" value=\"PaymentsPlugin\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -90,6 +94,9 @@
             "PACKAGE_NAME": "com.ionicframework.pointownv1dev761858"
         },
         "cordova-plugin-x-toast": {
+            "PACKAGE_NAME": "com.ionicframework.pointownv1dev761858"
+        },
+        "cordova-plugin-inapppurchase": {
             "PACKAGE_NAME": "com.ionicframework.pointownv1dev761858"
         }
     },
@@ -172,6 +179,14 @@
             "file": "plugins/cordova-plugin-x-toast/test/tests.js",
             "id": "cordova-plugin-x-toast.tests",
             "pluginId": "cordova-plugin-x-toast"
+        },
+        {
+            "file": "plugins/cordova-plugin-inapppurchase/www/index-ios.js",
+            "id": "cordova-plugin-inapppurchase.PaymentsPlugin",
+            "pluginId": "cordova-plugin-inapppurchase",
+            "clobbers": [
+                "inAppPurchase"
+            ]
         }
     ],
     "plugin_metadata": {
@@ -183,6 +198,7 @@
         "ionic-plugin-keyboard": "2.2.1",
         "cordova-sqlite-storage": "2.0.1",
         "phonegap-plugin-barcodescanner": "6.0.5",
-        "cordova-plugin-x-toast": "2.6.0"
+        "cordova-plugin-x-toast": "2.6.0",
+        "cordova-plugin-inapppurchase": "1.1.0"
     }
 }

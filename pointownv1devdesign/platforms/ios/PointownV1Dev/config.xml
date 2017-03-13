@@ -41,6 +41,9 @@
     <feature name="Toast">
         <param name="ios-package" value="Toast" />
     </feature>
+    <feature name="PaymentsPlugin">
+        <param name="ios-package" value="PaymentsPlugin" />
+    </feature>
     <name>PointownV1Dev</name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>

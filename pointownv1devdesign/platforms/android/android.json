@@ -39,6 +39,10 @@
                         {
                             "xml": "<feature name=\"Toast\"><param name=\"android-package\" value=\"nl.xservices.plugins.Toast\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"InAppBillingV3\"><param name=\"android-package\" value=\"com.alexdisler.inapppurchases.InAppBillingV3\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -67,6 +71,10 @@
                         },
                         {
                             "xml": "<uses-feature android:name=\"android.hardware.camera\" android:required=\"true\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"com.android.vending.BILLING\" />",
                             "count": 1
                         }
                     ]
@@ -103,6 +111,9 @@
             "PACKAGE_NAME": "com.ionicframework.pointownv1dev761858"
         },
         "cordova-plugin-x-toast": {
+            "PACKAGE_NAME": "com.ionicframework.pointownv1dev761858"
+        },
+        "cordova-plugin-inapppurchase": {
             "PACKAGE_NAME": "com.ionicframework.pointownv1dev761858"
         }
     },
@@ -169,6 +180,14 @@
             "id": "cordova-plugin-x-toast.tests",
             "file": "plugins/cordova-plugin-x-toast/test/tests.js",
             "pluginId": "cordova-plugin-x-toast"
+        },
+        {
+            "id": "cordova-plugin-inapppurchase.InAppBillingV3",
+            "file": "plugins/cordova-plugin-inapppurchase/www/index-android.js",
+            "pluginId": "cordova-plugin-inapppurchase",
+            "merges": [
+                "inAppPurchase"
+            ]
         }
     ],
     "plugin_metadata": {
@@ -181,6 +200,7 @@
         "ionic-plugin-keyboard": "2.2.1",
         "cordova-plugin-compat": "1.1.0",
         "phonegap-plugin-barcodescanner": "6.0.5",
-        "cordova-plugin-x-toast": "2.6.0"
+        "cordova-plugin-x-toast": "2.6.0",
+        "cordova-plugin-inapppurchase": "1.1.0"
     }
 }
