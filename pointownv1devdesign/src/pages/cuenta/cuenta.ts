@@ -38,7 +38,7 @@ export class CuentaPage {
 
     AdMob.createBanner({
       adId: 'ca-app-pub-1057257651261369/8330356336',
-      isTesting: true,
+      isTesting: false,
       autoShow: true,
       position: 'TOP_CENTER'
     });
