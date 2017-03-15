@@ -43,12 +43,6 @@ export class TiendaFormPage {
               public global: Global) {
     AdMob.removeBanner();
 
-    AdMob.prepareInterstitial({
-      adId: 'ca-app-pub-1057257651261369/7551627133',
-      isTesting: true,
-      autoShow: false
-    });
-
     this.tienda = global.getTiendaData1();
     this.nuevo = global.getNuevaTienda();
 
@@ -173,7 +167,6 @@ export class TiendaFormPage {
   }
 
   cancelar() {
-    AdMob.showInterstitial();
     this.global.clearTiendaData();
     this.navCtrl.pop();
   }

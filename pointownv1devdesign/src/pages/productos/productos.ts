@@ -33,11 +33,6 @@ export class ProductosPage {
               public commonFunctions: CommonFunctions,
               public alertCtrl: AlertController,
               public loadingCtrl: LoadingController) {
-    AdMob.prepareInterstitial({
-      adId: 'ca-app-pub-1057257651261369/7551627133',
-      isTesting: true,
-      autoShow: false
-    });
 
     AdMob.createBanner({
       adId: 'ca-app-pub-1057257651261369/8330356336',
@@ -160,7 +155,6 @@ export class ProductosPage {
   }
 
   regresar() {
-    AdMob.showInterstitial();
     this.navCtrl.pop();
   }
 

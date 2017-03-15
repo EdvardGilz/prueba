@@ -39,12 +39,6 @@ export class EstadisticasPage {
       console.log(err);
     })
 
-    AdMob.prepareInterstitial({
-      adId: 'ca-app-pub-1057257651261369/7551627133',
-      isTesting: true,
-      autoShow: false
-    });
-
     AdMob.createBanner({
       adId: 'ca-app-pub-1057257651261369/8330356336',
       isTesting: true,
@@ -76,7 +70,6 @@ export class EstadisticasPage {
   }
 
   regresar() {
-    AdMob.showInterstitial();
     this.navCtrl.pop();
   }
 

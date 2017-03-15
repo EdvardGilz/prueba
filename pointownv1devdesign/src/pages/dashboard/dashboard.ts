@@ -47,6 +47,12 @@ export class DashboardPage {
   }
 
   ionViewWillEnter() {
+    AdMob.prepareInterstitial({
+      adId: 'ca-app-pub-1057257651261369/7551627133',
+      isTesting: true,
+      autoShow: false
+    });
+
     AdMob.createBanner({
       adId: 'ca-app-pub-1057257651261369/8330356336',
       isTesting: true,
@@ -106,17 +112,20 @@ export class DashboardPage {
       this.global.setTiendaData2(tienda.calle, tienda.num_ext, tienda.num_int, tienda.cp, tienda.colonia, tienda.municipio, tienda.pais, tienda.estado);
     })
     .then(() => {
+      AdMob.showInterstitial();
       this.navCtrl.push(TiendaFormPage);
       loading.dismiss();
     });
   }
 
   agregarEmpleado(data) {
+    AdMob.showInterstitial();
     this.global.setTiendaId(data.id);
     this.navCtrl.push(EmpleadosPage);
   }
 
   perfil() {
+    AdMob.showInterstitial();
     this.navCtrl.push(PerfilPage);
   }
 
@@ -136,6 +145,7 @@ export class DashboardPage {
   }
 
   estadisticas(data) {
+    AdMob.showInterstitial();
     this.global.setTiendaId(data.id);
     this.navCtrl.push(EstadisticasPage);
   }
