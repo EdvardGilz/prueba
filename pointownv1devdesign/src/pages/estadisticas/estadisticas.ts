@@ -62,7 +62,7 @@ export class EstadisticasPage {
       for(var i in this.estadisticasDia) {
         if (this.estadisticasDia[i].totalMes > 0 || this.estadisticasDia[i].totalVentas > 0 || this.estadisticasDia[i].totalInvertido > 0) {
           this.vacio = 0;
-          this.btnDisabled = false;
+          //this.btnDisabled = false;
         }
       }
       loading.dismiss();
@@ -93,5 +93,9 @@ export class EstadisticasPage {
       }
     });
   }
+
+  proximamente() {
+    Toast.show("Poximamente", '3000', 'bottom').subscribe();
+  };
 
 }
