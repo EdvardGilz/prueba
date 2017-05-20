@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, ModalController, LoadingController } from 'ionic-angular';
 import { Toast } from '@ionic-native/toast';
+import { AdMobFree } from '@ionic-native/admob-free';
 
 import { Api } from '../../providers/api';
 
@@ -30,7 +31,8 @@ export class Estadisticas {
               public api: Api,
               public modalCtrl: ModalController,
               public loadingCtrl: LoadingController,
-              private toast: Toast) {
+              private toast: Toast,
+              private admobFree: AdMobFree) {
     this.fecha = "actual";
     this.obtenerEstadisticas(this.fecha);
 
@@ -47,6 +49,7 @@ export class Estadisticas {
     //   autoShow: true,
     //   position: 'TOP_CENTER'
     // });
+    this.admobFree.banner.show();
   }
 
   obtenerEstadisticas(fecha) {

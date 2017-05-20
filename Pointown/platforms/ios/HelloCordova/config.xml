@@ -46,6 +46,9 @@
     <feature name="BarcodeScanner">
         <param name="ios-package" value="CDVBarcodeScanner" />
     </feature>
+    <feature name="AdMob">
+        <param name="ios-package" value="CDVAdMob" />
+    </feature>
     <name>Pointown</name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>

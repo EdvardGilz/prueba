@@ -24,6 +24,7 @@ import { Meses } from '../pages/meses/meses';
 
 import { Toast } from '@ionic-native/toast';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import { AdMobFree } from '@ionic-native/admob-free';
 import { Api } from '../providers/api';
 import { CommonFunctions } from '../providers/common-functions';
 import { Global } from '../providers/global';
@@ -78,6 +79,7 @@ import { Global } from '../providers/global';
     Global,
     Toast,
     BarcodeScanner,
+    AdMobFree,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

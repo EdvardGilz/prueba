@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, AlertController, LoadingController } from 'ionic-angular';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import { AdMobFree } from '@ionic-native/admob-free';
 
 import { Api } from '../../providers/api';
 import { Global } from '../../providers/global';
@@ -35,15 +36,10 @@ export class Cuenta {
               public api: Api,
               public commonFunctions: CommonFunctions,
               public loadingCtrl: LoadingController,
-              private barcodeScanner: BarcodeScanner) {
+              private barcodeScanner: BarcodeScanner,
+              private admobFree: AdMobFree) {
     this.userId = global.getUser();
-
-    // AdMob.createBanner({
-    //   adId: 'ca-app-pub-1057257651261369/8330356336',
-    //   isTesting: false,
-    //   autoShow: true,
-    //   position: 'TOP_CENTER'
-    // });
+    this.admobFree.banner.show();
   }
 
   scanner(tipo) {

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, LoadingController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { Toast } from '@ionic-native/toast';
+import { AdMobFree } from '@ionic-native/admob-free';
 
 import { Api } from '../../providers/api';
 import { CommonFunctions } from '../../providers/common-functions';
@@ -42,7 +43,8 @@ export class Dashboard {
               public commonFunctions: CommonFunctions,
               public global: Global,
               public loadingCtrl: LoadingController,
-              private toast: Toast) {
+              private toast: Toast,
+              private admobFree: AdMobFree) {
     this.userTipo = this.global.getTipoUser();
     this.username = this.global.getUsername();
     this.userId = this.global.getUser();
@@ -61,6 +63,21 @@ export class Dashboard {
     //   autoShow: true,
     //   position: 'TOP_CENTER'
     // });
+
+    this.admobFree.interstitial.config({
+      id: 'ca-app-pub-1057257651261369/7551627133',
+      isTesting: false,
+      autoShow: false
+    });
+    this.admobFree.interstitial.prepare();
+
+    this.admobFree.banner.config({
+      id: 'ca-app-pub-1057257651261369/8330356336',
+      isTesting: false,
+      autoShow: false,
+      bannerAtTop: true
+    });
+    this.admobFree.banner.prepare();
 
     let loading = this.loadingCtrl.create({
       content: 'Cargando tiendas'
@@ -115,6 +132,7 @@ export class Dashboard {
     })
     .then(() => {
       // AdMob.showInterstitial();
+      this.admobFree.interstitial.show();
       this.navCtrl.push(TiendaForm);
       loading.dismiss();
     });
@@ -122,12 +140,14 @@ export class Dashboard {
 
   agregarEmpleado(data) {
     // AdMob.showInterstitial();
+    this.admobFree.interstitial.show();
     this.global.setTiendaId(data.id);
     this.navCtrl.push(Empleados);
   }
 
   perfil() {
     // AdMob.showInterstitial();
+    this.admobFree.interstitial.show();
     this.navCtrl.push(Perfil);
   }
 
@@ -148,6 +168,7 @@ export class Dashboard {
 
   estadisticas(data) {
     // AdMob.showInterstitial();
+    this.admobFree.interstitial.show();
     this.global.setTiendaId(data.id);
     this.navCtrl.push(Estadisticas);
   }

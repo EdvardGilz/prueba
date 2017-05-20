@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
+import { AdMobFree } from '@ionic-native/admob-free';
 
 import { Global } from '../../providers/global';
 
@@ -38,7 +39,8 @@ export class TiendaForm {
   public nuevo;
 
   constructor(public navCtrl: NavController,
-              public global: Global) {
+              public global: Global,
+              private admobFree: AdMobFree) {
     // AdMob.removeBanner();
 
     this.tienda = global.getTiendaData1();

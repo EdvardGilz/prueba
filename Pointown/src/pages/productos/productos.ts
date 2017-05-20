@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, ModalController, AlertController, LoadingController } from 'ionic-angular';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import { AdMobFree } from '@ionic-native/admob-free';
 
 import { Api } from '../../providers/api';
 import { CommonFunctions } from '../../providers/common-functions';
@@ -34,13 +35,15 @@ export class Productos {
               public commonFunctions: CommonFunctions,
               public alertCtrl: AlertController,
               public loadingCtrl: LoadingController,
-              private barcodeScanner: BarcodeScanner) {
+              private barcodeScanner: BarcodeScanner,
+              private admobFree: AdMobFree) {
     // AdMob.createBanner({
     //   adId: 'ca-app-pub-1057257651261369/8330356336',
     //   isTesting: false,
     //   autoShow: true,
     //   position: 'TOP_CENTER'
     // });
+    this.admobFree.banner.show();
   }
 
   ionViewWillEnter() {

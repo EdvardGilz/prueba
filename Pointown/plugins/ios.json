@@ -34,7 +34,17 @@
         "phonegap-plugin-barcodescanner": {
             "CAMERA_USAGE_DESCRIPTION": " ",
             "PACKAGE_NAME": "com.ionicframework.pointown984192"
+        },
+        "cordova-plugin-admob-free": {
+            "PACKAGE_NAME": "com.ionicframework.pointown984192"
         }
     },
-    "dependent_plugins": {}
+    "dependent_plugins": {
+        "cordova-promise-polyfill": {
+            "PACKAGE_NAME": "com.ionicframework.pointown984192"
+        },
+        "cordova-admob-sdk": {
+            "PACKAGE_NAME": "com.ionicframework.pointown984192"
+        }
+    }
 }

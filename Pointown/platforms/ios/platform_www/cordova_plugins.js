@@ -77,6 +77,27 @@ module.exports = [
         "clobbers": [
             "cordova.plugins.barcodeScanner"
         ]
+    },
+    {
+        "file": "plugins/cordova-promise-polyfill/www/Promise.js",
+        "id": "cordova-promise-polyfill.Promise",
+        "pluginId": "cordova-promise-polyfill",
+        "runs": true
+    },
+    {
+        "file": "plugins/cordova-promise-polyfill/www/promise.min.js",
+        "id": "cordova-promise-polyfill.promise.min",
+        "pluginId": "cordova-promise-polyfill"
+    },
+    {
+        "file": "plugins/cordova-plugin-admob-free/www/admob.js",
+        "id": "cordova-plugin-admob-free.AdMob",
+        "pluginId": "cordova-plugin-admob-free",
+        "clobbers": [
+            "admob",
+            "AdMob",
+            "plugins.AdMob"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -90,7 +111,10 @@ module.exports.metadata =
     "ionic-plugin-keyboard": "2.2.1",
     "cordova-sqlite-storage": "2.0.4",
     "cordova-plugin-x-toast": "2.6.0",
-    "phonegap-plugin-barcodescanner": "6.0.6"
+    "phonegap-plugin-barcodescanner": "6.0.6",
+    "cordova-promise-polyfill": "0.0.2",
+    "cordova-admob-sdk": "0.7.0",
+    "cordova-plugin-admob-free": "0.9.0"
 }
 // BOTTOM OF METADATA
 });

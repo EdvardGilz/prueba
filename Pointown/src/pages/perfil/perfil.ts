@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, AlertController, LoadingController } from 'ionic-angular';
+import { AdMobFree } from '@ionic-native/admob-free';
 
 import { Api } from '../../providers/api';
 import { CommonFunctions } from '../../providers/common-functions';
@@ -35,7 +36,8 @@ export class Perfil {
               public alertCtrl: AlertController,
               public loadingCtrl: LoadingController,
               public api: Api,
-              public commonFunctions: CommonFunctions) {
+              public commonFunctions: CommonFunctions,
+              private admobFree: AdMobFree) {
     api.verificaUserData().then((data) => {
       var datos = data.data[0];
 
@@ -53,6 +55,7 @@ export class Perfil {
     //   autoShow: true,
     //   position: 'TOP_CENTER'
     // });
+    this.admobFree.banner.show();
   }
 
   activarBtn() {
