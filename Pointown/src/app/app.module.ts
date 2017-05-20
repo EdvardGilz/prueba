@@ -22,6 +22,8 @@ import { AgregarProductos } from '../pages/agregar-productos/agregar-productos';
 import { Estadisticas } from '../pages/estadisticas/estadisticas';
 import { Meses } from '../pages/meses/meses';
 
+import { Toast } from '@ionic-native/toast';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { Api } from '../providers/api';
 import { CommonFunctions } from '../providers/common-functions';
 import { Global } from '../providers/global';
@@ -74,6 +76,8 @@ import { Global } from '../providers/global';
     Api,
     CommonFunctions,
     Global,
+    Toast,
+    BarcodeScanner,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
