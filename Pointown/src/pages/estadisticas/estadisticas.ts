@@ -4,6 +4,7 @@ import { Toast } from '@ionic-native/toast';
 import { AdMobFree } from '@ionic-native/admob-free';
 
 import { Api } from '../../providers/api';
+import { CommonFunctions } from '../../providers/common-functions';
 
 import { StatsDataModel } from '../../models/models';
 
@@ -29,10 +30,12 @@ export class Estadisticas {
 
   constructor(public navCtrl: NavController, 
               public api: Api,
+              public commonFunctions: CommonFunctions,
               public modalCtrl: ModalController,
               public loadingCtrl: LoadingController,
               private toast: Toast,
               private admobFree: AdMobFree) {
+    this.commonFunctions.checkNetwork();
     this.fecha = "actual";
     this.obtenerEstadisticas(this.fecha);
 

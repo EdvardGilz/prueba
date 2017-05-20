@@ -38,6 +38,7 @@ export class Cuenta {
               public loadingCtrl: LoadingController,
               private barcodeScanner: BarcodeScanner,
               private admobFree: AdMobFree) {
+    this.commonFunctions.checkNetwork();
     this.userId = global.getUser();
     this.admobFree.banner.show();
   }

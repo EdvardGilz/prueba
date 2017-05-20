@@ -37,6 +37,7 @@ export class ProductoDetalle {
               public commonFunctions: CommonFunctions,
               public loadingCtrl: LoadingController,
               public alertCtrl: AlertController) {
+    this.commonFunctions.checkNetwork();
     this.prodData = navParams.get('data');
     
     this.verificarStock();

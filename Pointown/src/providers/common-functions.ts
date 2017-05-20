@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AlertController, Platform } from 'ionic-angular';
+import { AlertController, Platform, LoadingController } from 'ionic-angular';
 import { Network } from '@ionic-native/network';
 
 import { Global } from './global';
@@ -18,14 +18,24 @@ export class CommonFunctions {
   constructor(public platform: Platform,
               public alertController: AlertController,
               public global: Global,
-              private network: Network) {}
+              private network: Network,
+              public loadingCtrl: LoadingController) {}
 
   checkNetwork() {
     if (!this.platform.is('core')) {
       this.plataforma = 1;
       this.global.setPlataforma(this.plataforma);
+
+      let loading = this.loadingCtrl.create({
+        content: 'Sin conexión, Intentando conectar...'
+      });
+
       let disconnect = this.network.onDisconnect().subscribe(() => {
-        this.despliegaAlerta("Sin conexión", "Conectate a una red para continuar");
+        loading.present();
+      });
+
+      let conect = this.network.onConnect().subscribe(() => {
+        loading.dismiss();
       });
     }
   }

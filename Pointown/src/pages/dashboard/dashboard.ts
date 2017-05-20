@@ -51,6 +51,7 @@ export class Dashboard {
   }
 
   ionViewWillEnter() {
+    this.commonFunctions.checkNetwork();
     // AdMob.prepareInterstitial({
     //   adId: 'ca-app-pub-1057257651261369/7551627133',
     //   isTesting: false,
