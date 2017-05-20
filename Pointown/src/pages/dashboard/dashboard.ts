@@ -48,24 +48,6 @@ export class Dashboard {
     this.userTipo = this.global.getTipoUser();
     this.username = this.global.getUsername();
     this.userId = this.global.getUser();
-    
-    if (global.getPlataforma() == 1) {
-      this.admobFree.interstitial.config({
-        id: 'ca-app-pub-1057257651261369/7551627133',
-        isTesting: false,
-        autoShow: false
-      });
-      this.admobFree.interstitial.prepare();
-
-      this.admobFree.banner.config({
-        id: 'ca-app-pub-1057257651261369/8330356336',
-        isTesting: false,
-        autoShow: false,
-        bannerAtTop: true
-      });
-      this.admobFree.banner.prepare();
-    }
-    
   }
 
   ionViewWillEnter() {
@@ -81,6 +63,23 @@ export class Dashboard {
     //   autoShow: true,
     //   position: 'TOP_CENTER'
     // });
+
+    if (this.global.getPlataforma() == 1) {
+      this.admobFree.interstitial.config({
+        id: 'ca-app-pub-1057257651261369/7551627133',
+        isTesting: false,
+        autoShow: false
+      });
+      this.admobFree.interstitial.prepare();
+
+      this.admobFree.banner.config({
+        id: 'ca-app-pub-1057257651261369/8330356336',
+        isTesting: false,
+        autoShow: false,
+        bannerAtTop: true
+      });
+      this.admobFree.banner.prepare();
+    }
 
     let loading = this.loadingCtrl.create({
       content: 'Cargando tiendas'
