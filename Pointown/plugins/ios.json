@@ -37,6 +37,9 @@
         },
         "cordova-plugin-admob-free": {
             "PACKAGE_NAME": "com.ionicframework.pointown984192"
+        },
+        "cordova-plugin-network-information": {
+            "PACKAGE_NAME": "com.ionicframework.pointown984192"
         }
     },
     "dependent_plugins": {

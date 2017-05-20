@@ -39,6 +39,7 @@ export class Login {
               public commonFunctions: CommonFunctions,
               public global: Global,
               public loadingCtrl: LoadingController) {
+    this.commonFunctions.checkNetwork();
     storage.get('credenciales').then((data) => {
       if (data != null) {
         this.user = data.user;

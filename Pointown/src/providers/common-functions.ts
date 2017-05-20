@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AlertController, Platform } from 'ionic-angular';
-// import { Network } from "ionic-native";
+import { Network } from '@ionic-native/network';
 
 import { Global } from './global';
 
@@ -17,24 +17,18 @@ export class CommonFunctions {
 
   constructor(public platform: Platform,
               public alertController: AlertController,
-              public global: Global) {}
+              public global: Global,
+              private network: Network) {}
 
-  // checkNetwork() {
-  //   // if (!this.platform.is('core')) {
-  //     // this.plataforma = 1;
-      
-  //     this.platform.ready().then(() => {
-  //       if (Network.connection === 'none') {
-  //         this.conectado = 0;
-  //         this.despliegaAlerta("Sin Conexión", "Conectate a una red para usar el servicio");
-  //       }
-  //     })
-  //   // }
-    
-  //   this.global.setPlataforma(this.plataforma);
-    
-  //   return this.conectado;
-  // }
+  checkNetwork() {
+    if (!this.platform.is('core')) {
+      this.plataforma = 1;
+      this.global.setPlataforma(this.plataforma);
+      let disconnect = this.network.onDisconnect().subscribe(() => {
+        this.despliegaAlerta("Sin conexión", "Conectate a una red para continuar");
+      });
+    }
+  }
   
   entrar(userData, tipoUser, from) {
     var valida = 0;

@@ -12,7 +12,7 @@ import { ProductosDataModel, TiendaDataModel, TiendaModel } from '../models/mode
 export class Global {
   public idUsuario: number;
   public tipoUser: boolean;
-  public plataforma: number;
+  public plataforma: number; // 0 = NAVEGADOR, 1 = MOVIL
   public productos: ProductosDataModel[] = [];
   public producto: ProductosDataModel;
   public tienda: TiendaDataModel = new TiendaDataModel();
