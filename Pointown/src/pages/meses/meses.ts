@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { IonicPage, ViewController, NavParams } from 'ionic-angular';
 
 import { Api } from '../../providers/api';
-import { CommonFunctions } from '../../providers/common-functions';
 
 import { StatsDataModel } from '../../models/models';
 
@@ -24,9 +23,7 @@ export class Meses {
 
   constructor(public viewCtrl: ViewController,
               public api: Api,
-              public commonFunctions: CommonFunctions,
               public params: NavParams) {
-    this.commonFunctions.checkNetwork();
     this.api.verificaMeses().then((data) => {
       if (data.success == 0) {
         this.sinData = true;

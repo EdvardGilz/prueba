@@ -39,7 +39,6 @@ export class Registro {
               public global: Global,
               public storage: Storage,
               public loadingCtrl: LoadingController) {
-    this.commonFunctions.checkNetwork();
   }
 
   verificaLlenado() {

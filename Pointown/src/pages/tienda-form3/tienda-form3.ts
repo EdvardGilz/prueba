@@ -36,7 +36,6 @@ export class TiendaForm3 {
               public commonFunctions: CommonFunctions,
               public global: Global,
               public loadingCtrl: LoadingController) {
-    this.commonFunctions.checkNetwork();
     this.username = global.getUsername();
   }
 

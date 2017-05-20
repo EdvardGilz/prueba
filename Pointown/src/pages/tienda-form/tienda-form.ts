@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
 import { AdMobFree } from '@ionic-native/admob-free';
 
-import { CommonFunctions } from '../../providers/common-functions';
 import { Global } from '../../providers/global';
 
 import { TiendaDataModel } from '../../models/models';
@@ -40,10 +39,8 @@ export class TiendaForm {
   public nuevo;
 
   constructor(public navCtrl: NavController,
-              public commonFunctions: CommonFunctions,
               public global: Global,
               private admobFree: AdMobFree) {
-    this.commonFunctions.checkNetwork();
     // AdMob.removeBanner();
 
     this.tienda = global.getTiendaData1();

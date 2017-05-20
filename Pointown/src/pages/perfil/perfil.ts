@@ -38,7 +38,6 @@ export class Perfil {
               public api: Api,
               public commonFunctions: CommonFunctions,
               private admobFree: AdMobFree) {
-    this.commonFunctions.checkNetwork();
     api.verificaUserData().then((data) => {
       var datos = data.data[0];
 

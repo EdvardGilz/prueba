@@ -33,8 +33,6 @@ export class AgregarProductos {
               public navParams: NavParams,
               public api: Api,
               public commonFunctions: CommonFunctions) {
-    this.commonFunctions.checkNetwork();
-    
     if (navParams.get('txt') != undefined) {
       this.nombre = navParams.get('txt');
     }

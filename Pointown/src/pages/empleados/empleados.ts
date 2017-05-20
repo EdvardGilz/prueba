@@ -36,7 +36,6 @@ export class Empleados {
               public commonFunctions: CommonFunctions,
               public global: Global,
               public loadingCtrl: LoadingController) {
-    this.commonFunctions.checkNetwork();
     this.verificaEmpleados();
   }
 

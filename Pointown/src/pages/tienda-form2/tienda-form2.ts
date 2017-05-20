@@ -43,7 +43,6 @@ export class TiendaForm2 {
               public global: Global,
               public api: Api,
               public commonFunctions: CommonFunctions) {
-    this.commonFunctions.checkNetwork();
     this.estados = ["Aguascalientes", "Baja California Norte", "Baja California Sur",
                     "Campeche", "Ciudad de México", "Coahuila", "Colima", "Chiapas", 
                     "Chihuahua", "Durango", "Estado de México", "Guanajuato", "Guerrero",

@@ -37,7 +37,6 @@ export class Productos {
               public loadingCtrl: LoadingController,
               private barcodeScanner: BarcodeScanner,
               private admobFree: AdMobFree) {
-    this.commonFunctions.checkNetwork();
     // AdMob.createBanner({
     //   adId: 'ca-app-pub-1057257651261369/8330356336',
     //   isTesting: false,

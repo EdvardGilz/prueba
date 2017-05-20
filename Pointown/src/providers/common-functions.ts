@@ -22,20 +22,21 @@ export class CommonFunctions {
               public loadingCtrl: LoadingController) {}
 
   checkNetwork() {
+    var loading;
     if (!this.platform.is('core')) {
       this.plataforma = 1;
       this.global.setPlataforma(this.plataforma);
 
-      let loading = this.loadingCtrl.create({
-        content: 'Sin conexión, Intentando conectar...'
-      });
-
-      let disconnect = this.network.onDisconnect().subscribe(() => {
-        loading.present();
-      });
-
-      let conect = this.network.onConnect().subscribe(() => {
-        loading.dismiss();
+      let disconnect = this.network.onchange().subscribe((data) => {
+        if (data.type == "offline") {
+          loading = this.loadingCtrl.create({
+            content: 'Sin conexión, Intentando conectar...'
+          });
+          loading.present();
+        }
+        else {
+          loading.dismiss();
+        }
       });
     }
   }
