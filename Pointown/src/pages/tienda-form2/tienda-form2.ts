@@ -37,7 +37,7 @@ export class TiendaForm2Page {
 
   public tienda: TiendaDataModel;
 
-  public buttonDisabled = true;
+  // public buttonDisabled = true;
   public nuevo;
 
   constructor(public navCtrl: NavController, 
@@ -71,20 +71,38 @@ export class TiendaForm2Page {
       this.municipio = this.tienda.municipio;
       this.pais = this.tienda.pais;
       this.estado = this.tienda.estado
-      this.verificaLlenado();
     }
   }
 
   verificaLlenado() {
-    if (this.calle && this.num_e && this.num_i && this.cp && this.colonia && this.municipio && this.pais && this.estado && this.calle != "" && this.num_e != "" && this.num_i != "" && this.cp != "" && this.colonia != "" && this.municipio != "" && this.pais != "" && this.estado != "")  {
-      this.buttonDisabled = false;
+    if (this.calle == undefined || this.calle == "") {
+      this.calle = "N/A";
     }
-    else {
-      this.buttonDisabled = true;
+    if (this.num_e == undefined || this.num_e == "") {
+      this.num_e = "N/A";
+    }
+    if (this.num_i == undefined || this.num_i == "") {
+      this.num_i = "N/A";
+    }
+    if (this.cp == undefined || this.cp == "") {
+      this.cp = "000000";
+    }
+    if (this.colonia == undefined || this.colonia == "") {
+      this.colonia = "N/A";
+    }
+    if (this.municipio == undefined || this.municipio == "") {
+      this.municipio = "N/A";
+    }
+    if (this.pais == undefined || this.pais == "") {
+      this.pais = "N/A";
+    }
+    if (this.estado == undefined || this.estado == "") {
+      this.estado = "N/A";
     }
   }
   
   siguiente() {
+    this.verificaLlenado();
     this.global.setTiendaData2(this.calle, this.num_e, this.num_i, this.cp, this.colonia, this.municipio, this.pais, this.estado);
     
     if (this.nuevo == 0) {

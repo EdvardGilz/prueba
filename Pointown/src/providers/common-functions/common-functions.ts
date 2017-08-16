@@ -12,14 +12,14 @@ import { GlobalProvider } from '../global/global';
 */
 @Injectable()
 export class CommonFunctionsProvider {
-  public conectado = 1;
-  public plataforma = 0;
+  private conectado = 1;
+  private plataforma = 0;
 
-  constructor(public platform: Platform,
-              public alertController: AlertController,
-              public global: GlobalProvider,
+  constructor(private platform: Platform,
+              private alertController: AlertController,
+              private global: GlobalProvider,
               private network: Network,
-              public loadingCtrl: LoadingController) {}
+              private loadingCtrl: LoadingController) {}
   
   checkNetwork() {
     var loading;

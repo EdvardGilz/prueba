@@ -26,7 +26,7 @@
     </ion-list-header>
   
     <ion-item padding-right>
-      <ion-label floating>Calle</ion-label>
+      <ion-label floating>Calle (Opcional)</ion-label>
       <ion-input [(ngModel)]="calle" (input)="verificaLlenado()" type="text"></ion-input>
     </ion-item>
 
@@ -34,19 +34,19 @@
       <ion-row>
         <ion-col width-33 no-padding>
           <ion-item>
-            <ion-label floating>No. Ext.</ion-label>
+            <ion-label floating>No. Ext. (Opcional)</ion-label>
             <ion-input [(ngModel)]="num_e" (input)="verificaLlenado()" type="text"></ion-input>
           </ion-item>
         </ion-col>
         <ion-col width-33 no-padding>
           <ion-item>
-            <ion-label floating>No. Int.</ion-label>
+            <ion-label floating>No. Int. (Opcional)</ion-label>
             <ion-input [(ngModel)]="num_i" (input)="verificaLlenado()" type="text"></ion-input>
           </ion-item>
         </ion-col>
         <ion-col width-33 no-padding>
           <ion-item no-margin>
-            <ion-label floating>C.P.</ion-label>
+            <ion-label floating>C.P. (Opcional)</ion-label>
             <ion-input no-margin [(ngModel)]="cp" (input)="verificaLlenado()" type="number"></ion-input>
           </ion-item>
         </ion-col>
@@ -54,11 +54,11 @@
     </ion-grid>
 
     <ion-item padding-right>
-      <ion-label floating>Colonia</ion-label>
+      <ion-label floating>Colonia (Opcional)</ion-label>
       <ion-input [(ngModel)]="colonia" (input)="verificaLlenado()" type="text"></ion-input>
     </ion-item>
     <ion-item padding-right>
-      <ion-label floating>Municipio</ion-label>
+      <ion-label floating>Municipio (Opcional)</ion-label>
       <ion-input [(ngModel)]="municipio" (input)="verificaLlenado()" type="text"></ion-input>
     </ion-item>
     
@@ -66,16 +66,16 @@
       <ion-row>
         <ion-col width-50 no-padding>
           <ion-item>
-            <ion-label floating>Pais</ion-label>
-            <ion-select [(ngModel)]="pais" (ionChange)="verificaLlenado()">
+            <ion-label floating>Pais (Opcional)</ion-label>
+            <ion-select [(ngModel)]="pais">
               <ion-option value="mexico" selectedText="México">México</ion-option>
             </ion-select>
           </ion-item>          
         </ion-col>
         <ion-col width-50 no-padding>
           <ion-item>
-            <ion-label floating>Estado</ion-label>
-            <ion-select [(ngModel)]="estado" (ionChange)="verificaLlenado()">
+            <ion-label floating>Estado (Opcional)</ion-label>
+            <ion-select [(ngModel)]="estado">
               <ion-option *ngFor="let estadoS of estados" value="{{estadoS}}">{{estadoS}}</ion-option>
             </ion-select>
           </ion-item>          

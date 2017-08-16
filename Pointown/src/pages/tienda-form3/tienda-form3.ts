@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, LoadingController } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
 
 import { ApiProvider } from '../../providers/api/api';
 import { CommonFunctionsProvider } from '../../providers/common-functions/common-functions';
@@ -9,6 +10,7 @@ import { UserDataModel } from '../../models/models';
 
 import { DashboardPage } from '../dashboard/dashboard';
 import { TiendaFormPage } from '../tienda-form/tienda-form';
+import { LoginPage } from '../login/login';
 
 /**
  * Generated class for the TiendaForm3Page page.
@@ -33,6 +35,7 @@ export class TiendaForm3Page {
   public buttonDisabled = true;
 
   constructor(public navCtrl: NavController,
+              public storage: Storage,
               public api: ApiProvider,
               public commonFunctions: CommonFunctionsProvider,
               public global: GlobalProvider,
@@ -59,8 +62,15 @@ export class TiendaForm3Page {
     this.userData.ap_p = this.app_p;
     this.userData.ap_m = this.app_m;
     this.userData.tel = this.tel;
-    
-    this.api
+
+    if (this.global.getUser() == undefined) {
+      loading.dismiss();
+      this.commonFunctions.despliegaAlerta("Error", "Error al agregar la tienda, ingresa con tu usuario y contraseña e intentalo de nuevo");
+      this.storage.clear();
+      this.navCtrl.setRoot(LoginPage);
+    }
+    else {
+      this.api
       .registroT(this.global.getTiendaData(), this.userData)
       .then((data) => {
         this.global.clearTiendaData();
@@ -79,6 +89,7 @@ export class TiendaForm3Page {
         }
         loading.dismiss();
       });
+    }
   }
 
   volver() {

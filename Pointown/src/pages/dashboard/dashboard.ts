@@ -37,64 +37,93 @@ export class DashboardPage {
   public userTipo;
   public username;
   public userId;
+  private correctoLogin = 1;
 
-  constructor(public navCtrl: NavController,
-              public storage: Storage,
-              public api: ApiProvider,
-              public commonFunctions: CommonFunctionsProvider,
-              public global: GlobalProvider,
-              public loadingCtrl: LoadingController,
+  constructor(private navCtrl: NavController,
+              private storage: Storage,
+              private api: ApiProvider,
+              private commonFunctions: CommonFunctionsProvider,
+              private global: GlobalProvider,
+              private loadingCtrl: LoadingController,
               private toast: Toast,
               private admobFree: AdMobFree) {
     this.userTipo = this.global.getTipoUser();
     this.username = this.global.getUsername();
     this.userId = this.global.getUser();
+    if (this.userId == undefined) {
+      this.correctoLogin = 0;
+      this.commonFunctions.despliegaAlerta("Error de ingreso", "Por favor vuelve a logearte");
+    }
   }
 
   ionViewWillEnter() {
-    // this.commonFunctions.checkNetwork();
-    // AdMob.prepareInterstitial({
-    //   adId: 'ca-app-pub-1057257651261369/7551627133',
-    //   isTesting: false,
-    //   autoShow: false
-    // });
+    if (this.correctoLogin == 1) {
+      // this.commonFunctions.checkNetwork();
+      // AdMob.prepareInterstitial({
+      //   adId: 'ca-app-pub-1057257651261369/7551627133',
+      //   isTesting: false,
+      //   autoShow: false
+      // });
 
-    // AdMob.createBanner({
-    //   adId: 'ca-app-pub-1057257651261369/8330356336',
-    //   isTesting: false,
-    //   autoShow: true,
-    //   position: 'TOP_CENTER'
-    // });
+      // AdMob.createBanner({
+      //   adId: 'ca-app-pub-1057257651261369/8330356336',
+      //   isTesting: false,
+      //   autoShow: true,
+      //   position: 'TOP_CENTER'
+      // });
 
-    if (this.global.getPlataforma() == 1) {
-      this.admobFree.interstitial.config({
-        id: 'ca-app-pub-1057257651261369/7551627133',
-        isTesting: false,
-        autoShow: false
+      if (this.global.getPlataforma() == 1) {
+        this.admobFree.interstitial.config({
+          id: 'ca-app-pub-1057257651261369/7551627133',
+          isTesting: false,
+          autoShow: false
+        });
+        this.admobFree.interstitial.prepare();
+
+        this.admobFree.banner.config({
+          id: 'ca-app-pub-1057257651261369/8330356336',
+          isTesting: false,
+          autoShow: false,
+          bannerAtTop: true
+        });
+        this.admobFree.banner.prepare();
+      }
+
+      let loading = this.loadingCtrl.create({
+        content: 'Cargando tiendas'
       });
-      this.admobFree.interstitial.prepare();
+      loading.present();
 
-      this.admobFree.banner.config({
-        id: 'ca-app-pub-1057257651261369/8330356336',
-        isTesting: false,
-        autoShow: false,
-        bannerAtTop: true
+      this.storage.get('tiendasData').then((data) => {
+        if (data != null) {
+          this.tienda = data;
+          this.global.setTiendasData(this.tienda);
+          this.showTiendas();
+        }
+        else {
+          this.commonFunctions.checkNetwork();
+          this.verificarTienda();
+        }
+      })
+      .then(() => {
+        loading.dismiss();
       });
-      this.admobFree.banner.prepare();
+
     }
+    else {
+      this.salir();
+    }
+    
+  }
 
-    let loading = this.loadingCtrl.create({
-      content: 'Cargando tiendas'
-    });
-    loading.present();
-
+  verificarTienda() {
     this.api.verificaTienda().then((data) => {
       this.tienda = data;
     })
     .then(() => {
       if (this.tienda.success == 1) {
         this.global.setTiendasData(this.tienda);
-        
+        this.storage.set('tiendasData', this.tienda);
       }
       else {
         this.global.setNuevaTienda(0);
@@ -102,12 +131,15 @@ export class DashboardPage {
       }
     })
     .then(()=> {
-      this.tiendasData = this.global.getTiendasData();
-      if (this.tiendasData != undefined) {
-        this.tiendas = this.tiendasData.data;
-      }
-      loading.dismiss();
+      this.showTiendas();
     });
+  }
+
+  showTiendas() {
+    this.tiendasData = this.global.getTiendasData();
+    if (this.tiendasData != undefined) {
+      this.tiendas = this.tiendasData.data;
+    }
   }
 
   nuevaTienda() {

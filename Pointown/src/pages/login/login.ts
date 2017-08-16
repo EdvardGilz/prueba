@@ -42,12 +42,14 @@ export class LoginPage {
               public loadingCtrl: LoadingController) {
     this.commonFunctions.checkNetwork();
     storage.get('credenciales').then((data) => {
-      if (data != null) {
-        this.user = data.user;
-        this.pass = data.pass;
-        this.tipoUser = data.tipo;
-
-        this.login();
+      if (data != null) { // ENTRA DIRECTO AL DASHBOARD
+        this.global.setUser(data.iduser);
+        this.global.setTipoUser(data.tipo);
+        this.global.setUsername(data.user);
+        this.navCtrl.setRoot(DashboardPage);
+        // console.log(data);
+        // console.log(this.global.getUser());
+        // this.login()
       }
     });
   }
@@ -65,7 +67,7 @@ export class LoginPage {
     .then(() => {
       let validacion = this.commonFunctions.entrar(this.userData, this.tipoUser, 0);
       if (validacion != 0) {
-        this.storage.set('credenciales', {user:this.user, pass:this.pass, tipo:this.tipoUser});
+        this.storage.set('credenciales', {user:this.user, pass:this.pass, tipo:this.tipoUser, iduser: this.userData.id});
         this.global.setUsername(this.user);
         this.navCtrl.setRoot(DashboardPage);
       }
