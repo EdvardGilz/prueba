@@ -623,10 +623,12 @@ AgregarProductosPage = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_barcode_scanner__ = __webpack_require__(88);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_admob_free__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_api_api__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_common_functions_common_functions__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__producto_detalle_producto_detalle__ = __webpack_require__(113);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__agregar_productos_agregar_productos__ = __webpack_require__(114);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_storage__ = __webpack_require__(47);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_api_api__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_common_functions_common_functions__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_global_global__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__producto_detalle_producto_detalle__ = __webpack_require__(113);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__agregar_productos_agregar_productos__ = __webpack_require__(114);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -644,6 +646,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
 /**
  * Generated class for the ProductosPage page.
  *
@@ -651,7 +655,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * on Ionic pages and navigation.
  */
 var ProductosPage = (function () {
-    function ProductosPage(navCtrl, modalCtrl, api, commonFunctions, alertCtrl, loadingCtrl, barcodeScanner, admobFree) {
+    function ProductosPage(navCtrl, modalCtrl, api, commonFunctions, alertCtrl, loadingCtrl, barcodeScanner, admobFree, global, storage) {
         this.navCtrl = navCtrl;
         this.modalCtrl = modalCtrl;
         this.api = api;
@@ -660,6 +664,8 @@ var ProductosPage = (function () {
         this.loadingCtrl = loadingCtrl;
         this.barcodeScanner = barcodeScanner;
         this.admobFree = admobFree;
+        this.global = global;
+        this.storage = storage;
         this.productosAll = [];
         this.productosAllBK = [];
         // AdMob.createBanner({
@@ -668,7 +674,9 @@ var ProductosPage = (function () {
         //   autoShow: true,
         //   position: 'TOP_CENTER'
         // });
-        this.admobFree.banner.show();
+        if (global.getPlataforma() == 1) {
+            this.admobFree.banner.show();
+        }
     }
     ProductosPage.prototype.ionViewWillEnter = function () {
         this.limpiarSearchbar();
@@ -679,29 +687,43 @@ var ProductosPage = (function () {
             content: 'Cargando datos'
         });
         loading.present();
-        this.api.productosTodos().then(function (data) {
-            for (var i in data.data) {
-                if (data.data[i].tipo == 0) {
-                    if (data.data[i].stock < 5) {
-                        data.data[i].color = "danger";
-                    }
-                    else {
-                        data.data[i].color = "secondary";
-                    }
+        this.storage.get('productosData').then(function (data) {
+            if (data != null) {
+                _this.colorearStock(data);
+                _this.productosAll = data.data;
+                _this.productosAllBK = data.data;
+                loading.dismiss();
+            }
+            else {
+                _this.api.productosTodos().then(function (data) {
+                    _this.storage.set('productosData', data);
+                    _this.colorearStock(data);
+                    _this.productosAll = data.data;
+                    _this.productosAllBK = data.data;
+                    loading.dismiss();
+                });
+            }
+        });
+    };
+    ProductosPage.prototype.colorearStock = function (data) {
+        for (var i in data.data) {
+            if (data.data[i].tipo == 0) {
+                if (data.data[i].stock < 5) {
+                    data.data[i].color = "danger";
                 }
                 else {
-                    if (data.data[i].stock < 250) {
-                        data.data[i].color = "danger";
-                    }
-                    else {
-                        data.data[i].color = "secondary";
-                    }
+                    data.data[i].color = "secondary";
                 }
             }
-            _this.productosAll = data.data;
-            _this.productosAllBK = data.data;
-            loading.dismiss();
-        });
+            else {
+                if (data.data[i].stock < 250) {
+                    data.data[i].color = "danger";
+                }
+                else {
+                    data.data[i].color = "secondary";
+                }
+            }
+        }
     };
     ProductosPage.prototype.scanner = function () {
         var _this = this;
@@ -739,7 +761,7 @@ var ProductosPage = (function () {
             }
         }
         if (this.productosAll.length <= 0) {
-            var alert_1 = this.alertCtrl.create({
+            var alert = this.alertCtrl.create({
                 title: "Producto no encontrado",
                 subTitle: "Quieres agregar el producto??",
                 buttons: [
@@ -753,7 +775,7 @@ var ProductosPage = (function () {
                     {
                         text: 'Aceptar',
                         handler: function (data) {
-                            var modal = _this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_7__agregar_productos_agregar_productos__["a" /* AgregarProductosPage */], { txt: _this.txtSearchBar, codebar: _this.barcode });
+                            var modal = _this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_9__agregar_productos_agregar_productos__["a" /* AgregarProductosPage */], { txt: _this.txtSearchBar, codebar: _this.barcode });
                             modal.onDidDismiss(function () {
                                 _this.limpiarSearchbar();
                             });
@@ -762,7 +784,7 @@ var ProductosPage = (function () {
                     }
                 ]
             });
-            alert_1.present();
+            alert.present();
         }
     };
     ProductosPage.prototype.limpiarSearchbar = function () {
@@ -771,7 +793,7 @@ var ProductosPage = (function () {
     };
     ProductosPage.prototype.verificarStock = function (data) {
         var _this = this;
-        var modal = this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_6__producto_detalle_producto_detalle__["a" /* ProductoDetallePage */], { data: data });
+        var modal = this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_8__producto_detalle_producto_detalle__["a" /* ProductoDetallePage */], { data: data });
         modal.onDidDismiss(function () {
             _this.limpiarSearchbar();
         });
@@ -787,16 +809,10 @@ ProductosPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
         selector: 'page-productos',template:/*ion-inline-start:"/Users/edvard/Documents/proyectosgit/prueba/Pointown/src/pages/productos/productos.html"*/'<!--\n  Generated template for the ProductosPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-content>\n\n  <ion-list>\n\n    <ion-list-header color="dark">\n\n      <button ion-button clear item-left color="danger" (click)="regresar()">\n        <ion-icon name="arrow-back"></ion-icon>\n      </button>       \n\n      <h2>Administración</h2>\n      <p color="primarymedium">Stock</p>\n\n    </ion-list-header>    \n\n    <ion-item no-padding text-wrapp *ngFor="let producto of productosAll" (click)="verificarStock(producto)">        \n\n        <div padding-left>\n          <ion-badge style="float:right;" color="{{producto.color}}">{{producto.stock}}</ion-badge>\n          <h2 no-margin>{{producto.nombre}}</h2> \n          <p color="primary">{{producto.marca}}</p>\n        </div>\n        <div padding-left>\n          <p><ion-icon name="eye"></ion-icon> {{producto.presentacion}} <span style="float:right;">{{producto.codigo}}</span></p>          \n        </div>\n\n    </ion-item>\n\n  </ion-list>\n\n</ion-content>\n\n<ion-footer>\n  <ion-toolbar>\n\n    <ion-row>\n\n      <ion-col width-75 no-padding>\n        <ion-searchbar [(ngModel)]="txtSearchBar" (ionInput)="searchProduct($event, 0)"></ion-searchbar>\n      </ion-col>\n\n      <ion-col>\n        <button ion-button small block color="danger" (click)="scanner()">\n          <ion-icon name="barcode"></ion-icon>\n        </button>\n      </ion-col>\n      \n    </ion-row>\n\n  </ion-toolbar>\n</ion-footer>\n'/*ion-inline-end:"/Users/edvard/Documents/proyectosgit/prueba/Pointown/src/pages/productos/productos.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */],
-        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */],
-        __WEBPACK_IMPORTED_MODULE_4__providers_api_api__["a" /* ApiProvider */],
-        __WEBPACK_IMPORTED_MODULE_5__providers_common_functions_common_functions__["a" /* CommonFunctionsProvider */],
-        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */],
-        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */],
-        __WEBPACK_IMPORTED_MODULE_2__ionic_native_barcode_scanner__["a" /* BarcodeScanner */],
-        __WEBPACK_IMPORTED_MODULE_3__ionic_native_admob_free__["a" /* AdMobFree */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_5__providers_api_api__["a" /* ApiProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__providers_api_api__["a" /* ApiProvider */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_6__providers_common_functions_common_functions__["a" /* CommonFunctionsProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__providers_common_functions_common_functions__["a" /* CommonFunctionsProvider */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_native_barcode_scanner__["a" /* BarcodeScanner */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_native_barcode_scanner__["a" /* BarcodeScanner */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_3__ionic_native_admob_free__["a" /* AdMobFree */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__ionic_native_admob_free__["a" /* AdMobFree */]) === "function" && _h || Object, typeof (_j = typeof __WEBPACK_IMPORTED_MODULE_7__providers_global_global__["a" /* GlobalProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7__providers_global_global__["a" /* GlobalProvider */]) === "function" && _j || Object, typeof (_k = typeof __WEBPACK_IMPORTED_MODULE_4__ionic_storage__["b" /* Storage */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__ionic_storage__["b" /* Storage */]) === "function" && _k || Object])
 ], ProductosPage);
 
+var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k;
 //# sourceMappingURL=productos.js.map
 
 /***/ }),
@@ -1729,10 +1745,14 @@ TiendaForm3Page = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
         selector: 'page-tienda-form3',template:/*ion-inline-start:"/Users/edvard/Documents/proyectosgit/prueba/Pointown/src/pages/tienda-form3/tienda-form3.html"*/'<!--\n  Generated template for the TiendaForm3Page page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-content>\n\n  <ion-list>\n\n    <ion-list-header color="primary">\n\n      <h2 no-margin>Hola <strong>{{username}}</strong></h2>\n      <p color="light">Información adicional</p>\n\n      <button ion-button item-left no-margin clear color="white" (click)="volver()">\n        <ion-icon name="arrow-back"></ion-icon>\n      </button>       \n      \n    </ion-list-header>\n\n    <ion-item-divider text-wrap text-center>\n      <p>Por favor complementa tu información.</p>\n    </ion-item-divider>\n    \n  \n    <ion-item padding-right>\n      <ion-label floating>Nombre</ion-label>\n      <ion-input [(ngModel)]="nombre" (input)="verificaLlenado()" type="text"></ion-input>\n    </ion-item>\n    <ion-item padding-right>\n      <ion-label floating>Apellido Paterno</ion-label>\n      <ion-input [(ngModel)]="app_p" (input)="verificaLlenado()" type="text"></ion-input>\n    </ion-item>\n    <ion-item padding-right>\n      <ion-label floating>Apellido Materno</ion-label>\n      <ion-input [(ngModel)]="app_m" (input)="verificaLlenado()" type="text"></ion-input>\n    </ion-item>\n    <ion-item padding-right>\n      <ion-label floating>Telefono</ion-label>\n      <ion-input [(ngModel)]="tel" (input)="verificaLlenado()" type="tel"></ion-input>\n    </ion-item>\n    \n  </ion-list>\n  \n</ion-content>\n\n\n<ion-footer text-center padding>\n    <button ion-button no-margin icon-right (click)="guardar()" [disabled]="buttonDisabled">\n      Finalizar <ion-icon name="partly-sunny"></ion-icon></button>\n</ion-footer>\n'/*ion-inline-end:"/Users/edvard/Documents/proyectosgit/prueba/Pointown/src/pages/tienda-form3/tienda-form3.html"*/,
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__providers_api_api__["a" /* ApiProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_api_api__["a" /* ApiProvider */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__providers_common_functions_common_functions__["a" /* CommonFunctionsProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__providers_common_functions_common_functions__["a" /* CommonFunctionsProvider */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_5__providers_global_global__["a" /* GlobalProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__providers_global_global__["a" /* GlobalProvider */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */]) === "function" && _f || Object])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */],
+        __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */],
+        __WEBPACK_IMPORTED_MODULE_3__providers_api_api__["a" /* ApiProvider */],
+        __WEBPACK_IMPORTED_MODULE_4__providers_common_functions_common_functions__["a" /* CommonFunctionsProvider */],
+        __WEBPACK_IMPORTED_MODULE_5__providers_global_global__["a" /* GlobalProvider */],
+        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */]])
 ], TiendaForm3Page);
 
-var _a, _b, _c, _d, _e, _f;
 //# sourceMappingURL=tienda-form3.js.map
 
 /***/ }),
@@ -2013,10 +2033,10 @@ var ApiProvider = (function () {
 }());
 ApiProvider = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Injectable */])(),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__global_global__["a" /* GlobalProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__global_global__["a" /* GlobalProvider */]) === "function" && _b || Object])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */],
+        __WEBPACK_IMPORTED_MODULE_3__global_global__["a" /* GlobalProvider */]])
 ], ApiProvider);
 
-var _a, _b;
 //# sourceMappingURL=api.js.map
 
 /***/ }),
@@ -2135,10 +2155,13 @@ var CommonFunctionsProvider = (function () {
 }());
 CommonFunctionsProvider = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Injectable */])(),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* Platform */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__global_global__["a" /* GlobalProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__global_global__["a" /* GlobalProvider */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_native_network__["a" /* Network */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_native_network__["a" /* Network */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */]) === "function" && _e || Object])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* Platform */],
+        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */],
+        __WEBPACK_IMPORTED_MODULE_3__global_global__["a" /* GlobalProvider */],
+        __WEBPACK_IMPORTED_MODULE_2__ionic_native_network__["a" /* Network */],
+        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */]])
 ], CommonFunctionsProvider);
 
-var _a, _b, _c, _d, _e;
 //# sourceMappingURL=common-functions.js.map
 
 /***/ }),
@@ -2758,10 +2781,14 @@ LoginPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
         selector: 'page-login',template:/*ion-inline-start:"/Users/edvard/Documents/proyectosgit/prueba/Pointown/src/pages/login/login.html"*/'<!--\n  Generated template for the LoginPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-content padding>\n  \n  <div text-center style="padding:30px 20px 0px;">\n    <img style="width: auto; height: 80px;" src="assets/img/pt-logo.svg"/>\n    <p no-margin color="white">¡El pilón de tu negocio!</p>\n  </div>\n\n  <div style="padding:30px 20px 0px;">\n\n    <ion-list no-margin margin-top class="boxshadow">\n      \n      <ion-list-header no-margin text-left color="primarymedium">\n        <!--<ion-toggle [(ngModel)]="tipoUser" (ionChange)="tipoUserToggle()" (ionChange)="verificaLlenado()"></ion-toggle>\n        <ion-label color="dark">\n          {{txtTipoUser}}\n        </ion-label>-->\n      </ion-list-header>\n      \n      <ion-item no-padding padding-horizontal no-margin>\n        <ion-label floating>Username</ion-label>\n        <ion-input [(ngModel)]="user" (input)="verificaLlenado()" type="text" autocapitalize="none"></ion-input>\n      </ion-item>\n\n      <ion-item no-padding padding-horizontal no-margin>\n        <ion-label floating>Password</ion-label>\n        <ion-input [(ngModel)]="pass" (input)="verificaLlenado()" type="password"></ion-input>\n      </ion-item>\n      \n      <ion-item text-center>\n        <button ion-button block large color="primary" (click)="login()" [disabled]="buttonDisabled">Acceder</button>\n        <button no-margin ion-button small icon-right clear color="dark" *ngIf="tipoUser == false" (click)="registro()">\n          Registrar nueva cuenta <ion-icon name="person-add"></ion-icon></button>\n      </ion-item>\n\n    </ion-list>  \n\n    <ion-col text-right>\n      <small color="white">©2017 BIXNIA </small>\n    </ion-col>\n\n  </div>\n\n</ion-content>'/*ion-inline-end:"/Users/edvard/Documents/proyectosgit/prueba/Pointown/src/pages/login/login.html"*/,
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__providers_api_api__["a" /* ApiProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_api_api__["a" /* ApiProvider */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__providers_common_functions_common_functions__["a" /* CommonFunctionsProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__providers_common_functions_common_functions__["a" /* CommonFunctionsProvider */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_5__providers_global_global__["a" /* GlobalProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__providers_global_global__["a" /* GlobalProvider */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */]) === "function" && _f || Object])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */],
+        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */],
+        __WEBPACK_IMPORTED_MODULE_3__providers_api_api__["a" /* ApiProvider */],
+        __WEBPACK_IMPORTED_MODULE_4__providers_common_functions_common_functions__["a" /* CommonFunctionsProvider */],
+        __WEBPACK_IMPORTED_MODULE_5__providers_global_global__["a" /* GlobalProvider */],
+        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */]])
 ], LoginPage);
 
-var _a, _b, _c, _d, _e, _f;
 //# sourceMappingURL=login.js.map
 
 /***/ }),
@@ -3167,10 +3194,16 @@ DashboardPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
         selector: 'page-dashboard',template:/*ion-inline-start:"/Users/edvard/Documents/proyectosgit/prueba/Pointown/src/pages/dashboard/dashboard.html"*/'<!--\n  Generated template for the DashboardPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-content>\n\n  <ion-list no-lines no-padding no-margin>\n\n    <ion-list-header color="primary">\n\n      <ion-avatar item-left (click)="perfil()">\n        <img style="width: 40px; height: 40px;" src="assets/img/pt-user.svg"/>\n      </ion-avatar>\n\n      <h2 (click)="perfil()">{{username}}</h2>\n      <p color="light" (click)="perfil()">Socio: PT-{{userId}}</p>\n      \n      <button ion-button icon-only small item-right margin-right color="danger" (click)="salir()">\n        <ion-icon name="log-out"></ion-icon>\n      </button>       \n      \n\n    </ion-list-header>    \n\n    <ion-item-divider text-wrap text-center>\n      <p *ngIf="userTipo == false">Selecciona la tienda que deseas administrar o agrega una nueva.</p>\n      <p *ngIf="userTipo == true">Mensaje para el empleado.</p>\n    </ion-item-divider>\n\n\n  </ion-list>\n\n  <ion-card *ngFor="let tienda of tiendas">\n    <ion-card-content (click)="cuenta(tienda)">\n      <ion-row>\n\n        <ion-col width-80>\n          <h1 color="black" padding-bottom>{{tienda.nombre}}</h1>\n          <p>Mes: <strong color="dark">{{tienda.sumaVentas | currency:\'USD\':true:\'1.2-2\'}}</strong></p>\n          <p>Stock: <strong color="dark">{{tienda.sumaStock}}</strong></p>\n          <p>Empleados: {{tienda.empleados}}</p>\n        </ion-col>\n        <ion-col>\n          <ion-avatar item-right>\n            <img style="width: 100px; height: 100px;" src="assets/img/pt-cash.svg"/>\n          </ion-avatar>\n        </ion-col>\n\n      </ion-row>\n    </ion-card-content>\n    \n    <ion-row no-padding>\n      <ion-col no-padding *ngIf="userTipo == false">\n        <button no-margin ion-button full icon-only (click)="editar(tienda)">\n          <ion-icon color="dark" name="create"></ion-icon>\n        </button>\n      </ion-col>\n      <!--<ion-col no-padding *ngIf="userTipo == false">\n        <button no-margin ion-button full icon-only (click)="agregarEmpleado(tienda)">\n          <ion-icon color="light" name="person-add"></ion-icon>\n        </button>\n      </ion-col>-->\n      <ion-col no-padding *ngIf="userTipo == false" (click)="proximamente()">\n        <button no-margin ion-button full icon-only disabled="disabled" icon-left (click)="agregarEmpleado(tienda)">\n          <ion-icon color="light" name="person-add"></ion-icon>\n        </button>\n      </ion-col>\n\n      <ion-col no-padding *ngIf="userTipo == false">\n        <button no-margin ion-button full icon-only (click)="estadisticas(tienda)">\n          <ion-icon color="secondary" name="stats"></ion-icon>\n        </button>\n      </ion-col>\n      <ion-col no-padding>\n        <button no-margin ion-button full icon-only color="dark" (click)="productos(tienda)">\n          <ion-icon color="primarymedium" name="archive"></ion-icon>\n        </button>\n      </ion-col>\n    </ion-row>\n    \n  </ion-card>\n\n  <ion-fab center bottom (click)="proximamente()">\n    <button ion-fab (click)="nuevaTienda()" disabled="disabled" *ngIf="userTipo == false">\n      <ion-icon name="add"></ion-icon>\n    </button>    \n  </ion-fab>\n\n</ion-content>\n'/*ion-inline-end:"/Users/edvard/Documents/proyectosgit/prueba/Pointown/src/pages/dashboard/dashboard.html"*/,
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_5__providers_api_api__["a" /* ApiProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__providers_api_api__["a" /* ApiProvider */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_6__providers_common_functions_common_functions__["a" /* CommonFunctionsProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__providers_common_functions_common_functions__["a" /* CommonFunctionsProvider */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_7__providers_global_global__["a" /* GlobalProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7__providers_global_global__["a" /* GlobalProvider */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_3__ionic_native_toast__["a" /* Toast */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__ionic_native_toast__["a" /* Toast */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_4__ionic_native_admob_free__["a" /* AdMobFree */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__ionic_native_admob_free__["a" /* AdMobFree */]) === "function" && _h || Object])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */],
+        __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */],
+        __WEBPACK_IMPORTED_MODULE_5__providers_api_api__["a" /* ApiProvider */],
+        __WEBPACK_IMPORTED_MODULE_6__providers_common_functions_common_functions__["a" /* CommonFunctionsProvider */],
+        __WEBPACK_IMPORTED_MODULE_7__providers_global_global__["a" /* GlobalProvider */],
+        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */],
+        __WEBPACK_IMPORTED_MODULE_3__ionic_native_toast__["a" /* Toast */],
+        __WEBPACK_IMPORTED_MODULE_4__ionic_native_admob_free__["a" /* AdMobFree */]])
 ], DashboardPage);
 
-var _a, _b, _c, _d, _e, _f, _g, _h;
 //# sourceMappingURL=dashboard.js.map
 
 /***/ })

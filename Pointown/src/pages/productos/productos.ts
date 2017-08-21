@@ -2,9 +2,11 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, ModalController, AlertController, LoadingController } from 'ionic-angular';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { AdMobFree } from '@ionic-native/admob-free';
+import { Storage } from '@ionic/storage';
 
 import { ApiProvider } from '../../providers/api/api';
 import { CommonFunctionsProvider } from '../../providers/common-functions/common-functions';
+import { GlobalProvider } from '../../providers/global/global';
 
 import { ProductosDataModel } from '../../models/models';
 
@@ -30,21 +32,25 @@ export class ProductosPage {
   public txtSearchBar;
   public color;
 
-  constructor(public navCtrl: NavController,
-              public modalCtrl: ModalController,
-              public api: ApiProvider,
-              public commonFunctions: CommonFunctionsProvider,
-              public alertCtrl: AlertController,
-              public loadingCtrl: LoadingController,
+  constructor(private navCtrl: NavController,
+              private modalCtrl: ModalController,
+              private api: ApiProvider,
+              private commonFunctions: CommonFunctionsProvider,
+              private alertCtrl: AlertController,
+              private loadingCtrl: LoadingController,
               private barcodeScanner: BarcodeScanner,
-              private admobFree: AdMobFree) {
+              private admobFree: AdMobFree,
+              private global: GlobalProvider,
+              private storage: Storage) {
     // AdMob.createBanner({
     //   adId: 'ca-app-pub-1057257651261369/8330356336',
     //   isTesting: false,
     //   autoShow: true,
     //   position: 'TOP_CENTER'
     // });
-    this.admobFree.banner.show();
+    if (global.getPlataforma() == 1) {
+      this.admobFree.banner.show();
+    }
   }
 
   ionViewWillEnter() {
@@ -57,29 +63,44 @@ export class ProductosPage {
     });
     loading.present();
 
-    this.api.productosTodos().then((data) => {
-      for (var i in data.data) {
-        if (data.data[i].tipo == 0) {
-          if (data.data[i].stock < 5) {
-            data.data[i].color = "danger";
-          }
-          else {
-            data.data[i].color = "secondary";
-          }
+    this.storage.get('productosData').then((data) => {
+      if (data != null) {
+        this.colorearStock(data);
+        this.productosAll = data.data;
+        this.productosAllBK = data.data;
+        loading.dismiss();
+      }
+      else {
+        this.api.productosTodos().then((data) => {
+          this.storage.set('productosData', data);
+          this.colorearStock(data);
+          this.productosAll = data.data;
+          this.productosAllBK = data.data;
+          loading.dismiss();
+        });
+      }
+    });
+  }
+
+  colorearStock(data) {
+    for (var i in data.data) {
+      if (data.data[i].tipo == 0) {
+        if (data.data[i].stock < 5) {
+          data.data[i].color = "danger";
         }
         else {
-          if (data.data[i].stock < 250) {
-            data.data[i].color = "danger";
-          }
-          else {
-            data.data[i].color = "secondary";
-          }
+          data.data[i].color = "secondary";
         }
       }
-      this.productosAll = data.data;
-      this.productosAllBK = data.data;
-      loading.dismiss();
-    });
+      else {
+        if (data.data[i].stock < 250) {
+          data.data[i].color = "danger";
+        }
+        else {
+          data.data[i].color = "secondary";
+        }
+      }
+    }
   }
 
   scanner() {

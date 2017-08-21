@@ -10,16 +10,16 @@ import { ProductosDataModel, TiendaDataModel, TiendaModel } from '../../models/m
 */
 @Injectable()
 export class GlobalProvider {
-  public idUsuario: number;
-  public tipoUser: boolean;
-  public plataforma: number; // 0 = NAVEGADOR, 1 = MOVIL
-  public productos: ProductosDataModel[] = [];
-  public producto: ProductosDataModel;
-  public tienda: TiendaDataModel = new TiendaDataModel();
-  public tiendaData: TiendaModel;
-  public tiendaId;
-  public username: string;
-  public nuevo: number;
+  private idUsuario: number;
+  private tipoUser: boolean;
+  private plataforma: number; // 0 = NAVEGADOR, 1 = MOVIL
+  private productos: ProductosDataModel[] = [];
+  private producto: ProductosDataModel;
+  private tienda: TiendaDataModel = new TiendaDataModel();
+  private tiendaData: TiendaModel;
+  private tiendaId;
+  private username: string;
+  private nuevo: number;
 
   constructor() {}
 
