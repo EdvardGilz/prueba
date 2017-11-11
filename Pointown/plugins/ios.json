@@ -21,7 +21,36 @@
     },
     "ionic-plugin-keyboard": {
       "PACKAGE_NAME": "io.ionic.starter"
+    },
+    "cordova-plugin-network-information": {
+      "PACKAGE_NAME": "io.ionic.starter"
+    },
+    "cordova-sqlite-storage": {
+      "PACKAGE_NAME": "io.ionic.starter"
+    },
+    "cordova-plugin-advanced-http": {
+      "PACKAGE_NAME": "io.ionic.starter"
+    },
+    "phonegap-plugin-barcodescanner": {
+      "CAMERA_USAGE_DESCRIPTION": " ",
+      "PACKAGE_NAME": "io.ionic.starter"
+    },
+    "cordova-plugin-x-toast": {
+      "PACKAGE_NAME": "io.ionic.starter"
+    },
+    "cordova-plugin-admob-free": {
+      "PACKAGE_NAME": "io.ionic.starter"
     }
   },
-  "dependent_plugins": {}
+  "dependent_plugins": {
+    "cordova-plugin-file": {
+      "PACKAGE_NAME": "io.ionic.starter"
+    },
+    "cordova-promise-polyfill": {
+      "PACKAGE_NAME": "io.ionic.starter"
+    },
+    "cordova-admob-sdk": {
+      "PACKAGE_NAME": "io.ionic.starter"
+    }
+  }
 }

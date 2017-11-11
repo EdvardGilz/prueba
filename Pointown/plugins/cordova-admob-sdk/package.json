@@ -1,0 +1,111 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "cordova-admob-sdk@~0.11.0",
+        "scope": null,
+        "escapedName": "cordova-admob-sdk",
+        "name": "cordova-admob-sdk",
+        "rawSpec": "~0.11.0",
+        "spec": ">=0.11.0 <0.12.0",
+        "type": "range"
+      },
+      "/Users/edvard/Documents/Pointown/Pointown"
+    ]
+  ],
+  "_from": "cordova-admob-sdk@>=0.11.0 <0.12.0",
+  "_id": "cordova-admob-sdk@0.11.1",
+  "_inCache": true,
+  "_location": "/cordova-admob-sdk",
+  "_nodeVersion": "8.6.0",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/cordova-admob-sdk-0.11.1.tgz_1507480167443_0.4313180632889271"
+  },
+  "_npmUser": {
+    "name": "ratson",
+    "email": "npm@ratson.name"
+  },
+  "_npmVersion": "5.4.2",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "cordova-admob-sdk@~0.11.0",
+    "scope": null,
+    "escapedName": "cordova-admob-sdk",
+    "name": "cordova-admob-sdk",
+    "rawSpec": "~0.11.0",
+    "spec": ">=0.11.0 <0.12.0",
+    "type": "range"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-admob-sdk/-/cordova-admob-sdk-0.11.1.tgz",
+  "_shasum": "a71cc0a764f8fa3187a400ee26504c8de0a796fb",
+  "_shrinkwrap": null,
+  "_spec": "cordova-admob-sdk@~0.11.0",
+  "_where": "/Users/edvard/Documents/Pointown/Pointown",
+  "author": {
+    "name": "Ratson"
+  },
+  "bugs": {
+    "url": "https://github.com/rehy/cordova-admob-sdk/issues"
+  },
+  "cordova": {
+    "id": "cordova-admob-sdk",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "dependencies": {},
+  "description": "Google AdMob SDK to Cordova.",
+  "devDependencies": {
+    "sync-package-version": "0.0.5"
+  },
+  "directories": {},
+  "dist": {
+    "integrity": "sha512-Uq6es7Li/An2lhzkRACVPEvuBGu41BUA9XVU9+QIEa2uwo8QECGPXgInrY3Fa+qJT3eJBifyty/NSAwsAdaqxg==",
+    "shasum": "a71cc0a764f8fa3187a400ee26504c8de0a796fb",
+    "tarball": "https://registry.npmjs.org/cordova-admob-sdk/-/cordova-admob-sdk-0.11.1.tgz"
+  },
+  "files": [
+    "*.js",
+    "*.md",
+    "*.xml",
+    "LICENSE",
+    "src",
+    "www"
+  ],
+  "gitHead": "4cefa7cb81369b5b62835c07960a5ee44f8f4ab4",
+  "homepage": "https://github.com/rehy/cordova-admob-sdk#readme",
+  "keywords": [
+    "cordova",
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios",
+    "ad",
+    "admob",
+    "google",
+    "sdk"
+  ],
+  "license": "MIT",
+  "maintainers": [
+    {
+      "name": "ratson",
+      "email": "npm@ratson.name"
+    }
+  ],
+  "name": "cordova-admob-sdk",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rehy/cordova-admob-sdk.git"
+  },
+  "scripts": {
+    "version": "sync-package-version --cordova-plugin"
+  },
+  "version": "0.11.1"
+}

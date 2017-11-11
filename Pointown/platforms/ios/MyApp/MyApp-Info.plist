@@ -62,5 +62,7 @@
     </dict>
     <key>UILaunchStoryboardName</key>
     <string>CDVLaunchScreen</string>
+    <key>NSCameraUsageDescription</key>
+    <string></string>
   </dict>
 </plist>
