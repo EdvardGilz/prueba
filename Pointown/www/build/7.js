@@ -1,14 +1,14 @@
 webpackJsonp([7],{
 
-/***/ 293:
+/***/ 309:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TiendaFormPageModule", function() { return TiendaFormPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MesesPageModule", function() { return MesesPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(54);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__tienda_form__ = __webpack_require__(294);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__meses__ = __webpack_require__(206);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,23 +18,23 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var TiendaFormPageModule = (function () {
-    function TiendaFormPageModule() {
+var MesesPageModule = (function () {
+    function MesesPageModule() {
     }
-    TiendaFormPageModule = __decorate([
+    MesesPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__tienda_form__["a" /* TiendaFormPage */],
+                __WEBPACK_IMPORTED_MODULE_2__meses__["a" /* MesesPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__tienda_form__["a" /* TiendaFormPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__meses__["a" /* MesesPage */]),
             ],
         })
-    ], TiendaFormPageModule);
-    return TiendaFormPageModule;
+    ], MesesPageModule);
+    return MesesPageModule;
 }());
 
-//# sourceMappingURL=tienda-form.module.js.map
+//# sourceMappingURL=meses.module.js.map
 
 /***/ })
 
